@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import { User, ShoppingCart, Heart } from "lucide-react";
+import { User, Heart } from "lucide-react";
 import Link from "next/link";
 import ROUTES from "@/types/routes";
 import FormBelowHeader from "./components/FormBelowHeader";
@@ -29,7 +29,7 @@ const LIST_ITEM = [
 
 const BelowHeader = () => {
   return (
-    <div className="flex justify-center w-full">
+    <div>
       <div className="container flex items-center justify-between">
         <div className="relative w-[10rem] h-[5.2rem]">
           <Image src={"/images/logo.webp"} alt="logo" fill />

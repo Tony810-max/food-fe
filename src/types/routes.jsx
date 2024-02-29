@@ -1,10 +1,10 @@
 const ROUTES = {
   Home: "/",
-  Product: '/product',
+  Product: "/product",
   Category: "/category",
-  Cart: '/cart',
+  Cart: "/cart",
   SignIn: "/sign-in",
-  SignUp: "/sign-up",
+  SignUp: "/register",
 };
 
 export default ROUTES;
