@@ -1,10 +1,6 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
-interface SignInPageProps {
-  children: ReactNode;
-}
-
-const SignInPage: React.FC<SignInPageProps> = () => {
+const SignInPage: React.FC = () => {
   return <div></div>;
 };
 

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const layout = ({ children }) => {
+interface IProps {
+  children: ReactNode;
+}
+
+const layout: React.FC<IProps> = ({ children }) => {
   return (
     <div>
       <span>lay out trong</span>
