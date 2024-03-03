@@ -56,12 +56,16 @@ const ELEMENTS_HEADER = [
 
 const MenubarAboveHeader = () => {
   return (
-    <Menubar className="border-none">
-      <Link href={ROUTES.Home}>Home</Link>
+    <Menubar className="border-none gap-3">
+      <Link href={ROUTES.Home} className="font-semibold text-base">
+        Home
+      </Link>
       {ELEMENTS_HEADER.map((element, id) => (
         <MenubarMenu key={element?.id}>
-          <MenubarTrigger className="flex gap-[0.3rem]">
-            <span className="capitalize ">{element?.name}</span>
+          <MenubarTrigger className="flex gap-1">
+            <span className="capitalize font-semibold text-base">
+              {element?.name}
+            </span>
             <ChevronDown size={14} />
           </MenubarTrigger>
           <MenubarContent>
