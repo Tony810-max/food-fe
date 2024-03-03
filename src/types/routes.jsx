@@ -3,8 +3,9 @@ const ROUTES = {
   Product: "/product",
   Category: "/category",
   Cart: "/cart",
-  SignIn: "/sign-in",
+  SignIn: "/login",
   SignUp: "/register",
+  ForgotPassword: "/forgot-password",
 };
 
 export default ROUTES;
