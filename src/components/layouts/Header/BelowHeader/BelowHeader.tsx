@@ -12,7 +12,6 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
-import useAuth from "@/hooks/useAuth";
 
 //     name: "account",
 //     icon: User,
@@ -33,12 +32,28 @@ import useAuth from "@/hooks/useAuth";
 // ];
 
 const BelowHeader = () => {
-  const { user } = useAuth();
+  const user: any = useMemo(() => {
+    if (typeof localStorage !== "undefined") {
+      const user =
+        localStorage && localStorage?.getItem("user")
+          ? localStorage?.getItem("user")
+          : null;
+      const accessToken = localStorage?.getItem("access-token")
+        ? localStorage.getItem("access-token")
+        : null;
+
+      if (user && accessToken) return user;
+
+      return null;
+    }
+  }, []);
 
   const handleLogOut = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("access-token");
-    window.location.reload();
+    if (localStorage && window) {
+      localStorage?.removeItem("user");
+      localStorage?.removeItem("access-token");
+      window?.location?.reload();
+    }
   };
 
   return (

@@ -20,8 +20,8 @@ const PopularProductsSection = () => {
       <div className="grid grid-cols-4 gap-x-6 mt-8">
         <div className="col-span-1 grid grid-rows-3 gap-y-6">
           <div className="row-span-1 flex flex-col gap-1">
-            {categories.map((category) => {
-              return <ListItem key={category.id} name={category.title} />;
+            {categories.map((category, index) => {
+              return <ListItem key={index} name={category.title} />;
             })}
           </div>
           <div className="relative row-span-3 w-full h-full rounded-lg">

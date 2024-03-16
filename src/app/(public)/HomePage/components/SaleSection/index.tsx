@@ -12,8 +12,8 @@ const SaleSection = () => {
   return (
     <div className="container mt-24 grid grid-cols-3 grid-rows-6 gap-x-6 ">
       <div className="row-span-6 flex flex-col gap-1">
-        {categories.map((category) => (
-          <TabList key={category.id} name={category.title} value={65} />
+        {categories.map((category, index) => (
+          <TabList key={index} name={category.title} value={65} />
         ))}
         <Link
           href={""}

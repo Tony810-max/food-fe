@@ -13,7 +13,6 @@ import { LoginSubmitType, loginSchema } from "../types/validate";
 import axios from "axios";
 import { API_URL } from "@/types/common";
 import { toast } from "react-toastify";
-import useAuth from "@/hooks/useAuth";
 
 const FormLogin = () => {
   const {
@@ -28,7 +27,7 @@ const FormLogin = () => {
     try {
       const response = await axios.post(`${API_URL}/api/v1/auth/sign-in`, data);
 
-      if (response) {
+      if (response && typeof localStorage !== "undefined") {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem(
           "access-token",

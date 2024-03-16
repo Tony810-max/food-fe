@@ -44,8 +44,8 @@ const FormBelowHeader = () => {
         </SelectTrigger>
         <SelectContent className="focus:outline-transparent active:outline-transparent focus-visible:ring-transparent">
           <SelectGroup>
-            {ELEMENT_CATAGORY.map((item) => (
-              <SelectItem key={item.id} value={item.value}>
+            {ELEMENT_CATAGORY.map((item, index) => (
+              <SelectItem key={index} value={item.value}>
                 {item.name}
               </SelectItem>
             ))}

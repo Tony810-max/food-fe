@@ -52,8 +52,8 @@ const MenubarAboveHeader = () => {
 
       <CategoryNavBar />
 
-      {ELEMENTS_HEADER.map((element, id) => (
-        <MenubarMenu key={element?.id}>
+      {ELEMENTS_HEADER.map((element, index) => (
+        <MenubarMenu key={index}>
           <MenubarTrigger className="flex gap-1">
             <span className="capitalize font-semibold text-base">
               {element?.name}

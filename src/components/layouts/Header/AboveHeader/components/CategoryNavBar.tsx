@@ -19,8 +19,8 @@ const CategoryNavBar = () => {
         <ChevronDown size={14} />
       </MenubarTrigger>
       <MenubarContent>
-        {categories?.map((category) => (
-          <MenubarItem key={category.id}>
+        {categories?.map((category, index) => (
+          <MenubarItem key={index}>
             <Link href={"/"}>{category.title}</Link>
           </MenubarItem>
         ))}

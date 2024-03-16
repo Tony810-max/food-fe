@@ -8,6 +8,7 @@ import OrganicSection from "./(public)/HomePage/components/OrganicSection";
 import LatestNewsSection from "./(public)/HomePage/components/LatestNewsSection";
 import ReviewSection from "./(public)/HomePage/components/ReviewSection";
 import CountdownTimer from "@/components/CountdownTimer";
+import GreatDealSection from "./(public)/HomePage/components/GreatDealSection";
 
 const HomePage: React.FC = () => {
   return (
@@ -16,7 +17,8 @@ const HomePage: React.FC = () => {
       <SaleSection />
       <PopularProductsSection />
       <PromotionSection />
-      <FeatureSection />
+      <FeatureSection />.
+      <GreatDealSection />
       <OrganicSection />
       <ReviewSection />
       <LatestNewsSection />

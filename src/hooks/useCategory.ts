@@ -18,7 +18,6 @@ const useCategory = () => {
     try {
       const response = await axios.get(`${API_URL}/api/v1/category`);
       if (response) {
-        console.log(response);
         setData(response.data);
       }
     } catch (error) {}
