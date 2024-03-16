@@ -48,7 +48,7 @@ const RegisterForm = () => {
         console.log(response.data);
         toast.success("Register successfully!");
         setTimeout(() => {
-          router.replace(ROUTES.SignIn);
+          router.replace(ROUTES.SIGNIN);
         }, 3000);
       }
     } catch (error) {
@@ -191,7 +191,7 @@ const RegisterForm = () => {
         >
           Sign up
         </Button>
-        <Link href={ROUTES.SignIn} className="text-slate-500 hover:opacity-70">
+        <Link href={ROUTES.SIGNIN} className="text-slate-500 hover:opacity-70">
           Have an account
         </Link>
       </div>

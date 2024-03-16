@@ -1,0 +1,32 @@
+import {
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+import useCategory from "@/hooks/useCategory";
+import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import React from "react";
+
+const CategoryNavBar = () => {
+  const { categories } = useCategory();
+
+  return (
+    <MenubarMenu>
+      <MenubarTrigger className="flex gap-1">
+        <span className="capitalize font-semibold text-base">category</span>
+        <ChevronDown size={14} />
+      </MenubarTrigger>
+      <MenubarContent>
+        {categories?.map((category) => (
+          <MenubarItem key={category.id}>
+            <Link href={"/"}>{category.title}</Link>
+          </MenubarItem>
+        ))}
+      </MenubarContent>
+    </MenubarMenu>
+  );
+};
+
+export default CategoryNavBar;

@@ -5,15 +5,15 @@ import React, { useMemo } from "react";
 
 const TITLE_HEADING = [
   {
-    value: ROUTES.SignIn,
+    value: ROUTES.SIGNIN,
     label: "Login",
   },
   {
-    value: ROUTES.SignUp,
+    value: ROUTES.SIGNUP,
     label: "Register",
   },
   {
-    value: ROUTES.ForgotPassword,
+    value: ROUTES.FORGOTPASSWORD,
     label: "Forgot Password",
   },
 ];

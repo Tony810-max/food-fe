@@ -18,20 +18,9 @@ import {
 import Link from "next/link";
 import ROUTES from "@/types/routes";
 import { ChevronDown } from "lucide-react";
+import CategoryNavBar from "./CategoryNavBar";
 
 const ELEMENTS_HEADER = [
-  {
-    id: 1,
-    name: "category",
-    item: [
-      "Cake & Milk",
-      "Fresh Meat",
-      "Vegetable",
-      "Apple & Mango",
-      "Strawbery",
-      "View More",
-    ],
-  },
   {
     id: 2,
     name: "products",
@@ -57,9 +46,12 @@ const ELEMENTS_HEADER = [
 const MenubarAboveHeader = () => {
   return (
     <Menubar className="border-none gap-3">
-      <Link href={ROUTES.Home} className="font-semibold text-base">
+      <Link href={ROUTES.HOME} className="font-semibold text-base">
         Home
       </Link>
+
+      <CategoryNavBar />
+
       {ELEMENTS_HEADER.map((element, id) => (
         <MenubarMenu key={element?.id}>
           <MenubarTrigger className="flex gap-1">
@@ -71,7 +63,7 @@ const MenubarAboveHeader = () => {
           <MenubarContent>
             {element?.item?.map((category, index) => (
               <MenubarItem key={index}>
-                <Link href={ROUTES.Category}>{category}</Link>
+                <Link href={ROUTES.CATEGORY}>{category}</Link>
               </MenubarItem>
             ))}
           </MenubarContent>

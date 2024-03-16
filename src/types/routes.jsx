@@ -1,11 +1,12 @@
 const ROUTES = {
-  Home: "/",
-  Product: "/product",
-  Category: "/category",
-  Cart: "/cart",
-  SignIn: "/login",
-  SignUp: "/register",
-  ForgotPassword: "/forgot-password",
+  HOME: "/",
+  PRODUCT: "/product",
+  CATEGORY: "/category",
+  CART: "/cart",
+  SIGNIN: "/login",
+  SIGNUP: "/register",
+  FORGOTPASSWORD: "/forgot-password",
+  PROFILE: "/profile",
 };
 
 export default ROUTES;
