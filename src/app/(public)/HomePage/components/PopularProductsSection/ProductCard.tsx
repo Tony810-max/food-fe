@@ -1,14 +1,14 @@
 import { Lock, Star } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface ProductProps {
   category: string;
   desc: string;
   image: string;
-  salePrice: number;
-  orinPrice: number;
-  rating: number;
+  salePrice: number | string;
+  originalPrice: number | string;
+  rating: number | null;
 }
 
 const ProductCard: React.FC<ProductProps> = ({
@@ -17,16 +17,16 @@ const ProductCard: React.FC<ProductProps> = ({
   desc,
   image,
   salePrice,
-  orinPrice,
+  originalPrice,
 }) => {
-  const stars = [];
-  for (let i = 0; i < 5; i++) {
-    if (i < Math.floor(rating)) {
-      stars.push(<Star size={16} color="#F5885F" fill="#F5885F" />);
-    } else {
-      stars.push(<Star size={16} color="#F5885F" />);
+  const [stars, setStars] = useState(0);
+
+  useEffect(() => {
+    if (rating) {
+      const startCound = Math.ceil(rating);
+      setStars(startCound);
     }
-  }
+  }, [rating]);
 
   return (
     <div className="p-3 border border-[#ececec]">
@@ -37,9 +37,17 @@ const ProductCard: React.FC<ProductProps> = ({
         </div>
       </div>
       <div className="flex flex-col justify-center items-center mt-6">
-        <span>{category}</span>
+        <span className="font-sans text-[#777777] font-medium">{category}</span>
         <div className="flex items-center mt-2 gap-[0.4rem]">
-          <div className="flex">{stars}</div>
+          <div className="flex">
+            {stars !== 0
+              ? Array.from({ length: stars }).map((_, index) => (
+                  <Star key={index} size={16} color="#F5885F" fill="#F5885F" />
+                ))
+              : Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={index} size={16} color="#F5885F" fill="#F5885F" />
+                ))}
+          </div>
           <span className="text-[#999999]">(4.5)</span>
         </div>
         <span className="max-w-60 text-center leading-normal font-sans font-bold mt-4">
@@ -49,7 +57,7 @@ const ProductCard: React.FC<ProductProps> = ({
           <span className="font-extrabold text-lg font-sans text-[#F53E32]">
             ${salePrice}
           </span>
-          <span className="line-through text-[#7A7A7A]">${orinPrice}</span>
+          <span className="line-through text-[#7A7A7A]">${originalPrice}</span>
         </div>
       </div>
     </div>

@@ -10,8 +10,8 @@ const SaleSection = () => {
   const { categories } = useCategory();
 
   return (
-    <div className="container mt-24 grid grid-cols-3 grid-rows-6 gap-x-6 ">
-      <div className="row-span-6 flex flex-col gap-1">
+    <div className="container py-24 grid grid-cols-3 gap-x-6 ">
+      <div className="flex col-span-1 flex-col gap-1">
         {categories.map((category, index) => (
           <TabList key={index} name={category.title} value={65} />
         ))}
@@ -27,11 +27,13 @@ const SaleSection = () => {
           </Button>
         </Link>
       </div>
+
       <TabPannel
         image={"/images/cakePannel.webp"}
         name={"Cake"}
         valueSale={50}
       />
+
       <TabPannel
         image={"/images/milkPaannel.webp"}
         name={"Milk"}

@@ -10,29 +10,40 @@ interface SaleProps {
 
 const TabPannel: React.FC<SaleProps> = ({ image, valueSale, name }) => {
   return (
-    <div className="relative row-span-6">
-      <div className="relative w-full h-full aspect-[1/1.5] z-10">
-        <Image src={image} alt="pannel" fill />
-      </div>
-      <div className="absolute z-20 top-7 left-7 flex items-center gap-1">
-        <span className="text-white text-6xl font-bold font-sans ">
-          {valueSale}
-        </span>
-        <div className="flex flex-col justify-center h-fit">
-          <span className="text-white ">%</span>
-          <span className="text-white uppercase font-mono text-lg">off </span>
+    <div className="w-full h-full col-span-1 aspect-[1/1.5]">
+      <div className="relative bg-black w-full h-full">
+        <div className="absolute w-full h-full z-0">
+          <Image src={image} alt="pannel" fill unoptimized priority />
         </div>
-      </div>
-      <div className="absolute z-20 left-1/2 -translate-x-1/2 bottom-0 flex flex-col gap-3">
-        <span className="text-white text-xl text-center font-bold font-sans tracking-widest">
-          {name}
-        </span>
-        <Button
-          variant={"destructive"}
-          className="capitalize font-bold tracking-widest bg-[#f53e32]"
-        >
-          shop now
-        </Button>
+
+        <div className="relative flex flex-col justify-between z-10 h-full p-10">
+          <div className="flex items-center gap-1">
+            <span className="text-white text-6xl font-bold font-sans leading-none">
+              {valueSale}
+            </span>
+
+            <div className="flex flex-col h-full gap-2 justify-end">
+              <span className="text-white leading-normal">%</span>
+
+              <span className="text-white uppercase font-mono text-lg leading-none">
+                off{" "}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <span className="text-white text-xl text-center font-bold font-sans tracking-widest">
+              {name}
+            </span>
+
+            <Button
+              variant={"destructive"}
+              className="capitalize font-bold tracking-widest bg-[#f53e32]"
+            >
+              shop now
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

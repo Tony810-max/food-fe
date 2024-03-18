@@ -1,17 +1,23 @@
 import Image from "next/image";
 import React from "react";
+import dynamic from "next/dynamic";
+
+const TimerBoxGreatDeal = dynamic(() => import("./TimerBoxGreatDeal"), {
+  ssr: false,
+});
 
 const GreatDealSection: React.FC = () => {
   return (
-    <div className="w-full mt-24">
-      <div className="relative h-[37.5rem] w-full">
-        <Image
-          src="/images/GreatDealSection.webp"
-          alt="GreatDealSection"
-          fill
-        />
+    <div className="relative w-full h-[37.5rem] mt-24">
+      <Image
+        src="/images/GreatDealSection.webp"
+        alt="GreatDealSection"
+        fill
+        className="z-0"
+      />
+      <div className="container">
+        <TimerBoxGreatDeal />
       </div>
-      <div className="container"></div>
     </div>
   );
 };
