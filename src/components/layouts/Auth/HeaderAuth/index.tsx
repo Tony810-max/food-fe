@@ -16,6 +16,10 @@ const TITLE_HEADING = [
     value: ROUTES.FORGOTPASSWORD,
     label: "Forgot Password",
   },
+  {
+    value: ROUTES.PRODUCT,
+    label: "Product",
+  },
 ];
 
 const HeaderAuth: React.FC = () => {

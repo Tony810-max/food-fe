@@ -21,7 +21,7 @@ const PopularProductsSection: React.FC = () => {
   useEffect(() => {
     if (categoryFilter) {
       const filterdData = products.filter(
-        (product) => product.category_id === categoryFilter 
+        (product) => product.category_id === categoryFilter
       );
 
       setProductFilter(filterdData);
@@ -40,7 +40,7 @@ const PopularProductsSection: React.FC = () => {
       />
       <div className="grid grid-cols-4 gap-x-6 mt-8">
         <div className="col-span-1 grid  gap-y-6">
-          <div className="row-span-1 flex flex-col gap-1 cursor-pointer">
+          <div className=" flex flex-col gap-1 cursor-pointer">
             <ListItem onClick={setCategoryFilter} id={null} name={"All"} />
             {categories.map((category, index) => {
               return (
@@ -53,7 +53,7 @@ const PopularProductsSection: React.FC = () => {
               );
             })}
           </div>
-          <div className="relative row-span-3 w-full h-full rounded-lg">
+          <div className="relative w-full h-full rounded-lg aspect-[1/2]">
             <Image
               src={"/images/product-banner.webp"}
               alt="product-banner"
@@ -61,7 +61,7 @@ const PopularProductsSection: React.FC = () => {
             />
           </div>
         </div>
-        <div className="col-span-3 grid grid-cols-3 gap-y-6">
+        <div className="col-span-3 grid grid-cols-3 gap-y-6 h-fit">
           {productFilter?.map((product: IProduct) => (
             <ProductCard
               key={product?.title}

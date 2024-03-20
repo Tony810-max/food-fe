@@ -13,23 +13,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 
-//     name: "account",
-//     icon: User,
-//     route: ROUTES.SignIn,
-//   },
-//   {
-//     id: 2,
-//     name: "wishlist",
-//     icon: HeartIcon,
-//     route: "",
-//   },
-//   {
-//     id: 3,
-//     name: "cart",
-//     icon: Heart,
-//     route: ROUTES.Cart,
-//   },
-// ];
 
 const BelowHeader = () => {
   const user: any = useMemo(() => {
