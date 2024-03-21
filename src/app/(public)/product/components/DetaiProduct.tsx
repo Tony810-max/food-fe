@@ -11,7 +11,7 @@ const DetaiProduct = () => {
 
   return (
     <div className="col-span-4 grid grid-cols-2 gap-x-3 gap-y-10 min-h-screen">
-      <ImageProduct data={dataProducts} />
+      {dataProducts && (<ImageProduct data={dataProducts} />)}
       <ContentProduct data={dataProducts} />
       <AboutProduct data={dataProducts} />
     </div>
