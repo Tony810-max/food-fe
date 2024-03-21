@@ -23,3 +23,28 @@ export interface IProduct {
   reviewCount: string;
   avgRating: number | null;
 }
+
+export interface Product {
+  id: number;
+  addedBy: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    address: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+  category: {
+    id: number;
+    title: string;
+  };
+  createdAt: string;
+  updatedAt: string;
+  description: string;
+  images: string[] | string;
+  price: number | string;
+  stock: number;
+  title: string;
+}

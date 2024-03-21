@@ -1,8 +1,10 @@
 import { Lock, Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 interface ProductProps {
+  id: number | "";
   category: string;
   desc: string;
   image: string;
@@ -12,6 +14,7 @@ interface ProductProps {
 }
 
 const ProductCard: React.FC<ProductProps> = ({
+  id,
   rating,
   category,
   desc,
@@ -21,6 +24,7 @@ const ProductCard: React.FC<ProductProps> = ({
 }) => {
   const [stars, setStars] = useState(0);
 
+  
   useEffect(() => {
     if (rating) {
       const startCound = Math.ceil(rating);
@@ -53,11 +57,21 @@ const ProductCard: React.FC<ProductProps> = ({
         <span className="max-w-60 text-center leading-normal font-sans font-bold mt-4">
           {desc}
         </span>
-        <div className="mt-4 space-x-2">
-          <span className="font-extrabold text-lg font-sans text-[#F53E32]">
-            ${salePrice}
-          </span>
-          <span className="line-through text-[#7A7A7A]">${originalPrice}</span>
+        <div className="flex flex-col items-center gap-2">
+          <div className="flex gap-1 items-center">
+            <span className="font-extrabold text-lg font-sans text-[#F53E32]">
+              ${salePrice}
+            </span>
+            <span className="line-through text-[#7A7A7A]">
+              ${originalPrice}
+            </span>
+          </div>
+          <Link
+            href={`/product/${id}`}
+            className="font-extrabold text-lg font-sans text-[#F53E32] hover:opacity-70"
+          >
+            View Detail
+          </Link>
         </div>
       </div>
     </div>

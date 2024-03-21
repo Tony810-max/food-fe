@@ -45,7 +45,6 @@ const RegisterForm = () => {
         formData
       );
       if (response) {
-        console.log(response.data);
         toast.success("Register successfully!");
         setTimeout(() => {
           router.replace(ROUTES.SIGNIN);

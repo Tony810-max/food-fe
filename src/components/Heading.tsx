@@ -5,7 +5,7 @@ interface HeadingProps {
   des: string;
 }
 
-const HeadingHomePage: React.FC<HeadingProps> = ({ des, title }) => {
+const Heading: React.FC<HeadingProps> = ({ des, title }) => {
   return (
     <div className="flex flex-col items-center gap-4">
       <span className="text-4xl font-bold font-sans leading-normal">
@@ -18,4 +18,4 @@ const HeadingHomePage: React.FC<HeadingProps> = ({ des, title }) => {
   );
 };
 
-export default HeadingHomePage;
+export default Heading;

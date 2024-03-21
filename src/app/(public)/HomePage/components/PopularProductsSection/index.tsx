@@ -7,17 +7,16 @@ import { IProduct } from "@/types/common";
 import useCategory from "@/hooks/useCategory";
 
 import HeadingHomePage from "@/components/Heading";
-import ProductCard from "./ProductCard";
+import ProductCard from "../../../../../components/ProductCard";
 import ListItem from "./ListItem";
 import useProduct from "@/hooks/useProduct";
 
 const PopularProductsSection: React.FC = () => {
   const { categories } = useCategory();
   const { products } = useProduct();
-
   const [categoryFilter, setCategoryFilter] = useState<number | string>("");
   const [productFilter, setProductFilter] = useState<IProduct[]>([]);
-
+  
   useEffect(() => {
     if (categoryFilter) {
       const filterdData = products.filter(
@@ -64,6 +63,7 @@ const PopularProductsSection: React.FC = () => {
         <div className="col-span-3 grid grid-cols-3 gap-y-6 h-fit">
           {productFilter?.map((product: IProduct) => (
             <ProductCard
+              id={product?.id}
               key={product?.title}
               rating={product?.avgRating}
               originalPrice={product?.price}

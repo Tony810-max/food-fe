@@ -1,6 +1,7 @@
 import React from "react";
 import SidebarProduct from "./SidebarProduct";
 import DetaiProduct from "./DetaiProduct";
+import PopularProductDetail from "./PopularProductDetail";
 
 const ProductDetailPage = () => {
   return (
@@ -9,6 +10,7 @@ const ProductDetailPage = () => {
         <SidebarProduct />
         <DetaiProduct />
       </div>
+      <PopularProductDetail />
     </div>
   );
 };
