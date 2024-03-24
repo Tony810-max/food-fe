@@ -1,16 +1,16 @@
 import React from "react";
-import SidebarProduct from "./SidebarProduct";
 import DetaiProduct from "./DetaiProduct";
-import PopularProductDetail from "./PopularProductDetail";
+import PopularProductDetail from "../../../../components/PopularProductDetail";
+import useDetailProduct from "@/hooks/useDetailProduct";
 
 const ProductDetailPage = () => {
+  const { dataProducts } = useDetailProduct();
   return (
     <div className="container ">
-      <div className="grid grid-cols-5 gap-x-[5.3rem] py-[5.5rem]">
-        <SidebarProduct />
+      <div className="grid grid-cols-5 gap-[5.3rem] py-[5.5rem]">
         <DetaiProduct />
       </div>
-      <PopularProductDetail />
+      <PopularProductDetail data={dataProducts} />
     </div>
   );
 };

@@ -13,7 +13,14 @@ const TabPannel: React.FC<SaleProps> = ({ image, valueSale, name }) => {
     <div className="w-full h-full col-span-1 aspect-[1/1.5]">
       <div className="relative bg-black w-full h-full">
         <div className="absolute w-full h-full z-0">
-          <Image src={image} alt="pannel" fill unoptimized priority />
+          <Image
+            src={image}
+            alt="pannel"
+            fill
+            unoptimized
+            priority
+            sizes="(min-width: 768px) 100vw"
+          />
         </div>
 
         <div className="relative flex flex-col justify-between z-10 h-full p-10">

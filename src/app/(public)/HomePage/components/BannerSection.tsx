@@ -8,7 +8,14 @@ const BannerSection: React.FC = () => {
     <div className="relative flex justify-center">
       <div className="container">
         <div className="min-h-[calc(100vh-176px)] ">
-          <Image src={"/images/banner.webp"} alt="banner" fill />
+          <Image
+            src={"/images/banner.webp"}
+            alt="banner"
+            fill
+            unoptimized
+            priority
+            sizes="(min-width: 768px) 100vw"
+          />
         </div>
         <div className="absolute flex flex-col gap-5 top-1/2 -translate-y-1/2 max-w-[35rem]">
           <div className="flex gap-1">

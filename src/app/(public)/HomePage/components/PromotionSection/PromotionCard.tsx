@@ -17,7 +17,12 @@ const PromotionCard: React.FC<PromotionProps> = ({
   return (
     <div className="relative h-56">
       <div className="relative w-full h-full">
-        <Image src={image} alt="promotionBark" fill />
+        <Image
+          src={image}
+          alt="promotionBark"
+          fill
+          sizes="(min-width: 768px) 100vw"
+        />
       </div>
       <div className="absolute top-1/2 -translate-y-1/2 left-6 ">
         <span className=" font-sans text-2xl font-bold leading-normal">

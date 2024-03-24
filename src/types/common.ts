@@ -3,6 +3,13 @@ export const REGEX_PHONE_NUMBER =
 
 export const API_URL = "https://food-be-1dsk.onrender.com";
 
+export interface ICategory{
+  id: number;
+  title: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+}
 export interface IProduct {
   id: number;
   title: string;
@@ -43,7 +50,7 @@ export interface Product {
   createdAt: string;
   updatedAt: string;
   description: string;
-  images: string[] | string;
+  images: string[];
   price: number | string;
   stock: number;
   title: string;

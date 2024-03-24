@@ -14,6 +14,7 @@ const GreatDealSection: React.FC = () => {
         alt="GreatDealSection"
         fill
         className="z-0"
+        sizes="(min-width: 768px) 100vw"
       />
       <div className="container">
         <TimerBoxGreatDeal />

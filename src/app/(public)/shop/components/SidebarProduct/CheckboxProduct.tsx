@@ -16,7 +16,6 @@ const CheckboxProduct: React.FC<ProductProps> = ({ name, totalProduct }) => {
         </span>
       </div>
       <span className="font-sans text-xs leading-normal text-[#7a7a7a] font-normal">
-        {" "}
         [{totalProduct}]
       </span>
     </div>

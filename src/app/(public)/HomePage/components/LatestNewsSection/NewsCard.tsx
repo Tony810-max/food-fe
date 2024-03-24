@@ -44,7 +44,12 @@ const NewsCard: React.FC<NewsProps> = ({
 
       <div className="relative">
         <div className="relative w-full h-72">
-          <Image src={image} alt="lastestNews1" fill />
+          <Image
+            src={image}
+            alt="lastestNews1"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
         <div className="absolute bg-[#3f3e40] bg-opacity-50 px-5 py-3 text-white bottom-3 right-3 flex flex-col rounded-xl">
           <span className="text-lg font-bold">{date}</span>

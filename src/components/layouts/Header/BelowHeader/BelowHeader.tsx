@@ -13,16 +13,14 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 
-
 const BelowHeader = () => {
   const user: any = useMemo(() => {
     if (typeof localStorage !== "undefined") {
-      const user =
-        localStorage && localStorage?.getItem("user")
-          ? localStorage?.getItem("user")
-          : null;
-      const accessToken = localStorage?.getItem("access-token")
-        ? localStorage.getItem("access-token")
+      const user = localStorage.getItem("user")
+        ? JSON.parse(localStorage?.getItem("user")!)
+        : null;
+      const accessToken = localStorage.getItem("access-token")
+        ? JSON.parse(localStorage.getItem("access-token")!)
         : null;
 
       if (user && accessToken) return user;
@@ -43,7 +41,12 @@ const BelowHeader = () => {
     <div className="py-5">
       <div className="container flex items-center justify-between">
         <div className="relative aspect-[5/2] w-40">
-          <Image src={"/images/logo.webp"} alt="logo" fill />
+          <Image
+            src={"/images/logo.webp"}
+            alt="logo"
+            fill
+            sizes="(min-width: 768px) 100vw"
+          />
         </div>
         <FormBelowHeader />
         <div className="flex gap-7">

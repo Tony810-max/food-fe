@@ -23,8 +23,6 @@ const ProductCard: React.FC<ProductProps> = ({
   originalPrice,
 }) => {
   const [stars, setStars] = useState(0);
-
-  
   useEffect(() => {
     if (rating) {
       const startCound = Math.ceil(rating);
@@ -33,9 +31,15 @@ const ProductCard: React.FC<ProductProps> = ({
   }, [rating]);
 
   return (
-    <div className="p-3 border border-[#ececec]">
+    <div className="p-3 border h-fit border-[#ececec]">
       <div className="relative h-72">
-        <Image src={image} alt="imageCard" fill />
+        <Image
+          src={image}
+          alt="imageCard"
+          fill
+          sizes="(min-width: 768px) 100vw"
+          priority
+        />
         <div className="absolute w-6 h-6 z-10 -bottom-[0.75rem] left-1/2 -translate-x-1/2 rounded-full flex justify-center items-center bg-[#f7f7f8]">
           <Lock size={16} color="#f53e32" />
         </div>

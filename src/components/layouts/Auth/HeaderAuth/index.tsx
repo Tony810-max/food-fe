@@ -20,13 +20,18 @@ const TITLE_HEADING = [
     value: ROUTES.PRODUCT,
     label: "Product",
   },
+  {
+    value: ROUTES.SHOP,
+    label: "shop",
+  },
 ];
 
 const HeaderAuth: React.FC = () => {
   const pathname = usePathname();
 
   const label = TITLE_HEADING.find(
-    (pathnameItem) => pathnameItem.value === pathname
+    (pathnameItem) =>
+      pathnameItem.value === pathname || pathname.includes(pathnameItem.value)
   );
 
   return (

@@ -17,7 +17,12 @@ const SliderReviewSection: React.FC<SliderProps> = ({
   return (
     <div className="bg-[#E9E9E9] px-[3.3rem] col-span-1">
       <div className="relative w-[7.5rem] h-[7.5rem] left-1/2 -translate-x-1/2 translate-y-3/4 -top-1/2">
-        <Image src={image} alt="AvtReview" fill />
+        <Image
+          src={image}
+          alt="AvtReview"
+          fill
+          sizes="(min-width: 768px) 100vw"
+        />
       </div>
       <div className="flex flex-col gap-2 items-center">
         <span className="text-[#7A7A7A] font-sans text-lg">{role}</span>
