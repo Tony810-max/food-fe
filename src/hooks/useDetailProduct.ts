@@ -7,9 +7,11 @@ const useDetailProduct = () => {
   const [dataProducts, setDataProducts] = useState<Product>();
   const params = useParams();
   const idProduct = Number(params.id);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const fetchData = useCallback(async () => {
     try {
+      setIsLoading(true);
       const reponse = await axios.get(
         `${API_URL}/api/v1/products/${idProduct}`
       );
@@ -18,6 +20,8 @@ const useDetailProduct = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }, [idProduct]);
 
@@ -27,6 +31,7 @@ const useDetailProduct = () => {
 
   return {
     dataProducts: dataProducts,
+    isLoading,
   };
 };
 

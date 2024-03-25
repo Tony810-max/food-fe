@@ -4,38 +4,36 @@ import SidebarProduct from "./components/SidebarProduct";
 import HeadingFilterShop from "./components/HeadingFilterShop";
 import ProductCard from "@/components/ProductCard";
 import useProduct from "@/hooks/useProduct";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
 import { IProduct } from "@/types/common";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Pagination from "@/components/Pagination";
 
 const ShopPage = () => {
-  const { products, priceFilter, setPriceFilter } = useProduct();
+  const {
+    products,
+    priceFilter,
+    setPriceFilter,
+    currentPage,
+    totalPage,
+    setCurrentPage,
+  } = useProduct(6);
   const [currentProducts, setCurrentProducts] = useState<IProduct[]>([]);
-
-  // Price filtering
-  // useEffect(() => {
-  //   if (Number(priceFilter)) {
-  //     const filterdData = products.filter(
-  //       (product) => product.price <= String(priceFilter[0])
-  //     );
-  //     setCurrentProducts(filterdData);
-  //   }
-  // }, [priceFilter, products]);
 
   const handleFilter = () => {
     if (priceFilter && priceFilter.length > 0) {
       const filterdData = products.filter(
-        (product) => product.price <= String(priceFilter[0])
+        (product) => Number(product.price) <= Number(priceFilter[0])
       );
       setCurrentProducts(filterdData);
     }
   };
+
+  useEffect(() => {
+    if (!products) return;
+
+    setCurrentProducts(products);
+  }, [products]);
 
   return (
     <div className="container py-[6.25rem] flex gap-3">
@@ -44,8 +42,10 @@ const ShopPage = () => {
         priceFilter={priceFilter}
         handleFilter={handleFilter}
       />
+
       <div className="w-full space-y-[1.875rem]">
         <HeadingFilterShop />
+
         <div className="grid grid-cols-3 gap-6 min-h-[63.75rem]">
           {currentProducts.map((product, index) => (
             <ProductCard
@@ -60,6 +60,11 @@ const ShopPage = () => {
             />
           ))}
         </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPage={totalPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </div>
   );

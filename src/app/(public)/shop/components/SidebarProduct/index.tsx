@@ -49,15 +49,17 @@ const SidebarProduct: React.FC<formProps> = ({
           Filter By Price
         </span>
         <Slider
-          value={priceFilter ? priceFilter : [0]}
+          value={priceFilter.length > 0 ? priceFilter : [0]}
           max={maxPrice ? maxPrice : 0}
           step={1}
           onValueChange={handleSliderChange}
         />
         <Input
           type="number"
-          value={priceFilter[0]?.toString() || "0"}
-          defaultValue={priceFilter[0]?.toString() || "0"}
+          value={priceFilter.length > 0 ? priceFilter[0]?.toString() : "0"}
+          defaultValue={
+            priceFilter.length > 0 ? priceFilter[0]?.toString() : "0"
+          }
           onChange={handleInputChange}
         />
         <div className="flex flex-col gap-1">
@@ -65,7 +67,7 @@ const SidebarProduct: React.FC<formProps> = ({
             Price :
           </span>
           <span className="font-sans text-base leading-tight text-[#7a7a7a] font-bold">
-            $0 - ${priceFilter || 0}
+            $0 - ${priceFilter.length > 0 ? priceFilter[0]?.toString() : 0}
           </span>
         </div>
         <Button

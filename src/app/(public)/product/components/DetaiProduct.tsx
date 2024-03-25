@@ -4,14 +4,17 @@ import React from "react";
 import ImageProduct from "./ImageProduct";
 import ContentProduct from "./ContentProduct";
 import AboutProduct from "./AboutProductSection";
-import useDetailProduct from "@/hooks/useDetailProduct";
+import { Product } from "@/types/common";
 
-const DetaiProduct = () => {
-  const { dataProducts } = useDetailProduct();
+interface Props {
+  dataProducts: Product | undefined;
+  isLoading: boolean;
+}
 
+const DetaiProduct: React.FC<Props> = ({ dataProducts, isLoading }) => {
   return (
     <div className="col-span-5 grid grid-cols-2 gap-x-3 gap-y-10 min-h-screen">
-      {dataProducts && <ImageProduct data={dataProducts} />}
+      <ImageProduct data={dataProducts} isLoading={isLoading} />
       <ContentProduct data={dataProducts} />
       <AboutProduct data={dataProducts} />
     </div>
