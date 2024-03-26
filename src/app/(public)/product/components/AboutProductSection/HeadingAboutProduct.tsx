@@ -1,17 +1,33 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
 
-const HeadingAboutProduct = () => {
+interface HeadingProps {
+  onSetValueLabel: (value: string) => void;
+  data: 
+    {
+      id: number;
+      name: string;
+      value: string;
+    }[]
+  ;
+}
+
+const HeadingAboutProduct: React.FC<HeadingProps> = ({
+  onSetValueLabel,
+  data,
+}) => {
   return (
     <div className="flex gap-8">
-      <span className="font-sans text-lg leading-normal font-semibold pb-6 cursor-pointer hover:opacity-70">
-        Description
-      </span>
-      <span className="font-sans text-lg leading-normal font-semibold pb-6 cursor-pointer hover:opacity-70">
-        Information
-      </span>
-      <span className="font-sans text-lg leading-normal font-semibold pb-6 cursor-pointer hover:opacity-70">
-        Review
-      </span>
+      {data?.map((data) => (
+        <Button
+          key={data.id}
+          variant={"ghost"}
+          className="text-center font-sans text-lg leading-normal font-semibold"
+          onClick={() => onSetValueLabel(data.value)}
+        >
+          {data.name}
+        </Button>
+      ))}
     </div>
   );
 };

@@ -3,6 +3,7 @@ const ROUTES = {
   PRODUCT: "/product",
   CATEGORY: "/category",
   CART: "/cart",
+  CHECKOUT: "/checkout",
   SHOP: "/shop",
   SIGNIN: "/login",
   SIGNUP: "/register",

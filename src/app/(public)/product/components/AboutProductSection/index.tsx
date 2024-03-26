@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HeadingAboutProduct from "./HeadingAboutProduct";
 import { Separator } from "@/components/ui/separator";
 import { Product } from "@/types/common";
@@ -7,11 +7,35 @@ interface AboutProps {
   data: Product | undefined;
 }
 
+const DATA_HEADING = [
+  {
+    id: 1,
+    name: "Description",
+    value: "name",
+  },
+  {
+    id: 2,
+    name: "Information",
+    value: "information",
+  },
+  {
+    id: 3,
+    name: "Review",
+    value: "review",
+  },
+];
+
 const AboutProduct: React.FC<AboutProps> = ({ data }) => {
+  const [valueLabel, setValueLabel] = useState<string>(DATA_HEADING[0].value);
+  console.log(valueLabel);
   return (
     <div className="col-span-2 p-6 border rounded h-fit   ">
-      <HeadingAboutProduct />
+      <HeadingAboutProduct
+        data={DATA_HEADING}
+        onSetValueLabel={setValueLabel}
+      />
       <Separator />
+      
       <span className="block py-8 text-sm leading-relaxed text-[#7a7a7a] font-normal w-full">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Error in vero
         sapiente odio, error dolore vero temporibus consequatur, nobis veniam

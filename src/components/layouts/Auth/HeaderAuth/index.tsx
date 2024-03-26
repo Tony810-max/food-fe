@@ -24,6 +24,14 @@ const TITLE_HEADING = [
     value: ROUTES.SHOP,
     label: "shop",
   },
+  {
+    value: ROUTES.CART,
+    label: "cart",
+  },
+  {
+    value: ROUTES.CHECKOUT,
+    label: "checkout",
+  },
 ];
 
 const HeaderAuth: React.FC = () => {
