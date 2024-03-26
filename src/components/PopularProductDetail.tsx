@@ -5,11 +5,11 @@ import useProduct from "@/hooks/useProduct";
 import { IProduct, Product } from "@/types/common";
 import React, { useEffect, useState } from "react";
 
-// interface ProductProps {
-//   data: Product | undefined;
-// }
+interface ProductProps {
+  data: Product | undefined;
+}
 
-const PopularProductDetail = () => {
+const PopularProductDetail: React.FC<ProductProps> = () => {
   const { dataProducts } = useDetailProduct();
   const { products } = useProduct();
   const [dataFilterProduct, setDataFilterProduct] = useState<IProduct[]>();
