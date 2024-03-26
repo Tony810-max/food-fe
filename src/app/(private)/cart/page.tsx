@@ -12,7 +12,7 @@ const CartPage = () => {
   return (
     <div className="container py-[6.25rem]">
       <CartProduct />
-      <PopularProductDetail />
+      <PopularProductDetail data={products} />
     </div>
   );
 };

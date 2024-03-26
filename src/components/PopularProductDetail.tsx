@@ -6,7 +6,7 @@ import { IProduct, Product } from "@/types/common";
 import React, { useEffect, useState } from "react";
 
 interface ProductProps {
-  data: Product | undefined;
+  data: Product | undefined | IProduct[];
 }
 
 const PopularProductDetail: React.FC<ProductProps> = () => {
