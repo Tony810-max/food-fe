@@ -1,10 +1,12 @@
 import React from "react";
-import Checkout from "./components";
+import InfoOrderProduct from "./components/InfoOrderProduct";
+import BillingDetailsProduct from "./components/BillingDetailsProduct";
 
 const CheckoutPage = () => {
   return (
-    <div>
-      <Checkout />
+    <div className="container py-[6.25rem] grid grid-cols-3 gap-4">
+      <InfoOrderProduct />
+      <BillingDetailsProduct />
     </div>
   );
 };

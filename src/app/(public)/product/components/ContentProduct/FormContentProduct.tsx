@@ -1,16 +1,46 @@
 import { Button } from "@/components/ui/button";
+import { useGetHeaderConfig } from "@/hooks/useGetHeaderConfig";
+import { API_URL } from "@/types/common";
+import axios from "axios";
 import { Minus, Plus } from "lucide-react";
+import { useParams } from "next/navigation";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const FormContentProduct = () => {
   const [value, setValue] = useState<number>(1);
+  const { headerConfig } = useGetHeaderConfig();
+  const params = useParams();
+
   const handleMinus = (value: number) => {
     if (value > 1) {
       setValue(value - 1);
     }
   };
+
+  const handleAddToCart = async () => {
+    try {
+      if (!headerConfig) {
+        toast.error("You need to login to access!!!");
+        return;
+      }
+      const reponse = await axios.post(
+        `${API_URL}/api/v1/cart/add/${params.id}`,
+        {
+          quantity: value,
+        },
+        headerConfig
+      );
+      if (reponse) {
+        toast.success("Add to cart successfully!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <form className="flex gap-4">
+    <div className="flex gap-4">
       <div className="flex items-center gap-2">
         <input
           className="border w-10 h-10 text-center"
@@ -31,10 +61,10 @@ const FormContentProduct = () => {
           />
         </div>
       </div>
-      <Button variant={"destructive"} type="submit">
+      <Button variant={"destructive"} type="button" onClick={handleAddToCart}>
         Add to cart
       </Button>
-    </form>
+    </div>
   );
 };
 

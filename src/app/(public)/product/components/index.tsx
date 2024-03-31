@@ -2,8 +2,10 @@ import React from "react";
 import DetaiProduct from "./DetaiProduct";
 import PopularProductDetail from "../../../../components/PopularProductDetail";
 import useDetailProduct from "@/hooks/useDetailProduct";
+import useProduct from "@/hooks/useProduct";
 
 const ProductDetailPage = () => {
+  const { products } = useProduct();
   const { dataProducts, isLoading } = useDetailProduct();
 
   return (
@@ -12,7 +14,7 @@ const ProductDetailPage = () => {
         <DetaiProduct dataProducts={dataProducts} isLoading={isLoading} />
       </div>
 
-      <PopularProductDetail data={dataProducts} />
+      <PopularProductDetail data={products} />
     </div>
   );
 };

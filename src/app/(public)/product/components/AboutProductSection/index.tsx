@@ -27,7 +27,6 @@ const DATA_HEADING = [
 
 const AboutProduct: React.FC<AboutProps> = ({ data }) => {
   const [valueLabel, setValueLabel] = useState<string>(DATA_HEADING[0].value);
-  console.log(valueLabel);
   return (
     <div className="col-span-2 p-6 border rounded h-fit   ">
       <HeadingAboutProduct
@@ -35,7 +34,7 @@ const AboutProduct: React.FC<AboutProps> = ({ data }) => {
         onSetValueLabel={setValueLabel}
       />
       <Separator />
-      
+
       <span className="block py-8 text-sm leading-relaxed text-[#7a7a7a] font-normal w-full">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Error in vero
         sapiente odio, error dolore vero temporibus consequatur, nobis veniam

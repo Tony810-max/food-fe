@@ -12,6 +12,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const BelowHeader = () => {
   const user: any = useMemo(() => {
@@ -56,7 +57,7 @@ const BelowHeader = () => {
               className="flex items-center gap-2 cursor-pointer hover:text-orange-400"
             >
               <User width={20} height={20} />
-              <span className="text-lg font-semibold capitalize">account</span>
+              <span className="text-lg font-semibold capitalize">login</span>
             </Link>
           ) : (
             ""
@@ -66,10 +67,18 @@ const BelowHeader = () => {
             <HeartIcon width={20} height={20} />
             <span className="text-lg font-semibold capitalize">wishlist</span>
           </div>
-          <div className="flex items-center gap-2 cursor-pointer hover:text-orange-400">
+          <Link
+            href={ROUTES.CART}
+            className={cn(
+              "flex items-center gap-2 cursor-pointer hover:text-orange-400",
+              {
+                "pointer-events-none": !user,
+              }
+            )}
+          >
             <ShoppingCart width={20} height={20} />
             <span className="text-lg font-semibold capitalize">cart</span>
-          </div>
+          </Link>
           {user ? (
             <NavigationMenu className="w-full">
               <NavigationMenuList className="w-full">

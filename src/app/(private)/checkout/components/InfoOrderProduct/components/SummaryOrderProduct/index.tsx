@@ -1,27 +1,26 @@
+"use client";
 import React from "react";
-
 import PriceSummary from "./PriceSummary";
 import ProductSummary from "./ProductSummary";
+import useCartProduct from "@/hooks/useCartProduct";
 
 const SummaryOrderPrice = () => {
+  const { dataCartProduct, summaryValue } = useCartProduct();
+  
   return (
     <div className="p-4 border rounded-[0.313rem] space-y-[2.125rem]">
       <PriceSummary />
       <div className="space-y-6">
-        <ProductSummary
-          image={"/images/imageProductCart.webp"}
-          name={"Dates Value Pack Pouch"}
-          price={1}
-          discount={2}
-          rating={5}
-        />
-        <ProductSummary
-          image={"/images/imageProductCart.webp"}
-          name={""}
-          price={1}
-          discount={2}
-          rating={4}
-        />
+        {dataCartProduct?.map((product) => (
+          <ProductSummary
+            key={product.id}
+            image={product?.product?.images[0]}
+            name={product?.product?.title}
+            price={Number(product?.product?.price)}
+            discount={2}
+            rating={5}
+          />
+        ))}
       </div>
     </div>
   );

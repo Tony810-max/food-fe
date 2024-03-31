@@ -11,7 +11,7 @@ const InforCustomerBillingProduct: React.FC<InfoCustomerProps> = ({
   return (
     <div className="col-span-2">
       <label>{title}*</label>
-      <Input />
+      <Input  />
     </div>
   );
 };
