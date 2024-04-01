@@ -4,7 +4,7 @@ import HeadingHomePage from "@/components/Heading";
 
 const ReviewSection = () => {
   return (
-    <div className="container py-24 flex flex-col items-center gap-16">
+    <div className="container py-[3.125rem] flex flex-col items-center gap-16">
       <HeadingHomePage
         title="Great Words From People"
         des="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

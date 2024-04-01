@@ -10,7 +10,7 @@ const SaleSection = () => {
   const { categories } = useCategory();
 
   return (
-    <div className="container py-24 grid grid-cols-3 gap-x-6 ">
+    <div className="container py-[3.125rem] grid grid-cols-3 gap-x-6 ">
       <div className="flex col-span-1 flex-col gap-1">
         {categories.map((category, index) => (
           <TabList key={index} name={category.title} value={65} />

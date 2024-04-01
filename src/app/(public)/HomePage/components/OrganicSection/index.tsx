@@ -4,7 +4,7 @@ import OrganicHealth from "./OrganicHealth";
 
 const OrganicSection: React.FC = () => {
   return (
-    <div className="container grid grid-cols-4 gap-x-6 mt-24">
+    <div className="container grid grid-cols-4 gap-x-6 py-[3.125rem]">
       <div className="relative w-full min-h-[30rem]">
         <Image
           src="/images/Organic1.webp"

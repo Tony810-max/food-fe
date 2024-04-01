@@ -5,7 +5,7 @@ import NewsCard from "./NewsCard";
 
 const LatestNewsSection = () => {
   return (
-    <div className="container mt-24">
+    <div className="container py-[3.125rem]">
       <HeadingHomePage
         title="Latest News"
         des="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore lacus vel facilisis."

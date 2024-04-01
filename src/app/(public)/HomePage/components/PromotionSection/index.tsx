@@ -4,7 +4,7 @@ import React from "react";
 
 const PromotionSection: React.FC = () => {
   return (
-    <div className="container py-24 grid grid-cols-3 grid-rows-1 gap-x-6 rounded-xl">
+    <div className="container py-[3.125rem] grid grid-cols-3 grid-rows-1 gap-x-6 rounded-xl">
       <PromotionCard
         image="/images/promotionBark.webp"
         name="Healthy Bakery Products"

@@ -32,6 +32,10 @@ const TITLE_HEADING = [
     value: ROUTES.CHECKOUT,
     label: "checkout",
   },
+  {
+    value: ROUTES.PROFILE,
+    label: "profile",
+  },
 ];
 
 const HeaderAuth: React.FC = () => {

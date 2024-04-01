@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import CheckBoxBillingProduct from "../../../../../components/Checkbox";
 import {
   Select,
@@ -18,7 +18,6 @@ import { API_URL } from "@/types/common";
 import axios from "axios";
 import { useGetHeaderConfig } from "@/hooks/useGetHeaderConfig";
 import { useProvinces } from "@/hooks/useProvinces";
-import { useDebouncedValue } from "@mantine/hooks";
 import useCartProduct from "@/hooks/useCartProduct";
 import { useAddress } from "@/hooks/useAddress";
 import { toast } from "react-toastify";
@@ -85,7 +84,9 @@ const BillingDetailsProduct = () => {
         headerConfig
       );
       if (response) {
-        toast.success("Ban da dat hang thanh cong, hang dang duoc giao den ban")
+        toast.success(
+          "Ban da dat hang thanh cong, hang dang duoc giao den ban"
+        );
       }
     } catch (error) {
       console.log(error);

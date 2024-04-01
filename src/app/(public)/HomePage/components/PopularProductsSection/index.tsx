@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Image from "next/image";
 import { IProduct } from "@/types/common";
 
@@ -38,7 +37,7 @@ const PopularProductsSection: React.FC = () => {
   }, [categoryFilter, products]); // dependencies
 
   return (
-    <div className="py-24 container ">
+    <div className="py-[3.125rem] container ">
       <HeadingHomePage
         title="Popular Products"
         des=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

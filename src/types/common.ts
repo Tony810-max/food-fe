@@ -78,3 +78,14 @@ export interface IProvince {
   type: string;
   _id: string;
 }
+
+export interface IProfile {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  address: string;
+  createdAt: string;
+  updatedAt: string;
+}

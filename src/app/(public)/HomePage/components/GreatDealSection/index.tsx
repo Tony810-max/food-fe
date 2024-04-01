@@ -8,7 +8,7 @@ const TimerBoxGreatDeal = dynamic(() => import("./TimerBoxGreatDeal"), {
 
 const GreatDealSection: React.FC = () => {
   return (
-    <div className="relative w-full h-[37.5rem] mt-24">
+    <div className="relative w-full h-[37.5rem] py-[3.125rem]">
       <Image
         src="/images/GreatDealSection.webp"
         alt="GreatDealSection"

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const BannerSection: React.FC = () => {
   return (
-    <div className="relative flex justify-center">
+    <div className="relative flex justify-center py-[3.125rem]">
       <div className="container">
         <div className="min-h-[calc(100vh-176px)] ">
           <Image
