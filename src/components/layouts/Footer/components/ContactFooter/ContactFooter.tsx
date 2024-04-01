@@ -8,7 +8,6 @@ const ContactFooter = () => {
   return (
     <div>
       <AuthLogo />
-
       <div className="px-4">
         <span className="text-[#7A7A7A] font-sans leading-normal">
           FoodTrove is the biggest market of grocery products. Get your daily
