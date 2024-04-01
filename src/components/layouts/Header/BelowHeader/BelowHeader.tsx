@@ -41,14 +41,14 @@ const BelowHeader = () => {
   return (
     <div className="py-5">
       <div className="container flex items-center justify-between">
-        <div className="relative aspect-[5/2] w-40">
+        <Link href={ROUTES.HOME} className="relative aspect-[5/2] w-40">
           <Image
             src={"/images/logo.webp"}
             alt="logo"
             fill
             sizes="(min-width: 768px) 100vw"
           />
-        </div>
+        </Link>
         <FormBelowHeader />
         <div className="flex gap-7">
           {!user ? (

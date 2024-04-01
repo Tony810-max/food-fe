@@ -31,7 +31,7 @@ const ProductCard: React.FC<ProductProps> = ({
   }, [rating]);
 
   return (
-    <div className="p-3 border h-fit border-[#ececec]">
+    <div className="w-full p-3 border h-fit border-[#ececec]">
       <div className="relative h-72">
         <Image
           src={image}

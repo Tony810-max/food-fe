@@ -5,8 +5,6 @@ import HeadingFilterShop from "./components/HeadingFilterShop";
 import ProductCard from "@/components/ProductCard";
 import useProduct from "@/hooks/useProduct";
 import { IProduct } from "@/types/common";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Pagination from "@/components/Pagination";
 
 const ShopPage = () => {

@@ -97,7 +97,7 @@ const FormLogin = () => {
           Login
         </Button>
         <Link href={ROUTES.SIGNUP} className="hover:opacity-70 text-gray-500">
-          Sign up?z
+          Sign up?
         </Link>
       </div>
     </form>

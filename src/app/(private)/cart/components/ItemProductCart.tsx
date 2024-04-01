@@ -55,7 +55,7 @@ const ItemProductCart: React.FC<ProductCartProps> = ({
       <td className="py-6 text-center">
         <button
           className="text-center"
-          onClick={() => handleDeleteCartProduct(Number(data?.product.id))}
+          onClick={() => handleDeleteCartProduct(data?.product?.id)}
         >
           <Trash2 />
         </button>

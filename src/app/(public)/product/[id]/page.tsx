@@ -3,8 +3,8 @@
 import React from "react";
 import ProductDetailPage from "../components";
 
-const ProductPage = () => {
+const ProductDetail = () => {
   return <ProductDetailPage />;
 };
 
-export default ProductPage;
+export default ProductDetail;

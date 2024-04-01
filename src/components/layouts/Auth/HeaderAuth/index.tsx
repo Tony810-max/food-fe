@@ -17,7 +17,7 @@ const TITLE_HEADING = [
     label: "Forgot Password",
   },
   {
-    value: ROUTES.PRODUCT,
+    value: ROUTES.SHOP,
     label: "Product",
   },
   {
