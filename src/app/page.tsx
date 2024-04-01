@@ -3,7 +3,7 @@ import BannerSection from "./(public)/HomePage/components/BannerSection";
 import SaleSection from "./(public)/HomePage/components/SaleSection";
 import PopularProductsSection from "./(public)/HomePage/components/PopularProductsSection";
 import PromotionSection from "./(public)/HomePage/components/PromotionSection";
-import FeatureSection from "./(public)/HomePage/components/FeatureSection";
+import FeatureSection from "../components/Feature";
 import OrganicSection from "./(public)/HomePage/components/OrganicSection";
 import LatestNewsSection from "./(public)/HomePage/components/LatestNewsSection";
 import ReviewSection from "./(public)/HomePage/components/ReviewSection";
@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
       <SaleSection />
       <PopularProductsSection />
       <PromotionSection />
-      <FeatureSection />.
+      <FeatureSection subClassName="py-[1.563rem]" />.
       <GreatDealSection />
       <OrganicSection />
       <ReviewSection />

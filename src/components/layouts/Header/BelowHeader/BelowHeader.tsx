@@ -1,18 +1,23 @@
 import Image from "next/image";
 import React, { useMemo } from "react";
-
 import { User, HeartIcon, ShoppingCart, LogOut } from "lucide-react";
+
 import ROUTES from "@/types/routes";
 import FormBelowHeader from "./components/FormBelowHeader";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import { Button } from "@/components/ui/button";
 
 const BelowHeader = () => {
   const user: any = useMemo(() => {
@@ -63,10 +68,10 @@ const BelowHeader = () => {
             ""
           )}
 
-          <div className="flex items-center gap-2 cursor-pointer hover:text-orange-400">
+          {/* <div className="flex items-center gap-2 cursor-pointer hover:text-orange-400">
             <HeartIcon width={20} height={20} />
             <span className="text-lg font-semibold capitalize">wishlist</span>
-          </div>
+          </div> */}
           <Link
             href={ROUTES.CART}
             className={cn(
@@ -80,25 +85,32 @@ const BelowHeader = () => {
             <span className="text-lg font-semibold capitalize">cart</span>
           </Link>
           {user ? (
-            <NavigationMenu className="w-full">
-              <NavigationMenuList className="w-full">
-                <NavigationMenuItem className="w-full">
-                  <NavigationMenuTrigger className="text-lg font-semibold">{`${user?.firstName} ${user?.lastName}`}</NavigationMenuTrigger>
-                  <NavigationMenuContent className="w-full px-5 py-2 space-y-4">
-                    <Link href={ROUTES.PROFILE} className=" font-semibold">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild className={"w-56"}>
+                <Button variant="outline">{`${user?.firstName} ${user?.lastName}`}</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <User className="mr-2 h-4 w-4 cursor-pointer hover:opacity-70" />
+                    <Link
+                      href={ROUTES.PROFILE}
+                      className="font-semibold cursor-pointer hover:opacity-70"
+                    >
                       Profile
                     </Link>
-                    <button
-                      className="flex items-center gap-2 w-full hover:opacity-70"
-                      onClick={handleLogOut}
-                    >
-                      <LogOut />
-                      <span className="font-semibold"> Logout</span>
-                    </button>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuItem onClick={handleLogOut}>
+                  <LogOut className="mr-2 h-4 w-4 cursor-pointer hover:opacity-70" />
+                  <span className="font-semibold cursor-pointer hover:opacity-70">
+                    Log out
+                  </span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           ) : (
             ""
           )}

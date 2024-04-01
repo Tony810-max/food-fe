@@ -1,4 +1,5 @@
 import {
+  Menubar,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
@@ -13,19 +14,21 @@ const CategoryNavBar = () => {
   const { categories } = useCategory();
 
   return (
-    <MenubarMenu>
-      <MenubarTrigger className="flex gap-1">
-        <span className="capitalize font-semibold text-base">category</span>
-        <ChevronDown size={14} />
-      </MenubarTrigger>
-      <MenubarContent>
-        {categories?.map((category, index) => (
-          <MenubarItem key={index}>
-            <Link href={"/"}>{category.title}</Link>
-          </MenubarItem>
-        ))}
-      </MenubarContent>
-    </MenubarMenu>
+    <Menubar className="border-none">
+      <MenubarMenu>
+        <MenubarTrigger className="flex gap-1">
+          <span className="capitalize font-semibold text-base">category</span>
+          <ChevronDown size={14} />
+        </MenubarTrigger>
+        <MenubarContent>
+          {categories?.map((category, index) => (
+            <MenubarItem key={index}>
+              <Link href={"/"}>{category.title}</Link>
+            </MenubarItem>
+          ))}
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
   );
 };
 

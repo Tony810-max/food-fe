@@ -12,9 +12,7 @@ const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     if (typeof localStorage !== "undefined") {
       const user = localStorage.getItem("user");
       const accessToken = localStorage.getItem("access-token");
-
       if (user && accessToken) return user;
-
       return null;
     }
   }, []);
@@ -24,7 +22,6 @@ const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       router.push(ROUTES.HOME);
     }
   }, [router, user]);
-
   return (
     <>
       <HeaderAuth />

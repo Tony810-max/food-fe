@@ -36,6 +36,10 @@ const TITLE_HEADING = [
     value: ROUTES.PROFILE,
     label: "profile",
   },
+  {
+    value: ROUTES.ABOUTUS,
+    label: "about us",
+  },
 ];
 
 const HeaderAuth: React.FC = () => {

@@ -10,7 +10,9 @@ const ContactItem: React.FC<ContactItemProps> = ({ children, content }) => {
     <div className="flex gap-[0.65rem]">
       {children}
 
-      <span className="font-sans text-[#777777] leading-normal">{content}</span>
+      <span className="font-sans text-[#777777] leading-normal ">
+        {content}
+      </span>
     </div>
   );
 };

@@ -10,38 +10,38 @@ const CompanyFooter = () => {
       </span>
       <div className="flex flex-col gap-5">
         <Link
-          href={ROUTES.HOME}
-          className="font-sans leading-relaxed text-[#777777] hover:opacity-70"
+          href={ROUTES.ABOUTUS}
+          className="font-sans leading-relaxed text-[#777777] capitalize hover:opacity-70"
         >
           About us
         </Link>
         <Link
-          href={ROUTES.HOME}
-          className="font-sans leading-relaxed text-[#777777] hover:opacity-70"
+          href={ROUTES.BLOGS}
+          className="font-sans leading-relaxed text-[#777777] capitalize hover:opacity-70"
         >
-          Delivery Information
+          Blogs
         </Link>
         <Link
           href={ROUTES.HOME}
-          className="font-sans leading-relaxed text-[#777777] hover:opacity-70"
+          className="font-sans leading-relaxed text-[#777777] capitalize hover:opacity-70"
         >
           Privacy Policy
         </Link>
         <Link
           href={ROUTES.HOME}
-          className="font-sans leading-relaxed text-[#777777] hover:opacity-70"
+          className="font-sans leading-relaxed text-[#777777] capitalize hover:opacity-70"
         >
           Terms & Conditions
         </Link>
         <Link
-          href={ROUTES.HOME}
-          className="font-sans leading-relaxed text-[#777777] hover:opacity-70"
+          href={ROUTES.CONTACTUS}
+          className="font-sans leading-relaxed text-[#777777] capitalize hover:opacity-70"
         >
           contact Us
         </Link>
         <Link
           href={ROUTES.HOME}
-          className="font-sans leading-relaxed text-[#777777] hover:opacity-70"
+          className="font-sans leading-relaxed text-[#777777] capitalize hover:opacity-70"
         >
           Support Center
         </Link>

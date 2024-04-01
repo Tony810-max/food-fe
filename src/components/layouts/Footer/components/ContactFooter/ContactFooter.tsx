@@ -16,15 +16,15 @@ const ContactFooter = () => {
 
         <div className="space-y-[1.1rem] mt-7">
           <ContactItem content="51 Green St.Huntington ohaio beach ontario, NY 11746 KY 4783, USA.">
-            <MapPin color="#F53E32" strokeWidth={3} />
+            <MapPin color="#F53E32" size={30} strokeWidth={3} />
           </ContactItem>
 
           <ContactItem content="example@email.com">
-            <Mail color="#F53E32" strokeWidth={3} />
+            <Mail color="#F53E32" size={24} strokeWidth={3} />
           </ContactItem>
 
           <ContactItem content="+91 123 4567890">
-            <Phone color="#F53E32" strokeWidth={3} />
+            <Phone color="#F53E32" size={24} strokeWidth={3} />
           </ContactItem>
         </div>
       </div>

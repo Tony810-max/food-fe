@@ -1,6 +1,6 @@
 const ROUTES = {
   HOME: "/",
-  PRODUCT: "/product",
+  ABOUTUS: "/aboutus",
   CATEGORY: "/category",
   CART: "/cart",
   CHECKOUT: "/checkout",
@@ -9,6 +9,8 @@ const ROUTES = {
   SIGNUP: "/register",
   FORGOTPASSWORD: "/forgot-password",
   PROFILE: "/profile",
+  CONTACTUS: "/contactus",
+  BLOGS: "/blogs",
 };
 
 export default ROUTES;

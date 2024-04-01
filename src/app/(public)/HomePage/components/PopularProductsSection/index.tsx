@@ -80,7 +80,7 @@ const PopularProductsSection: React.FC = () => {
             />
           </div>
         </div>
-        <div className="col-span-3 grid grid-cols-3 gap-y-6 h-fit">
+        <div className="col-span-3 grid grid-cols-3 gap-6 h-fit">
           {productFilter?.map((product: IProduct, index) => {
             if (index < 6) {
               return (
