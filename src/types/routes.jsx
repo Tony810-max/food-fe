@@ -10,7 +10,7 @@ const ROUTES = {
   FORGOTPASSWORD: "/forgot-password",
   PROFILE: "/profile",
   CONTACTUS: "/contactus",
-  BLOGS: "/blogs",
+  BLOG: "/blog",
 };
 
 export default ROUTES;

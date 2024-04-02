@@ -1,3 +1,4 @@
+import ROUTES from "@/types/routes";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -35,7 +36,7 @@ const NewsCard: React.FC<NewsProps> = ({
           {description}
         </span>
         <Link
-          href="/"
+          href={ROUTES.BLOG}
           className="text-xl text-[#64B496] font-bold font-sans hover:opacity-70"
         >
           Read More

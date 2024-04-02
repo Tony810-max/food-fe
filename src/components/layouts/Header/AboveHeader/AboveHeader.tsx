@@ -21,10 +21,10 @@ const AboveHeader = () => {
             Products
           </Link>
           <Link
-            href={ROUTES.BLOGS}
+            href={ROUTES.BLOG}
             className="capitalize font-semibold text-base"
           >
-            blogs
+            BLOG
           </Link>
         </div>
 

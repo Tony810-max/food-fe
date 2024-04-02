@@ -16,10 +16,10 @@ const CompanyFooter = () => {
           About us
         </Link>
         <Link
-          href={ROUTES.BLOGS}
+          href={ROUTES.BLOG}
           className="font-sans leading-relaxed text-[#777777] capitalize hover:opacity-70"
         >
-          Blogs
+          BLOG
         </Link>
         <Link
           href={ROUTES.HOME}

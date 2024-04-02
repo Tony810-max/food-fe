@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const SocialSubcribe = () => {
+const Social = () => {
   return (
     <div className="flex gap-1">
       <Link href={ROUTES.HOME}>
@@ -50,4 +50,4 @@ const SocialSubcribe = () => {
   );
 };
 
-export default SocialSubcribe;
+export default Social;

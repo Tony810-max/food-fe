@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
 import React from "react";
-import SocialSubcribe from "./components/SocialSubcribe";
+import SocialSubcribe from "../../../Social";
 import Image from "next/image";
 
 const SubscribeFooter = () => {
