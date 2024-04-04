@@ -67,11 +67,6 @@ const BelowHeader = () => {
           ) : (
             ""
           )}
-
-          {/* <div className="flex items-center gap-2 cursor-pointer hover:text-orange-400">
-            <HeartIcon width={20} height={20} />
-            <span className="text-lg font-semibold capitalize">wishlist</span>
-          </div> */}
           <Link
             href={ROUTES.CART}
             className={cn(

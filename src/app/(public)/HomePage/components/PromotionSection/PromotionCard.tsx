@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../../../../../components/ui/button";
+import ROUTES from "@/types/routes";
 
 interface PromotionProps {
   image: string;
@@ -34,7 +35,7 @@ const PromotionCard: React.FC<PromotionProps> = ({
           </span>
           <span className="font-sans text-[#777777]">Off on first order</span>
         </div>
-        <Link href="/" className="">
+        <Link href={ROUTES.SHOP} >
           <Button variant={"destructive"} className="font-sans text-lg">
             Shop now
           </Button>

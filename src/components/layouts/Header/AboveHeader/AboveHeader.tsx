@@ -1,8 +1,8 @@
 import { AlignLeft, Phone } from "lucide-react";
 import React from "react";
-import MenubarHeader from "./components/MenubarAboveHeader";
 import Link from "next/link";
 import ROUTES from "@/types/routes";
+import CategoryNavBar from "./components/CategoryNavBar";
 
 const AboveHeader = () => {
   return (
@@ -12,8 +12,11 @@ const AboveHeader = () => {
           className="block border border-border p-1 rounded-lg md:invisible"
           size={36}
         />
-        <div className="flex items-center gap-5">
-          <MenubarHeader />
+        <div className="flex items-center gap-6">
+          <Link href={ROUTES.HOME} className="font-semibold text-base">
+            Home
+          </Link>
+          <CategoryNavBar />
           <Link
             href={ROUTES.SHOP}
             className="capitalize font-semibold text-base"

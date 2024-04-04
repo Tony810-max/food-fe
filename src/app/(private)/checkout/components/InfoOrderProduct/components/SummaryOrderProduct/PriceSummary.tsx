@@ -1,7 +1,11 @@
 import { Separator } from "@/components/ui/separator";
 import React from "react";
 
-const PriceSummary = () => {
+interface PriceSummaryProps {
+  total: number;
+}
+
+const PriceSummary: React.FC<PriceSummaryProps> = ({ total }) => {
   return (
     <div className="space-y-[0.938rem]">
       <span className="text-xl leading-tight text-[#000000] font-bold">
@@ -12,7 +16,7 @@ const PriceSummary = () => {
           Sub-Total
         </span>
         <span className="font-sans text-base text-[#000000] leading-relaxed">
-          $80.00
+          ${total}
         </span>
       </div>
       <div className="flex justify-between">
@@ -20,7 +24,7 @@ const PriceSummary = () => {
           Delivery Charges
         </span>
         <span className="font-sans text-base text-[#000000] leading-relaxed">
-          $80.00
+          $0
         </span>
       </div>
 
@@ -30,7 +34,7 @@ const PriceSummary = () => {
           Total Amount
         </span>
         <span className="font-sans text-base leading-normal text-[#000000] font-semibold">
-          $80.00
+          ${total}
         </span>
       </div>
     </div>

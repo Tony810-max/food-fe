@@ -1,51 +1,11 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { useGetHeaderConfig } from "@/hooks/useGetHeaderConfig";
-import { API_URL, IProfile } from "@/types/common";
-import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
-import { format } from "date-fns";
+import React from "react";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@/hooks/useUser";
 
 const ProfilePage: React.FC = () => {
-  const [dataProfile, setDataProfile] = useState<IProfile>({
-    id: 0,
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
-    createdAt: "",
-    updatedAt: "",
-  });
-  const { headerConfig } = useGetHeaderConfig();
-  const createDate = dataProfile?.updatedAt
-    ? format(new Date(dataProfile.createdAt), "dd-MM-yyyy hh:mm:ss")
-    : "";
-  const updateDate = dataProfile?.updatedAt
-    ? format(new Date(dataProfile.updatedAt), "dd-MM-yyyy hh:mm:ss")
-    : "";
-
-  const fetchDataProfile = useCallback(async () => {
-    try {
-      if (!headerConfig) {
-        return;
-      }
-      const response = await axios.get(
-        `${API_URL}/api/v1/user/me`,
-        headerConfig
-      );
-      if (response) {
-        setDataProfile(response.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [headerConfig]);
-
-  useEffect(() => {
-    fetchDataProfile();
-  }, [fetchDataProfile]);
+  const { createDate, dataProfile, updateDate } = useUser();
   return (
     <form className="container  py-[6.25rem] space-y-3">
       <div className="grid grid-cols-2 gap-x-4 gap-y-3">

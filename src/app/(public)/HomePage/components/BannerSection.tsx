@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import ROUTES from "@/types/routes";
 
 const BannerSection: React.FC = () => {
   return (
@@ -33,7 +34,7 @@ const BannerSection: React.FC = () => {
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab enim
             animi reprehenderit qui a illo eum quibusdam recusandae porro saepe.
           </span>
-          <Link href={"/"} className="mt-4">
+          <Link href={ROUTES.SHOP} className="mt-4">
             <Button variant={"destructive"} className=" font-bold">
               Shop Now
             </Button>

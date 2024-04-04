@@ -44,6 +44,10 @@ const TITLE_HEADING = [
     value: ROUTES.BLOG,
     label: "blog",
   },
+  {
+    value: ROUTES.FAQ,
+    label: "faq",
+  },
 ];
 
 const HeaderAuth: React.FC = () => {

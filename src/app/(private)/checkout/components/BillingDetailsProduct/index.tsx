@@ -1,8 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import React from "react";
-import CheckBoxBillingProduct from "../../../../../components/Checkbox";
+import React, { useState } from "react";
+import CheckBox from "../../../../../components/Checkbox";
 import {
   Select,
   SelectContent,
@@ -21,6 +21,7 @@ import { useProvinces } from "@/hooks/useProvinces";
 import useCartProduct from "@/hooks/useCartProduct";
 import { useAddress } from "@/hooks/useAddress";
 import { toast } from "react-toastify";
+import { useUser } from "@/hooks/useUser";
 
 type Inputs = {
   address: string;
@@ -34,9 +35,11 @@ type Inputs = {
 };
 
 const BillingDetailsProduct = () => {
+  const { dataProfile } = useUser();
   const { headerConfig } = useGetHeaderConfig();
   const { dataCartProduct } = useCartProduct();
   const { provinces } = useProvinces();
+  const [valueCheckbox, setValueCheckbox] = useState("");
   const {
     register,
     handleSubmit,
@@ -92,7 +95,10 @@ const BillingDetailsProduct = () => {
       console.log(error);
     }
   };
-
+  const handleSetValueCheckbox = (value: string) => {
+    setValueCheckbox(value);
+  };
+  console.log(valueCheckbox);
   return (
     <form
       className="col-span-2 space-y-[1.875rem]"
@@ -107,11 +113,13 @@ const BillingDetailsProduct = () => {
             Checkout Options
           </span>
           <div className="flex gap-[3.074rem] py-3">
-            <CheckBoxBillingProduct
+            <CheckBox
               id={"existingAddress"}
+              value={"existingAddress"}
               title={"I want to use an existing address"}
             />
-            <CheckBoxBillingProduct
+            <CheckBox
+              value={"newAddress"}
               id={"newAddress"}
               title={"I want to use a new address"}
             />
@@ -119,7 +127,10 @@ const BillingDetailsProduct = () => {
           <div className="w-full grid grid-cols-2 gap-[1.875rem] pt-[1.938rem]">
             <div className="col-span-2">
               <label>Full name*</label>
-              <Input {...register("name", { required: true })} />
+              <Input
+                value={`${dataProfile?.firstName}  ${dataProfile?.lastName}`}
+                {...register("name", { required: true })}
+              />
               {errors.name && (
                 <span className="text-red-500 italic">
                   This field is required
@@ -129,7 +140,10 @@ const BillingDetailsProduct = () => {
             <div className="col-span-2">
               <label>Address*</label>
               <div className="relative">
-                <Input {...register("address", { required: true })} />
+                <Input
+                  value={dataProfile?.address}
+                  {...register("address", { required: true })}
+                />
                 {errors.address && (
                   <span className="text-red-500 italic">
                     This field is required

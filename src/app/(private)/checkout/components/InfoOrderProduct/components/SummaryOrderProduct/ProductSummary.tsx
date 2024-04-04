@@ -8,6 +8,7 @@ interface ProductProps {
   rating: number;
   price: number;
   discount: number;
+  quantity: number;
 }
 
 const ProductSummary: React.FC<ProductProps> = ({
@@ -16,6 +17,7 @@ const ProductSummary: React.FC<ProductProps> = ({
   name,
   price,
   rating,
+  quantity,
 }) => {
   const renderStars = () => {
     return Array.from({ length: 5 }, (_, index) => {
@@ -33,17 +35,27 @@ const ProductSummary: React.FC<ProductProps> = ({
           sizes="(min-width: 768px) 100vw, (min-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <div className="space-y-2">
-        <span className="font-sans text-lg leading-tight text-[#000000] font-medium">
-          {name}
-        </span>
-        <div className="flex gap-1">{renderStars()}</div>
-        <div className="flex items-center gap-2">
-          <span className="text-[#64B496] leading-relaxed font-bold">
-            ${price}
+      <div className="w-full flex justify-between">
+        <div className="space-y-2">
+          <span className="font-sans text-lg leading-tight text-[#000000] font-medium">
+            {name}
           </span>
-          <span className="text-[#7A7A7A] text-sm line-through">
-            ${discount}
+          <div className="flex gap-1">{renderStars()}</div>
+          <div className="flex items-center gap-2">
+            <span className="text-[#64B496] leading-relaxed font-bold">
+              ${price}
+            </span>
+            <span className="text-[#7A7A7A] text-sm line-through">
+              ${discount}
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-sans text-lg leading-tight text-[#000000] font-medium">
+            Quantity
+          </span>
+          <span className="font-sans text-lg leading-tight text-[#000000] font-medium">
+            {quantity}
           </span>
         </div>
       </div>
