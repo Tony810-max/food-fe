@@ -24,7 +24,7 @@ const SubscribeFooter = () => {
           </Button>
         </form>
         <SocialSubcribe />
-        <div className="relative w-[26rem] h-[4.625rem]">
+        <div className="relative w-full h-[4.625rem]">
           <Image
             src={"/images/imageSub.webp"}
             alt="image"

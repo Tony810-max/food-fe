@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -12,9 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import useProduct from "@/hooks/useProduct";
 import useCategory from "@/hooks/useCategory";
-import { toast } from "react-toastify";
 import ROUTES from "@/types/routes";
 import { useRouter } from "next/navigation";
 
