@@ -44,9 +44,9 @@ const PopularProductsSection: React.FC = () => {
         tempor incididunt ut labore lacus vel facilisis."
       />
 
-      <div className="grid grid-cols-4 gap-x-6 mt-8 min-h-[63.75rem]">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8 min-h-[63.75rem]">
         <div className="col-span-1 flex flex-col gap-y-6">
-          <div className=" flex flex-col gap-1 cursor-pointer">
+          <div className="flex flex-col  gap-1 cursor-pointer">
             <ListItem
               categoryFilter={categoryFilter}
               onClick={setCategoryFilter}
@@ -71,7 +71,7 @@ const PopularProductsSection: React.FC = () => {
               View More
             </Link>
           </div>
-          <div className="relative w-full h-full rounded-lg aspect-[1/2]">
+          <div className="relative hidden md:block w-full h-full rounded-lg aspect-[1/2]">
             <Image
               src={"/images/product-banner.webp"}
               alt="product-banner"
@@ -80,7 +80,7 @@ const PopularProductsSection: React.FC = () => {
             />
           </div>
         </div>
-        <div className="col-span-3 grid grid-cols-3 gap-6 h-fit">
+        <div className="col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-6 h-fit">
           {productFilter?.map((product: IProduct, index) => {
             if (index < 6) {
               return (

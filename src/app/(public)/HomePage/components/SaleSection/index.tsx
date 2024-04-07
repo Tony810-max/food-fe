@@ -5,18 +5,19 @@ import { Button } from "@/components/ui/button";
 import TabList from "./TabList";
 import TabPannel from "./TabPannel";
 import useCategory from "@/hooks/useCategory";
+import ROUTES from "@/types/routes";
 
 const SaleSection = () => {
   const { categories } = useCategory();
 
   return (
-    <div className="container py-[3.125rem] grid grid-cols-3 gap-x-6 ">
+    <div className="container py-[3.125rem] grid grid-cols-1 sm:grid-cols-3 gap-6 ">
       <div className="flex col-span-1 flex-col gap-1">
         {categories.map((category, index) => (
           <TabList key={index} name={category.title} value={65} />
         ))}
         <Link
-          href={""}
+          href={ROUTES.SHOP}
           className="w-full border-2 rounded-[0.5rem] py-5 bg-[#f7f7f8]"
         >
           <Button

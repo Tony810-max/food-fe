@@ -27,15 +27,14 @@ const TabPannel: React.FC<SaleProps> = ({ image, valueSale, name }) => {
 
         <div className="relative flex flex-col justify-between z-10 h-full p-10">
           <div className="flex items-center gap-1">
-            <span className="text-white text-6xl font-bold font-sans leading-none">
+            <span className="text-white text-3xl lg:text-6xl font-bold font-sans leading-none">
               {valueSale}
             </span>
-
             <div className="flex flex-col h-full gap-2 justify-end">
               <span className="text-white leading-normal">%</span>
 
               <span className="text-white uppercase font-mono text-lg leading-none">
-                off{" "}
+                off
               </span>
             </div>
           </div>

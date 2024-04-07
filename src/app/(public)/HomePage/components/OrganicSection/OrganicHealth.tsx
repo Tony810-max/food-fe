@@ -6,7 +6,7 @@ import React from "react";
 const OrganicHealth = () => {
   return (
     <div className="absolute top-1/2 -translate-y-1/2 right-6 space-y-5">
-      <span className="block text-2xl text-right font-sans font-bold max-w-64 leading-normal">
+      <span className="block text-2xl text-right font-sans font-bold max-w-52 lg:max-w-60 leading-normal">
         Organic & Healthy Vegetables
       </span>
       <div className="flex gap-1 justify-end items-center">

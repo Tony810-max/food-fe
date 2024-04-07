@@ -15,8 +15,8 @@ const SliderReviewSection: React.FC<SliderProps> = ({
   description,
 }) => {
   return (
-    <div className="bg-[#E9E9E9] px-[3.3rem] col-span-1">
-      <div className="relative w-[7.5rem] h-[7.5rem] left-1/2 -translate-x-1/2 translate-y-3/4 -top-1/2">
+    <div className="bg-[#E9E9E9] py-4 px-[3.3rem] col-span-1">
+      <div className="relative z-10 w-10 md:w-14 aspect-square -translate-x-1/2 left-1/2 top-0 ">
         <Image
           src={image}
           alt="AvtReview"
@@ -25,9 +25,9 @@ const SliderReviewSection: React.FC<SliderProps> = ({
         />
       </div>
       <div className="flex flex-col gap-2 items-center">
-        <span className="text-[#7A7A7A] font-sans text-lg">{role}</span>
-        <span className="text-xl font-extrabold font-sans">{name}</span>
-        <span className="text-lg font-sans text-center">“{description}”</span>
+        <span className="text-[#7A7A7A] font-sans text-base">{role}</span>
+        <span className="text-lg font-extrabold font-sans">{name}</span>
+        <span className="text-lg font-sans text-center italic">{description}</span>
       </div>
     </div>
   );

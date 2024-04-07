@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
       <SaleSection />
       <PopularProductsSection />
       <PromotionSection />
-      <FeatureSection subClassName="py-[1.563rem]" />.
+      <FeatureSection />.
       <GreatDealSection />
       <OrganicSection />
       <ReviewSection />

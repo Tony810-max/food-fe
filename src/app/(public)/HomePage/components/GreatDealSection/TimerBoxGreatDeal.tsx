@@ -12,7 +12,7 @@ const TimerBoxGreatDeal = () => {
           Off
         </span>
       </div>
-      <div className="flex flex-col max-w-[27.5rem] py-5 gap-4">
+      <div className="flex flex-col max-w-64 md:max-w-[27.5rem] py-5 gap-4">
         <span className="text-lg font-sans font-bold">
           Great deal on organic food.
         </span>
