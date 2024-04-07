@@ -1,17 +1,17 @@
 const ROUTES = {
-  HOME: "/",
+  HOME: "/", //done responsive
   ABOUTUS: "/aboutus",
   CATEGORY: "/category",
   CART: "/cart",
   CHECKOUT: "/checkout",
   SHOP: "/shop",
-  SIGNIN: "/login",
-  SIGNUP: "/register",
-  FORGOTPASSWORD: "/forgot-password",
-  PROFILE: "/profile",
-  CONTACTUS: "/contactus",
-  BLOG: "/blog",
-  FAQ: "/faq",
+  SIGNIN: "/login", // done responsive
+  SIGNUP: "/register", // done responsive
+  FORGOTPASSWORD: "/forgot-password", // not do
+  PROFILE: "/profile", // done responsive
+  CONTACTUS: "/contactus", // not do
+  BLOG: "/blog", // done responsive
+  FAQ: "/faq", // done responsive
 };
 
 export default ROUTES;

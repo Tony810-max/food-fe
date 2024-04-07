@@ -22,7 +22,7 @@ const MainBlog = () => {
       <div className="space-y-[1.313rem]">
         <BreadcrumbMainBlog />
         <HealthMainBlog />
-        <div className="flex gap-6">
+        <div className="flex flex-col md:flex-row gap-6">
           <DesHealthBlog
             image={"/images/img1Blog.webp"}
             des="Lorem ipsum dolor consectetur adipisicing elit. Molestias, dolorum!"
@@ -41,7 +41,7 @@ const MainBlog = () => {
           rerum facilis expedita.
         </p>
       </div>
-      <div className="flex items-center justify-between border rounded-[0.313rem] p-[1rem]">
+      <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-between border rounded-[0.313rem] p-[1rem]">
         <div className="flex gap-6">
           <span className="border rounded-[0.313rem] py-[0.375rem] px-4">
             Cabbage

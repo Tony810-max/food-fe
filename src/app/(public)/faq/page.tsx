@@ -57,7 +57,7 @@ const DATA_FAQ_PAGE = [
 
 const FaqPage = () => {
   return (
-    <div className="grid grid-cols-2 container py-[6.25rem] gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 container py-[6.25rem] gap-6">
       <div className="relative w-full h-[33.125rem] rounded-[0.313rem]">
         <Image
           src="/images/imgFaq.webp"

@@ -7,8 +7,8 @@ import { useUser } from "@/hooks/useUser";
 const ProfilePage: React.FC = () => {
   const { createDate, dataProfile, updateDate } = useUser();
   return (
-    <form className="container  py-[6.25rem] space-y-3">
-      <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+    <form className="container py-[6.25rem] space-y-3">
+      <div className="sm:grid grid-cols-2 gap-x-2 gap-y-3 space-y-4 sm:space-y-0">
         <span className="col-span-2 font-sans text-xl font-bold leading-normal uppercase">
           my profile
         </span>
@@ -62,7 +62,6 @@ const ProfilePage: React.FC = () => {
             className="font-sans text-base font-semibold leading-normal"
           />
         </div>
-
         <div className="space-y-3">
           <label className="font-sans text-lg font-bold leading-normal capitalize">
             Create Date

@@ -190,7 +190,7 @@ const RegisterForm = () => {
         >
           Sign up
         </Button>
-        <Link href={ROUTES.SIGNIN} className="text-slate-500 hover:opacity-70">
+        <Link href={ROUTES.SIGNIN} className="text-slate-500 hover:opacity-70 underline">
           Have an account
         </Link>
       </div>

@@ -5,7 +5,7 @@ import SideRightBLog from "./components/SideRightBLog";
 
 const BlogPage = () => {
   return (
-    <div className="py-[6.25rem] grid grid-cols-3 container">
+    <div className="py-[6.25rem] grid grid-cols-1 gap-2 lg:grid-cols-3 container">
       <MainBlog />
       <SideRightBLog />
     </div>
