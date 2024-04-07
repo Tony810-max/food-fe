@@ -18,7 +18,7 @@ const BannerSection: React.FC = () => {
             sizes="(min-width: 768px) 100vw"
           />
         </div>
-        <div className="absolute flex flex-col gap-5 top-1/2 -translate-y-1/2 max-w-[35rem]">
+        <div className="absolute flex flex-col gap-5 top-1/2 -translate-y-1/2 max-w-60 sm:max-w-96 lg:max-w-[35rem]">
           <div className="flex gap-1">
             <span className="text-xl text-[#f53e32] font-extrabold border-2 border-l-0 border-r-0 border-t-0 border-b-[#f53e32] ">
               100
@@ -27,10 +27,10 @@ const BannerSection: React.FC = () => {
               Organic Vegetables
             </span>
           </div>
-          <span className="text-black font-extrabold text-6xl leading-normal">
+          <span className="text-black font-extrabold text-3xl lg:text-6xl leading-normal">
             The best way to stuff your wallet.
           </span>
-          <span className="text-[#888582]  leading-normal">
+          <span className="text-[#888582] leading-normal">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab enim
             animi reprehenderit qui a illo eum quibusdam recusandae porro saepe.
           </span>
