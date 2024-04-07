@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -10,53 +11,69 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import useProduct from "@/hooks/useProduct";
+import useCategory from "@/hooks/useCategory";
+import { toast } from "react-toastify";
+import ROUTES from "@/types/routes";
+import { useRouter } from "next/navigation";
 
-const ELEMENT_CATAGORY = [
-  {
-    id: 1,
-    name: "All Categories",
-    value: "all",
-  },
-  {
-    id: 2,
-    name: "Fresh Meat",
-    value: "freshMeat",
-  },
-  {
-    id: 3,
-    name: "vetgetable",
-    value: "vetgetable",
-  },
-];
+type Inputs = {
+  searchValue: string;
+  categoryValue: string;
+};
 
 const FormBelowHeader = () => {
+  const { categories } = useCategory();
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const searchItem = data?.searchValue?.trim()?.toLocaleLowerCase();
+
+    router?.replace(
+      `${ROUTES?.SHOP}?search=${searchItem}&category=${data?.categoryValue}`
+    );
+  };
+
   return (
-    <form className="flex py-4">
+    <form className="flex py-4" onSubmit={handleSubmit(onSubmit)}>
       <Input
         type="text"
         placeholder="Search for items..."
+        {...register("searchValue")}
         className="border border-[#64B496] min-w-80 rounded-r-none focus:outline-transparent active:outline-transparent focus-visible:ring-transparent"
       />
-      <Select>
-        <SelectTrigger className="rounded-none border border-[#64B496] border-l-transparent focus:outline-transparent active:outline-transparent focus-visible:ring-transparent">
-          <SelectValue placeholder={ELEMENT_CATAGORY[0].name} />
-        </SelectTrigger>
-        <SelectContent className="focus:outline-transparent active:outline-transparent focus-visible:ring-transparent">
-          <SelectGroup>
-            {ELEMENT_CATAGORY.map((item, index) => (
-              <SelectItem key={index} value={item.value}>
-                {item.name}
-              </SelectItem>
-            ))}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-      <Button
-        type="button"
-        variant="destructive"
-        className="rounded-l-none w-20 aspect-square"
-      >
-        <Search width={40} height={40} size={40} />
+      <Controller
+        name="categoryValue" // Sửa thành đúng tên trường
+        control={control} // Sửa lại đúng tên biến
+        render={({ field }) => (
+          <Select {...field} onValueChange={field.onChange}>
+            <SelectTrigger className="w-full rounded-none border border-[#64B496] border-l-transparent focus:outline-transparent active:outline-transparent focus-visible:ring-transparent">
+              <SelectValue placeholder="Select categories" />
+            </SelectTrigger>
+            <SelectContent
+              ref={field.ref}
+              className="focus:outline-transparent active:outline-transparent focus-visible:ring-transparent"
+            >
+              <SelectGroup>
+                {categories?.map((item) => (
+                  <SelectItem key={item.id} value={item?.title}>
+                    {item?.title}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        )}
+      />
+      <Button type="submit" variant="destructive" className="rounded-l-none">
+        <Search width={15} />
       </Button>
     </form>
   );

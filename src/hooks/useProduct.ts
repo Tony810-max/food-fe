@@ -40,11 +40,13 @@ const useProduct = (limit = 10) => {
     products: products,
     maxPrice: maxPriceValue,
     priceFilter,
+    setProducts,
     setPriceFilter,
     currentPage,
     setCurrentPage,
     totalPage,
     isLoading,
+    limit,
   };
 };
 

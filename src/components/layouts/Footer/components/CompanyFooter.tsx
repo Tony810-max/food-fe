@@ -22,10 +22,10 @@ const CompanyFooter = () => {
           BLOG
         </Link>
         <Link
-          href={ROUTES.HOME}
+          href={ROUTES.FAQ}
           className="font-sans leading-relaxed text-[#777777] capitalize hover:opacity-70"
         >
-          Privacy Policy
+          Faq
         </Link>
         <Link
           href={ROUTES.HOME}

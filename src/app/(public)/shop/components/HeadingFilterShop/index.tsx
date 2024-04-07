@@ -9,7 +9,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const HeadingFilterShop = () => {
+interface filterProps {
+  count: number;
+}
+
+const HeadingFilterShop: React.FC<filterProps> = ({ count }) => {
   return (
     <div className="flex justify-between items-center bg-[#f7f7f8]  rounded-lg p-[0.375rem]">
       <div className="flex items-center gap-[1.063rem]">
@@ -20,7 +24,7 @@ const HeadingFilterShop = () => {
             className="border rounded-[0.313rem] p-[0.469rem]"
           />
         </div>
-        <span>We found 29 items for you!</span>
+        <span>We found {count} items for you!</span>
       </div>
       <Select>
         <SelectTrigger className="w-[180px]">

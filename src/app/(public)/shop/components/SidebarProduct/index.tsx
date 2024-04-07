@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CheckboxProduct from "./CheckboxProduct";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
@@ -10,12 +10,14 @@ interface formProps {
   setPriceFilter: (value: number[]) => void;
   priceFilter: number[];
   handleFilter: () => void;
+  onSetCurCategory: (value: string) => void;
 }
 
 const SidebarProduct: React.FC<formProps> = ({
   setPriceFilter,
   priceFilter,
   handleFilter,
+  onSetCurCategory,
 }) => {
   const { maxPrice } = useProduct();
   const { categories } = useCategory();
@@ -40,8 +42,10 @@ const SidebarProduct: React.FC<formProps> = ({
           {categories?.map((category, index) => (
             <CheckboxProduct
               key={index}
+              value={category?.title}
               name={category.title}
               totalProduct={20}
+              onSetCurCategory={onSetCurCategory}
             />
           ))}
         </div>

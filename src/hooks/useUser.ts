@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { format } from "date-fns";
 import { useGetHeaderConfig } from "./useGetHeaderConfig";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const useUser = () => {
   const [dataProfile, setDataProfile] = useState<IProfile>({
@@ -36,7 +37,9 @@ export const useUser = () => {
         setDataProfile(response.data);
       }
     } catch (error) {
-      console.log(error);
+      toast.error("Account is expired");
+      localStorage.removeItem("user");
+      localStorage.removeItem("accessToken");
     }
   }, [headerConfig]);
 

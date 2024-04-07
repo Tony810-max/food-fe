@@ -5,6 +5,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface PaginationProps {
   currentPage: number;
   totalPage: number;
+  totalProduct: number;
+  limit: number;
   setCurrentPage: (page: number) => void;
 }
 
@@ -12,6 +14,8 @@ const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPage,
   setCurrentPage,
+  totalProduct,
+  limit,
 }) => {
   return (
     <div className="flex items-center justify-center gap-4 ">
@@ -21,11 +25,9 @@ const Pagination: React.FC<PaginationProps> = ({
       >
         <ChevronLeft />
       </Button>
-      <div>
-        {currentPage}/{totalPage}
-      </div>
+      <div>{totalProduct < limit ? currentPage : `${ currentPage } / ${ totalPage }`} </div>
       <Button
-        disabled={currentPage === totalPage}
+        disabled={totalProduct < limit || currentPage === totalPage}
         onClick={() => setCurrentPage(currentPage + 1)}
       >
         <ChevronRight />
