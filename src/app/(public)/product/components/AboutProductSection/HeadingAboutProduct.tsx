@@ -3,13 +3,11 @@ import React from "react";
 
 interface HeadingProps {
   onSetValueLabel: (value: string) => void;
-  data: 
-    {
-      id: number;
-      name: string;
-      value: string;
-    }[]
-  ;
+  data: {
+    id: number;
+    name: string;
+    value: string;
+  }[];
 }
 
 const HeadingAboutProduct: React.FC<HeadingProps> = ({

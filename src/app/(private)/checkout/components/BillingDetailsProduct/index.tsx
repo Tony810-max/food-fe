@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CheckBox from "../../../../../components/Checkbox";
 import {
   Select,
@@ -27,7 +27,6 @@ type Inputs = {
   address: string;
   name: string;
   postCode: string;
-  exampleRequired: string;
   country: string;
   state: string;
   city: string;
@@ -39,7 +38,7 @@ const BillingDetailsProduct = () => {
   const { headerConfig } = useGetHeaderConfig();
   const { dataCartProduct } = useCartProduct();
   const { provinces } = useProvinces();
-  const [valueCheckbox, setValueCheckbox] = useState("");
+  const [valueCheckbox, setValueCheckbox] = useState("existingAddress");
   const {
     register,
     handleSubmit,
@@ -47,9 +46,11 @@ const BillingDetailsProduct = () => {
     formState: { errors },
     watch,
     setValue,
+    reset,
   } = useForm<Inputs>({
     mode: "onChange",
   });
+
   const [address] = watch(["address"]);
   const { addressSearch, setIsChooseAddress, isChooseAddress } =
     useAddress(address);
@@ -59,25 +60,32 @@ const BillingDetailsProduct = () => {
       if (!headerConfig) {
         return;
       }
-      let cart: { id: any; product_unit_price: any; quantity: any }[] = [];
+
+      let cart: {
+        id: number;
+        product_unit_price: number;
+        product_quanity: number;
+      }[] = [];
+
       if (dataCartProduct) {
         cart = dataCartProduct.map((item: any) => {
           return {
             id: item?.product?.id,
-            product_unit_price: item?.product?.price,
-            quantity: item.quantity,
+            product_unit_price: Number(item?.product?.price),
+            product_quanity: Number(item?.quantity),
           };
         });
       }
+
       const formData = {
         shippingAddress: {
-          phoneNumber: data.phoneNumber,
-          address: data.address,
-          city: data.city,
-          name: data.name,
-          postCode: data.postCode,
-          country: data.country,
-          state: data.state,
+          phoneNumber: data?.phoneNumber,
+          address: data?.address,
+          city: data?.city,
+          name: data?.name,
+          postCode: data?.postCode,
+          country: data?.country,
+          state: data?.state,
         },
         orderedProducts: cart,
       };
@@ -95,10 +103,15 @@ const BillingDetailsProduct = () => {
       console.log(error);
     }
   };
-  const handleSetValueCheckbox = (value: string) => {
-    setValueCheckbox(value);
-  };
-  console.log(valueCheckbox);
+
+
+  useEffect(() => {
+    if (valueCheckbox === "newAddress") {
+      setValue("name", "");
+      setValue("address", "");
+    }
+  }, [setValue, valueCheckbox]);
+
   return (
     <form
       className="col-span-2 space-y-[1.875rem]"
@@ -117,20 +130,29 @@ const BillingDetailsProduct = () => {
               id={"existingAddress"}
               value={"existingAddress"}
               title={"I want to use an existing address"}
+              onSetValueCheckbox={setValueCheckbox}
+              valueCheckbox={valueCheckbox}
             />
             <CheckBox
               value={"newAddress"}
               id={"newAddress"}
               title={"I want to use a new address"}
+              onSetValueCheckbox={setValueCheckbox}
+              valueCheckbox={valueCheckbox}
             />
           </div>
           <div className="w-full grid grid-cols-2 gap-[1.875rem] pt-[1.938rem]">
             <div className="col-span-2">
               <label>Full name*</label>
-              <Input
-                value={`${dataProfile?.firstName}  ${dataProfile?.lastName}`}
-                {...register("name", { required: true })}
-              />
+              {valueCheckbox === "existingAddress" ? (
+                <Input
+                  value={`${dataProfile?.firstName} ${dataProfile?.lastName}`}
+                  {...register("name", { required: true })}
+                />
+              ) : (
+                <Input {...register("name", { required: true })} />
+              )}
+
               {errors.name && (
                 <span className="text-red-500 italic">
                   This field is required
@@ -140,10 +162,16 @@ const BillingDetailsProduct = () => {
             <div className="col-span-2">
               <label>Address*</label>
               <div className="relative">
-                <Input
-                  value={dataProfile?.address}
-                  {...register("address", { required: true })}
-                />
+                {valueCheckbox === "existingAddress" ? (
+                  <Input
+                    value={dataProfile?.address}
+                    {...register("address", { required: true })}
+                  />
+                ) : (
+                  <Input
+                    {...(register("address", { required: true }), reset)}
+                  />
+                )}
                 {errors.address && (
                   <span className="text-red-500 italic">
                     This field is required

@@ -10,7 +10,6 @@ const CategorySideRight = () => {
   // Hàm này sẽ trả về số lượng sản phẩm theo danh mục
   const countProductsByCategory = useMemo(() => {
     return categories.reduce((acc: any, category) => {
-      console.log(category?.title);
       acc[category?.title] = products.filter(
         (product) => product?.category_id === category.id
       ).length;
