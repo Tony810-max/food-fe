@@ -27,7 +27,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/layouts/Header/index.tsx",
-    "src/types/routes.jsx"
-, "src/app/(auth)/login/components/FormLogin.tsx"  ],
+    "src/types/routes.jsx",
+    "src/app/(auth)/login/components/FormLogin.tsx"
+  ],
   "exclude": ["node_modules"]
 }

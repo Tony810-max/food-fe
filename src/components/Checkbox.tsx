@@ -2,11 +2,11 @@
 import React from "react";
 
 interface checkboxProps {
-  id: string;
-  title: string;
-  value: string;
-  onSetValueCheckbox: (value: string) => void;
-  valueCheckbox: string;
+  id?: string;
+  title?: string;
+  value?: string;
+  onSetValueCheckbox?: (value: string) => void;
+  valueCheckbox?: string;
 }
 
 const Checkbox: React.FC<checkboxProps> = ({
@@ -24,7 +24,11 @@ const Checkbox: React.FC<checkboxProps> = ({
         id={id}
         name="addressOption"
         className="rounded-full"
-        onChange={() => onSetValueCheckbox(value)}
+        onChange={() => {
+          if (value !== undefined && onSetValueCheckbox) {
+            onSetValueCheckbox(value);
+          }
+        }}
         defaultChecked={value === valueCheckbox}
       />
       <label htmlFor={id}>{title}</label>

@@ -5,6 +5,7 @@ import { Product } from "@/types/common";
 import InformationTabAboutProduct from "./InformationTabAboutProduct";
 import ReviewTabAboutProduct from "./ReviewTabAboutProduct";
 import DescriptionTabAboutProduct from "./DescriptionTabAboutProduct";
+import CommentTabAboutProduct from "./CommentTabAboutProduct";
 
 interface AboutProps {
   data: Product | undefined;
@@ -26,6 +27,11 @@ const DATA_HEADING = [
     name: "Review",
     value: "review",
   },
+  {
+    id: 4,
+    name: "Comment",
+    value: "comment",
+  },
 ];
 
 const AboutProduct: React.FC<AboutProps> = ({ data }) => {
@@ -40,6 +46,8 @@ const AboutProduct: React.FC<AboutProps> = ({ data }) => {
         return <InformationTabAboutProduct />;
       case "review":
         return <ReviewTabAboutProduct />;
+      case "comment":
+        return <CommentTabAboutProduct />;
 
       default:
         return <div>Click one tab for view</div>;
