@@ -55,7 +55,7 @@ const AboutProduct: React.FC<AboutProps> = ({ data }) => {
   };
 
   return (
-    <div className="col-span-2 p-6 border rounded h-fit">
+    <div className="col-span-2 p-6 border rounded min-h-80">
       <HeadingAboutProduct
         data={DATA_HEADING}
         onSetValueLabel={setValueLabel}

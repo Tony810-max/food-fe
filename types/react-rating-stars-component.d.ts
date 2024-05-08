@@ -8,6 +8,7 @@ declare module "react-rating-stars-component" {
     color2?: string; // active star color
     value?: number;
     activeColor?: string;
+    edit?: boolean;
     // ... thêm các props khác nếu cần
   }
 

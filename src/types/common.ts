@@ -88,4 +88,41 @@ export interface IProfile {
   address: string;
   createdAt: string;
   updatedAt: string;
+  roles?: string[];
+}
+
+export interface IReviewProduct {
+  id: number;
+  comment: string;
+  ratings: number;
+  createdAt: string;
+  updatedAt: string;
+  user: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    address: string;
+    roles: string[];
+    createdAt: string;
+    updatedAt: string;
+  };
+  product: {
+    id: number;
+    title: string;
+    description: string;
+    price: string;
+    stock: number;
+    images: string[];
+    createdAt: string;
+    updatedAt: string;
+    category: {
+      id: number;
+      title: string;
+      description: string;
+      createdAt: string;
+      updatedAt: string;
+    };
+  };
 }
