@@ -4,9 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useGetHeaderConfig } from "./useGetHeaderConfig";
 
 const useCartProduct = () => {
-  const [dataCartProduct, setDataCartProduct] = useState<
-    CartProduct[]
-  >([]);
+  const [dataCartProduct, setDataCartProduct] = useState<CartProduct[]>([]);
   const { headerConfig } = useGetHeaderConfig();
 
   const fetchCartProduct = useCallback(async () => {

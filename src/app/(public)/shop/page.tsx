@@ -21,31 +21,44 @@ const ShopPage = () => {
   } = useProduct(6);
   const [currentProducts, setCurrentProducts] = useState<IProduct[]>([]);
   const [curCategory, setCurCategory] = useState("");
-
+  console.log("curCategory", curCategory);
+  console.log("products", products);
+  console.log("currentProducts", currentProducts);
   const param = useSearchParams();
   const search = param?.get("search");
   const category = param?.get("category");
+  console.log("search", search);
+  console.log("category", category);
 
   const handleFilter = () => {
-    if (priceFilter && priceFilter.length > 0) {
+    if (!curCategory) {
       const filterdData = products.filter(
-        (product) =>
-          Number(product.price) <= Number(priceFilter[0]) &&
-          product?.category_title === curCategory
+        (product) => Number(product.price) <= Number(priceFilter[0])
       );
       setCurrentProducts(filterdData);
+      return;
+    }
+    if (curCategory || priceFilter) {
+      const filterdData = products.filter(
+        (product) =>
+          Number(product.price) <= Number(priceFilter[0]) ||
+          product?.category?.title === curCategory
+      );
+      setCurrentProducts(filterdData);
+      return;
     }
   };
 
   useEffect(() => {
     if (!products) return;
 
-    if (search) {
-      const filterProduct = products?.filter(
-        (item) =>
-          item?.title?.toLowerCase()?.includes(search) &&
-          item?.category_title?.includes(category!)
-      );
+    if (search && category) {
+      const filterProduct = products?.filter((item) => {
+        return (
+          item?.title?.toLocaleLowerCase().includes(search) &&
+          item?.category?.title.includes(category)
+        );
+      });
       if (filterProduct?.length > 0) {
         setCurrentProducts(filterProduct);
       }
@@ -68,18 +81,24 @@ const ShopPage = () => {
         <HeadingFilterShop count={currentProducts?.length} />
 
         <div className="grid grid-cols-3 gap-6 min-h-[63.75rem]">
-          {currentProducts.map((product, index) => (
-            <ProductCard
-              key={index}
-              id={product.id}
-              rating={product.avgRating}
-              category={product.category_title}
-              desc={product.description}
-              image={product.images[0]}
-              salePrice={product.price}
-              originalPrice={10}
-            />
-          ))}
+          {currentProducts?.length > 0 ? (
+            currentProducts.map((product, index) => (
+              <ProductCard
+                key={index}
+                id={product.id}
+                rating={4}
+                category={product.category?.title}
+                desc={product.description}
+                image={product.images[0]}
+                salePrice={product.price}
+                originalPrice={10}
+              />
+            ))
+          ) : (
+            <div className="col-span-3 font-sans text-red-500 text-xl italic font-bold">
+              Please re-enter the search information
+            </div>
+          )}
         </div>
         <Pagination
           limit={limit}

@@ -17,7 +17,8 @@ const PopularProductsSection: React.FC = () => {
   const { products } = useProduct();
   const [categoryFilter, setCategoryFilter] = useState<number | string>("");
   const [productFilter, setProductFilter] = useState<IProduct[]>([]);
-
+  console.log(categoryFilter);
+  console.log(products);
   useEffect(() => {
     if (categoryFilter === "all") {
       setProductFilter(products);
@@ -26,7 +27,7 @@ const PopularProductsSection: React.FC = () => {
 
     if (categoryFilter) {
       const filterdData = products.filter(
-        (product) => product.category_id === categoryFilter
+        (product) => product.category.id === categoryFilter
       );
 
       setProductFilter(filterdData);
@@ -87,11 +88,11 @@ const PopularProductsSection: React.FC = () => {
                 <ProductCard
                   id={product?.id}
                   key={product?.title}
-                  rating={product?.avgRating}
+                  rating={4}
                   originalPrice={product?.price}
                   salePrice={product?.price}
                   desc={product?.description}
-                  category={product?.category_title}
+                  category={product?.category?.title}
                   image={product?.images[0]}
                 />
               );

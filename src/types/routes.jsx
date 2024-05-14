@@ -12,6 +12,7 @@ const ROUTES = {
   CONTACTUS: "/contactus", // not do
   BLOG: "/blog", // done responsive
   FAQ: "/faq", // done responsive
+  PURCHASEORDER: "/purchase-order", 
 };
 
 export default ROUTES;

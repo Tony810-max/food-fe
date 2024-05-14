@@ -36,7 +36,7 @@ const PopularProductDetail: React.FC<ProductProps> = ({ data }) => {
                 <ProductCard
                   key={index}
                   id={data?.id}
-                  category={data.category_title}
+                  category={data.category?.title}
                   rating={4}
                   desc={data.description}
                   image={data.images[0]}

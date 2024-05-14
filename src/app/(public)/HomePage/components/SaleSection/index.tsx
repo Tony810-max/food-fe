@@ -1,20 +1,29 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import TabList from "./TabList";
 import TabPannel from "./TabPannel";
 import useCategory from "@/hooks/useCategory";
 import ROUTES from "@/types/routes";
+import useProduct from "@/hooks/useProduct";
 
 const SaleSection = () => {
   const { categories } = useCategory();
+  const { products } = useProduct();
+  const [idCategory, setIdCategory] = useState<number>(categories[0]?.id);
 
   return (
     <div className="container py-[3.125rem] grid grid-cols-1 sm:grid-cols-3 gap-6 ">
       <div className="flex col-span-1 flex-col gap-1">
         {categories.map((category, index) => (
-          <TabList key={index} name={category.title} value={65} />
+          <TabList
+            id={category?.id}
+            key={index}
+            name={category.title}
+            value={65}
+            onSetIdCategory={setIdCategory}
+          />
         ))}
         <Link
           href={ROUTES.SHOP}

@@ -9,18 +9,20 @@ interface CategoryData {
   description: string;
   createdAt: string;
   updatedAt: string;
+  deletedAt: null;
 }
 
 const useCategory = () => {
   const [data, setData] = useState<CategoryData[]>([]);
-
   const fetchData = async () => {
     try {
       const response = await axios.get(`${API_URL}/api/v1/category`);
       if (response) {
-        setData(response.data);
+        setData(response.data.categories);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

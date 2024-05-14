@@ -48,6 +48,10 @@ const TITLE_HEADING = [
     value: ROUTES.FAQ,
     label: "faq",
   },
+  {
+    value: ROUTES.PURCHASEORDER,
+    label: "purchase order",
+  },
 ];
 
 const HeaderAuth: React.FC = () => {

@@ -64,10 +64,10 @@ const ProductCard: React.FC<ProductProps> = ({
         <div className="flex flex-col items-center gap-2">
           <div className="flex gap-1 items-center">
             <span className="font-extrabold text-lg font-sans text-[#F53E32]">
-              ${salePrice}
+              ${Number(salePrice)}
             </span>
             <span className="line-through text-[#7A7A7A]">
-              ${originalPrice}
+              ${Number(originalPrice)}
             </span>
           </div>
           <Link

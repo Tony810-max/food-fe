@@ -11,7 +11,7 @@ const CategorySideRight = () => {
   const countProductsByCategory = useMemo(() => {
     return categories.reduce((acc: any, category) => {
       acc[category?.title] = products.filter(
-        (product) => product?.category_id === category.id
+        (product) => product?.category?.id === category.id
       ).length;
       return acc;
     }, {});

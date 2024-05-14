@@ -8,7 +8,6 @@ const useProduct = (limit = 10) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const fetchProduct = useCallback(async () => {
     try {
       setIsLoading(true);
