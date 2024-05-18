@@ -21,14 +21,9 @@ const ShopPage = () => {
   } = useProduct(6);
   const [currentProducts, setCurrentProducts] = useState<IProduct[]>([]);
   const [curCategory, setCurCategory] = useState("");
-  console.log("curCategory", curCategory);
-  console.log("products", products);
-  console.log("currentProducts", currentProducts);
   const param = useSearchParams();
   const search = param?.get("search");
   const category = param?.get("category");
-  console.log("search", search);
-  console.log("category", category);
 
   const handleFilter = () => {
     if (!curCategory) {

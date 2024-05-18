@@ -3,8 +3,8 @@ import { useMemo } from "react";
 export const useGetHeaderConfig = () => {
   const headerConfig = useMemo(() => {
     if (typeof localStorage !== "undefined" && localStorage) {
-      const token = localStorage.getItem("access-token")
-        ? JSON.parse(localStorage?.getItem("access-token")!)
+      const token = localStorage.getItem("accessToken")
+        ? JSON.parse(localStorage?.getItem("accessToken")!)
         : null;
       if (!token) return null;
 

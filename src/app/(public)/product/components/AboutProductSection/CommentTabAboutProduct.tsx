@@ -41,8 +41,7 @@ const CommentTabAboutProduct = () => {
     };
 
     try {
-      const accessToken = JSON.parse(localStorage.getItem("access-token")!);
-      console.log(accessToken);
+      const accessToken = JSON.parse(localStorage.getItem("accessToken")!);
       const response = await axios.post(
         `${API_URL}/api/v1/reviews`,
         dataComment,

@@ -26,12 +26,12 @@ const FormLogin = () => {
   const onSubmit: SubmitHandler<LoginSubmitType> = async (data) => {
     try {
       const response = await axios.post(`${API_URL}/api/v1/auth/sign-in`, data);
-
+      console.log(response?.data?.token?.accessToken);
       if (response && typeof localStorage !== "undefined") {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem(
-          "access-token",
-          JSON.stringify(response.data.accessToken)
+          "accessToken",
+          JSON.stringify(response?.data?.token?.accessToken)
         );
 
         toast.success("Login successfully!");

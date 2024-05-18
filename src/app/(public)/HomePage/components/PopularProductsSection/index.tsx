@@ -17,8 +17,6 @@ const PopularProductsSection: React.FC = () => {
   const { products } = useProduct();
   const [categoryFilter, setCategoryFilter] = useState<number | string>("");
   const [productFilter, setProductFilter] = useState<IProduct[]>([]);
-  console.log(categoryFilter);
-  console.log(products);
   useEffect(() => {
     if (categoryFilter === "all") {
       setProductFilter(products);

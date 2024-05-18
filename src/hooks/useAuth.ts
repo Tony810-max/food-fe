@@ -6,11 +6,11 @@ export const useAuth = () => {
       const user = localStorage.getItem("user")
         ? JSON.parse(localStorage?.getItem("user")!)
         : null;
-      const accessToken = localStorage.getItem("access-token")
-        ? JSON.parse(localStorage.getItem("access-token")!)
+      const accessToken = localStorage.getItem("accessToken")
+        ? JSON.parse(localStorage.getItem("accessToken")!)
         : null;
 
-      if (user && accessToken) return user;
+      if (user && accessToken ) return user;
 
       return null;
     }
@@ -19,7 +19,7 @@ export const useAuth = () => {
   const handleLogOut = () => {
     if (localStorage && window) {
       localStorage?.removeItem("user");
-      localStorage?.removeItem("access-token");
+      localStorage?.removeItem("accessToken");
       window?.location?.reload();
     }
   };

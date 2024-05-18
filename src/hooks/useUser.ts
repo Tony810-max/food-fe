@@ -15,6 +15,11 @@ export const useUser = () => {
     address: "",
     createdAt: "",
     updatedAt: "",
+    gender: "",
+    dateOfBirth: "",
+    deletedAt: "",
+    isActice: false,
+    roles: [],
   });
   const { headerConfig } = useGetHeaderConfig();
   const createDate = dataProfile?.updatedAt

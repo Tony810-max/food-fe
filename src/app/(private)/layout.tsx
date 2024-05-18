@@ -11,7 +11,7 @@ const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const user: any = useMemo(() => {
     if (typeof localStorage !== "undefined") {
       const user = localStorage.getItem("user");
-      const accessToken = localStorage.getItem("access-token");
+      const accessToken = localStorage.getItem("accessToken");
       if (user && accessToken) return user;
       return null;
     }

@@ -9,14 +9,14 @@ const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const router = useRouter();
 
   const user: any = useMemo(() => {
-    if (typeof localStorage !== "undefined") {
-      const user = localStorage.getItem("user");
-      const accessToken = localStorage.getItem("access-token");
+    // if (typeof localStorage !== "undefined") {
+    //   const user = localStorage.getItem("user");
+    //   const accessToken = localStorage.getItem("accessToken");
 
-      if (user && accessToken) return user;
+    //   if (user && accessToken) return user;
 
-      return null;
-    }
+    //   return null;
+    // }
   }, []);
 
   useEffect(() => {

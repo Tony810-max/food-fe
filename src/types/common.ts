@@ -87,9 +87,13 @@ export interface IProfile {
   email: string;
   phoneNumber: string;
   address: string;
+  gender: null | string;
+  dateOfBirth: null | string;
+  roles: string[];
   createdAt: string;
   updatedAt: string;
-  roles?: string[];
+  deletedAt: null | string;
+  isActice: boolean;
 }
 
 export interface IReviewProduct {
