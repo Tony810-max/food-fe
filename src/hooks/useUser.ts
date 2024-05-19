@@ -6,6 +6,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export const useUser = () => {
+  const [checkStatus, setCheckStatus] = useState(true);
+
   const [dataProfile, setDataProfile] = useState<IProfile>({
     id: 0,
     firstName: "",
@@ -48,12 +50,51 @@ export const useUser = () => {
     }
   }, [headerConfig]);
 
+  const handleGetCode = async () => {
+    try {
+      const accessToken = JSON.parse(localStorage.getItem("accessToken")!);
+      const responseGetCode = await axios.post(
+        `${API_URL}/api/v1/user/generate-verify-code`,
+        {},
+        { headers: { Authorization: `Bearer ${accessToken}` } }
+      );
+
+      if (responseGetCode) {
+        setCheckStatus(false);
+        toast.success(responseGetCode?.data?.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleActiveUser = async (data: any) => {
+    try {
+      const accessToken = JSON.parse(localStorage.getItem("accessToken")!);
+      const response = await axios.post(
+        `${API_URL}/api/v1/user/activate-user`,
+        {
+          verifyCode: data?.code,
+        },
+        { headers: { Authorization: `Bearer ${accessToken}` } }
+      );
+      if (response) {
+        toast.success(response?.data?.message);
+      }
+    } catch (error) {
+      toast.error("Incorrect code, please check and enter again.");
+    }
+  };
+
   useEffect(() => {
     fetchDataProfile();
   }, [fetchDataProfile]);
   return {
     dataProfile,
     createDate,
+    checkStatus,
     updateDate,
+    handleGetCode,
+    handleActiveUser,
   };
 };
