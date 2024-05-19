@@ -4,9 +4,15 @@ import { format } from "date-fns";
 import { useGetHeaderConfig } from "./useGetHeaderConfig";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { profileProps } from "@/app/(private)/profile/types/common";
+
+interface activeProps {
+  code: string;
+}
 
 export const useUser = () => {
   const [checkStatus, setCheckStatus] = useState(true);
+  const [editProfile, setEditProfile] = useState<boolean>(false);
 
   const [dataProfile, setDataProfile] = useState<IProfile>({
     id: 0,
@@ -68,7 +74,7 @@ export const useUser = () => {
     }
   };
 
-  const handleActiveUser = async (data: any) => {
+  const handleActiveUser = async (data: activeProps) => {
     try {
       const accessToken = JSON.parse(localStorage.getItem("accessToken")!);
       const response = await axios.post(
@@ -86,6 +92,30 @@ export const useUser = () => {
     }
   };
 
+  const handleUpdateProfile = async (data: profileProps) => {
+    try {
+      const accessToken = JSON.parse(localStorage.getItem("accessToken")!);
+      const response = await axios.patch(
+        `${API_URL}/api/v1/user/${dataProfile?.id}`,
+        {
+          email: data?.email || dataProfile?.email,
+          password: data?.password,
+          firstName: data?.firstName || dataProfile?.firstName,
+          lastName: data?.lastName || dataProfile?.lastName,
+          phoneNumber: data?.phoneNumber || dataProfile?.phoneNumber,
+          address: data?.address || dataProfile?.address,
+        },
+        { headers: { Authorization: `Bearer ${accessToken}` } }
+      );
+      if (response) {
+        toast.success("Update profile successfully");
+        setEditProfile(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetchDataProfile();
   }, [fetchDataProfile]);
@@ -96,5 +126,9 @@ export const useUser = () => {
     updateDate,
     handleGetCode,
     handleActiveUser,
+    fetchDataProfile,
+    handleUpdateProfile,
+    editProfile,
+    setEditProfile,
   };
 };
