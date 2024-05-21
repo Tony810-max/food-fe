@@ -99,7 +99,6 @@ export const useUser = () => {
         `${API_URL}/api/v1/user/${dataProfile?.id}`,
         {
           email: data?.email || dataProfile?.email,
-          password: data?.password,
           firstName: data?.firstName || dataProfile?.firstName,
           lastName: data?.lastName || dataProfile?.lastName,
           phoneNumber: data?.phoneNumber || dataProfile?.phoneNumber,

@@ -8,11 +8,12 @@ const ROUTES = {
   SIGNIN: "/login", // done responsive
   SIGNUP: "/register", // done responsive
   FORGOTPASSWORD: "/forgot-password", // not do
+  CHANGEPASSWORD: "/change-password",
   PROFILE: "/profile", // done responsive
   CONTACTUS: "/contactus", // not do
   BLOG: "/blog", // done responsive
   FAQ: "/faq", // done responsive
-  PURCHASEORDER: "/purchase-order", 
+  PURCHASEORDER: "/purchase-order",
 };
 
 export default ROUTES;

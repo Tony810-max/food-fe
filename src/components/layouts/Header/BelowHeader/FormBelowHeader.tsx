@@ -28,7 +28,6 @@ const FormBelowHeader = () => {
     register,
     handleSubmit,
     control,
-    formState: { errors },
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -48,8 +47,8 @@ const FormBelowHeader = () => {
         className="border border-[#64B496] min-w-80 rounded-r-none focus:outline-transparent active:outline-transparent focus-visible:ring-transparent"
       />
       <Controller
-        name="categoryValue" // Sửa thành đúng tên trường
-        control={control} // Sửa lại đúng tên biến
+        name="categoryValue" 
+        control={control} 
         render={({ field }) => (
           <Select {...field} onValueChange={field.onChange}>
             <SelectTrigger className="w-full rounded-none border border-[#64B496] border-l-transparent focus:outline-transparent active:outline-transparent focus-visible:ring-transparent">

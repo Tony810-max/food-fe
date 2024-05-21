@@ -10,7 +10,6 @@ interface infoProfileProps {
   className?: string;
   status?: boolean;
   register?: UseFormRegister<any>;
-  error?: FieldError | undefined;
 }
 
 const InforProfile: React.FC<infoProfileProps> = ({
@@ -20,7 +19,6 @@ const InforProfile: React.FC<infoProfileProps> = ({
   status,
   register,
   variable,
-  error,
 }) => {
   const [inputValue, setInputValue] = useState(value);
 
@@ -37,14 +35,12 @@ const InforProfile: React.FC<infoProfileProps> = ({
         {title}
       </label>
       <Input
-        type={title.toLowerCase() === "password" ? "password" : ""}
         {...(register ? register(variable) : {})}
         value={inputValue}
         disabled={!status}
         className="font-sans text-base font-semibold leading-normal"
         onChange={handleInputChange}
       />
-      {error && <p className="font-sans text-base text-red-500 capitalize italic">{error.message}</p>}
     </div>
   );
 };

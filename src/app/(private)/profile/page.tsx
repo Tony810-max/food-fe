@@ -1,15 +1,13 @@
 "use client";
+import React from "react";
+
 import { Input } from "@/components/ui/input";
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/hooks/useUser";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InforProfile from "./components/InforProfile";
 import { schemaActive, schemaProfile } from "./types/common";
-import axios from "axios";
-import { API_URL } from "@/types/common";
-import { toast } from "react-toastify";
 
 const ProfilePage: React.FC = () => {
   const {
@@ -35,7 +33,6 @@ const ProfilePage: React.FC = () => {
   const {
     register: registerProfile,
     handleSubmit: handleSubmitProfile,
-    formState: { errors: errProfile },
   } = useForm({
     resolver: yupResolver(schemaProfile),
   });
@@ -63,14 +60,7 @@ const ProfilePage: React.FC = () => {
           value={dataProfile?.lastName}
           status={editProfile}
         />
-        <InforProfile
-          title="password"
-          value=""
-          variable="password"
-          register={registerProfile}
-          status={editProfile}
-          error={errProfile?.password}
-        />
+
         <InforProfile
           title="address"
           register={registerProfile}

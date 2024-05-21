@@ -52,6 +52,10 @@ const TITLE_HEADING = [
     value: ROUTES.PURCHASEORDER,
     label: "purchase order",
   },
+  {
+    value: ROUTES.CHANGEPASSWORD,
+    label: "change password",
+  },
 ];
 
 const HeaderAuth: React.FC = () => {

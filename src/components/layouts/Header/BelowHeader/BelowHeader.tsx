@@ -1,6 +1,13 @@
 import Image from "next/image";
 import React, { useMemo, useState } from "react";
-import { User, ShoppingCart, LogOut, ShoppingBag, Bell } from "lucide-react";
+import {
+  User,
+  ShoppingCart,
+  LogOut,
+  ShoppingBag,
+  Bell,
+  LockKeyhole,
+} from "lucide-react";
 
 import ROUTES from "@/types/routes";
 import FormBelowHeader from "./FormBelowHeader";
@@ -98,6 +105,15 @@ const BelowHeader = () => {
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
+              <DropdownMenuItem>
+                <LockKeyhole className="mr-2 h-4 w-4 cursor-pointer hover:opacity-70" />
+                <Link
+                  href={ROUTES.CHANGEPASSWORD}
+                  className="font-semibold cursor-pointer hover:opacity-70 capitalize"
+                >
+                  Change password
+                </Link>
+              </DropdownMenuItem>
               <DropdownMenuItem onClick={handleLogOut}>
                 <LogOut className="mr-2 h-4 w-4 cursor-pointer hover:opacity-70" />
                 <span className="font-semibold cursor-pointer hover:opacity-70">
