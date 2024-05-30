@@ -8,30 +8,20 @@ export const registerSchema = yup.object().shape({
     .string()
     .required("This field is required")
     .matches(REGEX_PHONE_NUMBER, "Phone number must be a valid phone number"),
-  address: yup.string().required("This field is required"),
+  // address: yup.string().required("This field is required"),
   email: yup.string().email().required("This field is required"),
   password: yup
     .string()
     .min(8, "Password must be equal or great than 8 character(s)")
     .required("This field is required"),
-  confirmPassword: yup
-    .string()
-    .required("This field is required")
-    .when("password", (password, field) =>
-      password
-        ? field
-            .required()
-            .oneOf([yup.ref("password")], "Confirm password is not match")
-        : field
-    )
-    .nonNullable(),
+  confirmPassword: yup.string().required("This field is required"),
 });
 
 export type registerSchemaType = {
   firstName: string;
   lastName: string;
   phone: string;
-  address: string;
+  // address: string;
   email: string;
   password: string;
   confirmPassword: string;
