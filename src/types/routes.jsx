@@ -4,6 +4,7 @@ const ROUTES = {
   CATEGORY: "/category",
   CART: "/cart",
   CHECKOUT: "/checkout",
+  ACTIVEACCOUNT: "active-account",
   SHOP: "/shop",
   SIGNIN: "/login", // done responsive
   SIGNUP: "/register", // done responsive

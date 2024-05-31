@@ -17,7 +17,6 @@ export const schemaProfile = yup
     address: yup.string(),
     email: yup.string(),
     phone: yup.string(),
-    password: yup.string().required(),
   })
   .required();
 

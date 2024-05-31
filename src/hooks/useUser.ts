@@ -5,15 +5,16 @@ import { useGetHeaderConfig } from "./useGetHeaderConfig";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { profileProps } from "@/app/(private)/profile/types/common";
+import { useRouter } from "next/navigation";
+import ROUTES from "@/types/routes";
 
 interface activeProps {
   code: string;
 }
 
 export const useUser = () => {
-  const [checkStatus, setCheckStatus] = useState(true);
   const [editProfile, setEditProfile] = useState<boolean>(false);
-
+  const router = useRouter();
   const [dataProfile, setDataProfile] = useState<IProfile>({
     id: 0,
     firstName: "",
@@ -66,8 +67,10 @@ export const useUser = () => {
       );
 
       if (responseGetCode) {
-        setCheckStatus(false);
         toast.success(responseGetCode?.data?.message);
+        setTimeout(() => {
+          router.push(ROUTES.ACTIVEACCOUNT);
+        }, 2000);
       }
     } catch (error) {
       console.log(error);
@@ -86,6 +89,9 @@ export const useUser = () => {
       );
       if (response) {
         toast.success(response?.data?.message);
+        setTimeout(() => {
+          router.replace(ROUTES.PROFILE);
+        }, 2000);
       }
     } catch (error) {
       toast.error("Incorrect code, please check and enter again.");
@@ -95,19 +101,21 @@ export const useUser = () => {
   const handleUpdateProfile = async (data: profileProps) => {
     try {
       const accessToken = JSON.parse(localStorage.getItem("accessToken")!);
+      const dataProfiles = {
+        email: data?.email || dataProfile?.email,
+        firstName: data?.firstName || dataProfile?.firstName,
+        lastName: data?.lastName || dataProfile?.lastName,
+        phoneNumber: data?.phoneNumber || dataProfile?.phoneNumber,
+        address: data?.address,
+      };
       const response = await axios.patch(
-        `${API_URL}/api/v1/user/${dataProfile?.id}`,
-        {
-          email: data?.email || dataProfile?.email,
-          firstName: data?.firstName || dataProfile?.firstName,
-          lastName: data?.lastName || dataProfile?.lastName,
-          phoneNumber: data?.phoneNumber || dataProfile?.phoneNumber,
-          address: data?.address || dataProfile?.address,
-        },
+        `${API_URL}/api/v1/user/edit-profile`,
+        dataProfiles,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
       if (response) {
         toast.success("Update profile successfully");
+        fetchDataProfile();
         setEditProfile(false);
       }
     } catch (error) {
@@ -121,7 +129,6 @@ export const useUser = () => {
   return {
     dataProfile,
     createDate,
-    checkStatus,
     updateDate,
     handleGetCode,
     handleActiveUser,

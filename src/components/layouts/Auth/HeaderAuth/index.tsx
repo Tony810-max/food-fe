@@ -1,62 +1,7 @@
 "use client";
-import ROUTES from "@/types/routes";
 import { usePathname } from "next/navigation";
 import React, { useMemo } from "react";
-
-const TITLE_HEADING = [
-  {
-    value: ROUTES.SIGNIN,
-    label: "Login",
-  },
-  {
-    value: ROUTES.SIGNUP,
-    label: "Register",
-  },
-  {
-    value: ROUTES.FORGOTPASSWORD,
-    label: "Forgot Password",
-  },
-  {
-    value: ROUTES.SHOP,
-    label: "Product",
-  },
-  {
-    value: ROUTES.SHOP,
-    label: "shop",
-  },
-  {
-    value: ROUTES.CART,
-    label: "cart",
-  },
-  {
-    value: ROUTES.CHECKOUT,
-    label: "checkout",
-  },
-  {
-    value: ROUTES.PROFILE,
-    label: "profile",
-  },
-  {
-    value: ROUTES.ABOUTUS,
-    label: "about us",
-  },
-  {
-    value: ROUTES.BLOG,
-    label: "blog",
-  },
-  {
-    value: ROUTES.FAQ,
-    label: "faq",
-  },
-  {
-    value: ROUTES.PURCHASEORDER,
-    label: "purchase order",
-  },
-  {
-    value: ROUTES.CHANGEPASSWORD,
-    label: "change password",
-  },
-];
+import { TITLE_HEADING } from "../types/labelHeading";
 
 const HeaderAuth: React.FC = () => {
   const pathname = usePathname();
