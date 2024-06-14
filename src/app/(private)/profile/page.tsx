@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InforProfile from "./components/InforProfile";
 import { schemaProfile } from "./types/common";
+import { useAddress } from "@/hooks/useAddress";
 
 const ProfilePage: React.FC = () => {
   const {
@@ -20,9 +21,14 @@ const ProfilePage: React.FC = () => {
     setEditProfile,
   } = useUser();
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, watch, setValue } = useForm({
     resolver: yupResolver(schemaProfile),
   });
+
+  const addressInput = watch("address");
+
+  const { addressSearch, isChooseAddress, setIsChooseAddress } =
+    useAddress(addressInput);
 
   return (
     <form
@@ -47,14 +53,24 @@ const ProfilePage: React.FC = () => {
           value={dataProfile?.lastName}
           status={editProfile}
         />
-
-        <InforProfile
-          title="address"
-          register={register}
-          variable="address"
-          value={dataProfile?.address}
-          status={editProfile}
-        />
+        <div className="relative">
+          <div className={`space-y-3 `}>
+            <label className="font-sans text-lg font-bold leading-normal capitalize">
+              address
+            </label>
+            <Input
+              {...register("address")}
+              className="font-sans text-base font-semibold leading-normal"
+            />
+          </div>
+          <div className="absolute z-10">
+            {addressSearch?.length > 0 &&
+              addressSearch?.map((address: any, index) => (
+                <Button key={address?.description} onClick={() => {
+                }}>{address?.description}</Button>
+              ))}
+          </div>
+        </div>
         <InforProfile
           title="email"
           variable="email"

@@ -27,7 +27,7 @@ const InforProfile: React.FC<infoProfileProps> = ({
   }, [value]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value); 
+    setInputValue(e.target.value);
   };
   return (
     <div className={`space-y-3 ${className}`}>

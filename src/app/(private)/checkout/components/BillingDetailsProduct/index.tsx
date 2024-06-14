@@ -104,7 +104,6 @@ const BillingDetailsProduct = () => {
     }
   };
 
-
   useEffect(() => {
     if (valueCheckbox === "newAddress") {
       setValue("name", "");
