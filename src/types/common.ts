@@ -10,6 +10,7 @@ export interface ICategory {
   createdAt: string;
   updatedAt: string;
 }
+
 export interface IProduct {
   id: number;
   title: string;
@@ -131,3 +132,35 @@ export interface IReviewProduct {
     };
   };
 }
+
+export interface IBlog 
+  {
+    id: number,
+    title: string,
+    description: string,
+    images: string[],
+    isApproved: boolean,
+    commentCount: number,
+    createdAt: string,
+    updatedAt: string,
+    deletedAt: null | string,
+    likeCount: number,
+    author: {
+      id: number,
+      firstName: string
+      lastName: string,
+      email: string,
+      phoneNumber: string,
+      address: null | string,
+      gender: null | string,
+      dateOfBirth: null | string,
+      roles: string[],
+      createdAt: string,
+      updatedAt: string,
+      deletedAt: null | string,
+      isActice: boolean,
+      verifyCode: null
+    },
+    likes: []
+  }
+
