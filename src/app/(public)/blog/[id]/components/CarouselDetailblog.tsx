@@ -20,7 +20,7 @@ const CarouselDetailblog:React.FC<carouselProps> = ({img}) => {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full rounded-lg border"
+      className="w-full rounded-lg border shadow-md"
       opts={{
         loop: true,
       }}
@@ -28,7 +28,7 @@ const CarouselDetailblog:React.FC<carouselProps> = ({img}) => {
       <CarouselContent className='cursor-grabbing '>
         {img?.map((img,index) => (
           <CarouselItem key={index}>
-            <div className="relative h-96 ">
+            <div className="relative h-[26.25rem]">
           <Image 
           src={img} 
           alt='imgBlogDetail' fill priority unoptimized/>

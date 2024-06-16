@@ -30,6 +30,7 @@ export const useUser = () => {
     isActice: false,
     roles: [],
   });
+
   const { headerConfig } = useGetHeaderConfig();
   const createDate = dataProfile?.updatedAt
     ? format(new Date(dataProfile.createdAt), "dd-MM-yyyy hh:mm:ss")
@@ -126,6 +127,7 @@ export const useUser = () => {
   useEffect(() => {
     fetchDataProfile();
   }, [fetchDataProfile]);
+  
   return {
     dataProfile,
     createDate,

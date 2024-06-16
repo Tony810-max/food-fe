@@ -162,5 +162,39 @@ export interface IBlog
       verifyCode: null
     },
     likes: []
-  }
+}
 
+export interface IComment {
+  content: string,
+  author: {
+    id: number,
+    firstName: string,
+    lastName: string,
+    email: string,
+    phoneNumber: string,
+    address: null | string,
+    gender: null | string,
+    dateOfBirth: null | string,
+    roles: string[],
+    createdAt: string,
+    updatedAt: string,
+    deletedAt: null | string,
+    isActice: boolean,
+    verifyCode: null | string
+  },
+  post: {
+    id: number,
+    title: string,
+    description: string,
+    images: string[],
+    isApproved: boolean,
+    commentCount: number,
+    createdAt: string,
+    updatedAt: string,
+    deletedAt: null | string,
+    likeCount: number
+  },
+  id: number,
+  createdAt: string,
+  deletedAt: null | string
+}
