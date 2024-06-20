@@ -1,13 +1,13 @@
-import React from "react";
-import SliderReviewSection from "./SliderReviewSection";
-import HeadingHomePage from "@/components/Heading";
+import React from 'react';
+import SliderReviewSection from './SliderReviewSection';
+import HeadingHomePage from '@/components/Heading';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from '@/components/ui/carousel';
 
 const ReviewSection = () => {
   return (

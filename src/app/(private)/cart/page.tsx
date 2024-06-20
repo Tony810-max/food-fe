@@ -1,10 +1,10 @@
-"use client";
-import React from "react";
-import dynamic from "next/dynamic";
-import PopularProductDetail from "@/components/PopularProductDetail";
-import useProduct from "@/hooks/useProduct";
+'use client';
+import React from 'react';
+import dynamic from 'next/dynamic';
+import PopularProductDetail from '@/components/PopularProductDetail';
+import useProduct from '@/hooks/useProduct';
 
-const CartProduct = dynamic(() => import("./components/CartProduct"), {
+const CartProduct = dynamic(() => import('./components/CartProduct'), {
   ssr: false,
 });
 const CartPage = () => {

@@ -1,12 +1,12 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import TabList from "./TabList";
-import TabPannel from "./TabPannel";
-import useCategory from "@/hooks/useCategory";
-import ROUTES from "@/types/routes";
-import useProduct from "@/hooks/useProduct";
+'use client';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import TabList from './TabList';
+import TabPannel from './TabPannel';
+import useCategory from '@/hooks/useCategory';
+import ROUTES from '@/types/routes';
+import useProduct from '@/hooks/useProduct';
 
 const SaleSection = () => {
   const { categories } = useCategory();
@@ -30,7 +30,7 @@ const SaleSection = () => {
           className="w-full border-2 rounded-[0.5rem] py-5 bg-[#f7f7f8]"
         >
           <Button
-            variant={"default"}
+            variant={'default'}
             className="w-full font-bold leading-normal text-base bg-[#f7f7f8] hover:bg-[#f7f7f8] text-[#f53e32] hover:opacity-70"
           >
             View More
@@ -39,14 +39,14 @@ const SaleSection = () => {
       </div>
 
       <TabPannel
-        image={"/images/cakePannel.webp"}
-        name={"Cake"}
+        image={'/images/cakePannel.webp'}
+        name={'Cake'}
         valueSale={50}
       />
 
       <TabPannel
-        image={"/images/milkPaannel.webp"}
-        name={"Milk"}
+        image={'/images/milkPaannel.webp'}
+        name={'Milk'}
         valueSale={40}
       />
     </div>

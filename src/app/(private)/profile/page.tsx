@@ -1,14 +1,14 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useUser } from "@/hooks/useUser";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import InforProfile from "./components/InforProfile";
-import { schemaProfile } from "./types/common";
-import { useAddress } from "@/hooks/useAddress";
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { useUser } from '@/hooks/useUser';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import InforProfile from './components/InforProfile';
+import { schemaProfile } from './types/common';
+import { useAddress } from '@/hooks/useAddress';
 
 const ProfilePage: React.FC = () => {
   const {
@@ -25,7 +25,7 @@ const ProfilePage: React.FC = () => {
     resolver: yupResolver(schemaProfile),
   });
 
-  const addressInput = watch("address");
+  const addressInput = watch('address');
 
   const { addressSearch, isChooseAddress, setIsChooseAddress } =
     useAddress(addressInput);
@@ -59,15 +59,16 @@ const ProfilePage: React.FC = () => {
               address
             </label>
             <Input
-              {...register("address")}
+              {...register('address')}
               className="font-sans text-base font-semibold leading-normal"
             />
           </div>
           <div className="absolute z-10">
             {addressSearch?.length > 0 &&
               addressSearch?.map((address: any, index) => (
-                <Button key={address?.description} onClick={() => {
-                }}>{address?.description}</Button>
+                <Button key={address?.description} onClick={() => {}}>
+                  {address?.description}
+                </Button>
               ))}
           </div>
         </div>
@@ -94,8 +95,8 @@ const ProfilePage: React.FC = () => {
             <Input
               value={
                 dataProfile?.isActice
-                  ? "Account is actived"
-                  : " Account is not actived"
+                  ? 'Account is actived'
+                  : ' Account is not actived'
               }
               disabled
               className="font-sans text-white text-lg font-bold leading-normal bg-[#fd3f3f] uppercase"
@@ -104,7 +105,7 @@ const ProfilePage: React.FC = () => {
           {dataProfile?.isActice === false && (
             <Button
               type="button"
-              variant={"destructive"}
+              variant={'destructive'}
               className="font-sans text-lg font-medium capitalize"
               onClick={handleGetCode}
             >
@@ -118,7 +119,7 @@ const ProfilePage: React.FC = () => {
         {editProfile && (
           <Button
             type="submit"
-            variant={"destructive"}
+            variant={'destructive'}
             className="font-sans text-lg font-bold capitalize"
           >
             Save
@@ -127,7 +128,7 @@ const ProfilePage: React.FC = () => {
         {!editProfile && (
           <Button
             type="button"
-            variant={"destructive"}
+            variant={'destructive'}
             className="font-sans text-lg font-bold capitalize"
             onClick={() => setEditProfile(true)}
           >

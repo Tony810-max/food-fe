@@ -1,7 +1,7 @@
-"use client";
-import useCategory from "@/hooks/useCategory";
-import useProduct from "@/hooks/useProduct";
-import React, { useMemo } from "react";
+'use client';
+import useCategory from '@/hooks/useCategory';
+import useProduct from '@/hooks/useProduct';
+import React, { useMemo } from 'react';
 
 const CategorySideRight = () => {
   const { categories } = useCategory();
@@ -11,7 +11,7 @@ const CategorySideRight = () => {
   const countProductsByCategory = useMemo(() => {
     return categories.reduce((acc: any, category) => {
       acc[category?.title] = products.filter(
-        (product) => product?.category?.id === category.id
+        (product) => product?.category?.id === category.id,
       ).length;
       return acc;
     }, {});

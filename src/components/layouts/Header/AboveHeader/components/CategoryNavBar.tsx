@@ -4,11 +4,11 @@ import {
   MenubarItem,
   MenubarMenu,
   MenubarTrigger,
-} from "@/components/ui/menubar";
-import useCategory from "@/hooks/useCategory";
-import { ChevronDown } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+} from '@/components/ui/menubar';
+import useCategory from '@/hooks/useCategory';
+import { ChevronDown } from 'lucide-react';
+import Link from 'next/link';
+import React from 'react';
 
 const CategoryNavBar = () => {
   const { categories } = useCategory();
@@ -23,7 +23,7 @@ const CategoryNavBar = () => {
         <MenubarContent>
           {categories?.map((category, index) => (
             <MenubarItem key={index}>
-              <Link href={"/"}>{category.title}</Link>
+              <Link href={'/'}>{category.title}</Link>
             </MenubarItem>
           ))}
         </MenubarContent>

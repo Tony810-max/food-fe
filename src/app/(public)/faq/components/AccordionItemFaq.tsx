@@ -2,8 +2,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import React from "react";
+} from '@/components/ui/accordion';
+import React from 'react';
 
 interface AccordionProp {
   value: string;

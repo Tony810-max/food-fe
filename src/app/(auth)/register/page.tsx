@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import RegisterForm from "./components/RegisterForm";
-import AuthLogo from "@/components/AuthLogo";
+'use client';
+import React from 'react';
+import RegisterForm from './components/RegisterForm';
+import AuthLogo from '@/components/AuthLogo';
 
 const SignUpPage: React.FC = () => {
   return (

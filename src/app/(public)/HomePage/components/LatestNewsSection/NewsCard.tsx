@@ -1,7 +1,7 @@
-import ROUTES from "@/types/routes";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import ROUTES from '@/types/routes';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 interface NewsProps {
   role: string;
@@ -28,7 +28,7 @@ const NewsCard: React.FC<NewsProps> = ({
             {role}
           </span>
           <span className="text-lg text-[#777777] font-sans capitalize">
-            {" "}
+            {' '}
             | {category}
           </span>
         </div>

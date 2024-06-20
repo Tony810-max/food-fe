@@ -1,8 +1,8 @@
-"use client";
-import useCategory from "@/hooks/useCategory";
-import ROUTES from "@/types/routes";
-import Link from "next/link";
-import React from "react";
+'use client';
+import useCategory from '@/hooks/useCategory';
+import ROUTES from '@/types/routes';
+import Link from 'next/link';
+import React from 'react';
 
 const CategoryFooter = () => {
   const { categories } = useCategory();

@@ -1,10 +1,10 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import ReactStars from "react-rating-stars-component";
-import { format } from "date-fns";
-import { useReview } from "@/hooks/useReview";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import ReactStars from 'react-rating-stars-component';
+import { format } from 'date-fns';
+import { useReview } from '@/hooks/useReview';
 
 const ReviewTabAboutProduct = () => {
   const { reviewProductId } = useReview();
@@ -22,7 +22,7 @@ const ReviewTabAboutProduct = () => {
               {`${product?.user?.firstName} ${product?.user?.lastName}`}
             </span>
             <span className="font-sans text-base italic font-normal">
-              {format(new Date(product?.createdAt), "dd-MM-yyy hh:mm:ss")}
+              {format(new Date(product?.createdAt), 'dd-MM-yyy hh:mm:ss')}
             </span>
             <ReactStars
               count={5}

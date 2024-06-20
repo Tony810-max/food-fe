@@ -1,12 +1,12 @@
-"use client";
-import { Product } from "@/types/common";
-import dynamic from "next/dynamic";
-import React from "react";
-import HeadingContentProduct from "./HeadingContentProduct";
-import RateContentProduct from "./RateContentProduct";
-import FormContentProduct from "./FormContentProduct";
+'use client';
+import { Product } from '@/types/common';
+import dynamic from 'next/dynamic';
+import React from 'react';
+import HeadingContentProduct from './HeadingContentProduct';
+import RateContentProduct from './RateContentProduct';
+import FormContentProduct from './FormContentProduct';
 
-const InfoContentProduct = dynamic(() => import("./InfoContentProduct"), {
+const InfoContentProduct = dynamic(() => import('./InfoContentProduct'), {
   ssr: false,
 });
 interface ContentProps {

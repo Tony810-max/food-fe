@@ -1,16 +1,16 @@
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
 export const useAuth = () => {
   const user: any = useMemo(() => {
-    if (typeof localStorage !== "undefined") {
-      const user = localStorage.getItem("user")
-        ? JSON.parse(localStorage?.getItem("user")!)
+    if (typeof localStorage !== 'undefined') {
+      const user = localStorage.getItem('user')
+        ? JSON.parse(localStorage?.getItem('user')!)
         : null;
-      const accessToken = localStorage.getItem("accessToken")
-        ? JSON.parse(localStorage.getItem("accessToken")!)
+      const accessToken = localStorage.getItem('accessToken')
+        ? JSON.parse(localStorage.getItem('accessToken')!)
         : null;
 
-      if (user && accessToken ) return user;
+      if (user && accessToken) return user;
 
       return null;
     }
@@ -18,8 +18,8 @@ export const useAuth = () => {
 
   const handleLogOut = () => {
     if (localStorage && window) {
-      localStorage?.removeItem("user");
-      localStorage?.removeItem("accessToken");
+      localStorage?.removeItem('user');
+      localStorage?.removeItem('accessToken');
       window?.location?.reload();
     }
   };

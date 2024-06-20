@@ -1,9 +1,9 @@
-import React from "react";
-import ItemProductCart from "./ItemProductCart";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import ROUTES from "@/types/routes";
-import { CartProduct } from "@/types/common";
+import React from 'react';
+import ItemProductCart from './ItemProductCart';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import ROUTES from '@/types/routes';
+import { CartProduct } from '@/types/common';
 
 interface ItemProductProps {
   dataCartProduct: CartProduct[];
@@ -40,10 +40,10 @@ const TableProduct: React.FC<ItemProductProps> = ({
           href={ROUTES.SHOP}
           className="font-sans text-base leading-snug text-[#444444] font-normal underline hover:opacity-70"
         >
-          Continue Shopping{" "}
+          Continue Shopping{' '}
         </Link>
         <Link href={ROUTES.CHECKOUT}>
-          <Button variant={"destructive"}>Checkout</Button>
+          <Button variant={'destructive'}>Checkout</Button>
         </Link>
       </div>
     </div>

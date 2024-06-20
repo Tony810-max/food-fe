@@ -1,5 +1,5 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
 
 const PagementMethodImage = () => {
   return (
@@ -9,7 +9,7 @@ const PagementMethodImage = () => {
       </span>
       <div className="relative w-[20.938rem] h-[1.875rem]">
         <Image
-          src={"/images/payment.webp"}
+          src={'/images/payment.webp'}
           alt="payment"
           fill
           sizes="(min-width: 768px) 100vw, (min-width: 1200px) 50vw, 33vw"

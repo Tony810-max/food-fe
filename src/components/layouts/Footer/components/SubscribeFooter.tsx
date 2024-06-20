@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Send } from "lucide-react";
-import React from "react";
-import SocialSubcribe from "../../../Social";
-import Image from "next/image";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Send } from 'lucide-react';
+import React from 'react';
+import SocialSubcribe from '../../../Social';
+import Image from 'next/image';
 
 const SubscribeFooter = () => {
   return (
@@ -26,7 +26,7 @@ const SubscribeFooter = () => {
         <SocialSubcribe />
         <div className="relative w-full h-[4.625rem]">
           <Image
-            src={"/images/imageSub.webp"}
+            src={'/images/imageSub.webp'}
             alt="image"
             fill
             sizes="(min-width: 768px) 100vw, (min-width: 1200px) 50vw, 33vw"

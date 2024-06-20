@@ -1,22 +1,22 @@
-"use client"
-import React, { useEffect } from 'react'
-import Autoplay from "embla-carousel-autoplay"
- 
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-  } from "@/components/ui/carousel"
-  import Image from 'next/image'
+'use client';
+import React, { useEffect } from 'react';
+import Autoplay from 'embla-carousel-autoplay';
 
-interface carouselProps{
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
+import Image from 'next/image';
+
+interface carouselProps {
   img: string[] | undefined;
 }
 
-const CarouselDetailblog:React.FC<carouselProps> = ({img}) => {
-    const plugin = React.useRef(
-        Autoplay({ delay: 1500, stopOnInteraction: false })
-      )
+const CarouselDetailblog: React.FC<carouselProps> = ({ img }) => {
+  const plugin = React.useRef(
+    Autoplay({ delay: 1500, stopOnInteraction: false }),
+  );
   return (
     <Carousel
       plugins={[plugin.current]}
@@ -25,19 +25,17 @@ const CarouselDetailblog:React.FC<carouselProps> = ({img}) => {
         loop: true,
       }}
     >
-      <CarouselContent className='cursor-grabbing '>
-        {img?.map((img,index) => (
+      <CarouselContent className="cursor-grabbing ">
+        {img?.map((img, index) => (
           <CarouselItem key={index}>
             <div className="relative h-[26.25rem]">
-          <Image 
-          src={img} 
-          alt='imgBlogDetail' fill priority unoptimized/>
+              <Image src={img} alt="imgBlogDetail" fill priority unoptimized />
             </div>
           </CarouselItem>
         ))}
       </CarouselContent>
     </Carousel>
-  )
-}
+  );
+};
 
-export default CarouselDetailblog
+export default CarouselDetailblog;

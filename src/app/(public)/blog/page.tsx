@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import MainBlog from "./components/MainBlog";
-import SideRightBLog from "./components/SideRightBLog";
+import MainBlog from './components/MainBlog';
+import SideRightBLog from './components/SideRightBLog';
 
 const BlogPage = () => {
   return (

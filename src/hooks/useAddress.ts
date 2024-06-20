@@ -1,7 +1,7 @@
-import { API_URL } from "@/types/common";
-import { useDebouncedValue } from "@mantine/hooks";
-import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { API_URL } from '@/types/common';
+import { useDebouncedValue } from '@mantine/hooks';
+import axios from 'axios';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useAddress = (address: string | undefined) => {
   const [addressSearch, setAddressSearch] = useState([]);
@@ -13,7 +13,7 @@ export const useAddress = (address: string | undefined) => {
     try {
       try {
         const response = await axios.get(
-          `${API_URL}/api/v1/metadata/${debounce}`
+          `${API_URL}/api/v1/metadata/${debounce}`,
         );
         if (response) {
           if (!response?.data?.predictions) {

@@ -1,11 +1,12 @@
-import Image from "next/image";
-import React from "react";
-import OrganicHealth from "./OrganicHealth";
+import Image from 'next/image';
+import React from 'react';
+import OrganicHealth from './OrganicHealth';
 
 const OrganicSection: React.FC = () => {
   return (
     <div className="container grid grid-cols-2 grid-rows-2 md:grid-rows-1 md:grid-cols-4 gap-4 py-[3.125rem]">
-      <div className="relative w-full min-h-[30rem]">6
+      <div className="relative w-full min-h-[30rem]">
+        6
         <Image
           src="/images/Organic1.webp"
           alt="Organic1"

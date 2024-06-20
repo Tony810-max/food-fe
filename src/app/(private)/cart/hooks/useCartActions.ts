@@ -1,10 +1,10 @@
-import { useGetHeaderConfig } from "@/hooks/useGetHeaderConfig";
-import { API_URL } from "@/types/common";
-import axios from "axios";
-import { toast } from "react-toastify";
+import { useGetHeaderConfig } from '@/hooks/useGetHeaderConfig';
+import { API_URL } from '@/types/common';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const useCartActions = (fetchCartProduct: () => void) => {
-    const { headerConfig } = useGetHeaderConfig();
+  const { headerConfig } = useGetHeaderConfig();
 
   const handleIncreaseProduct = async (id: number, oldQuantity: number) => {
     try {
@@ -18,7 +18,7 @@ export const useCartActions = (fetchCartProduct: () => void) => {
         {
           quantity: newQuantity,
         },
-        headerConfig
+        headerConfig,
       );
 
       if (response) {
@@ -40,7 +40,7 @@ export const useCartActions = (fetchCartProduct: () => void) => {
         {
           quantity: newQuantity,
         },
-        headerConfig
+        headerConfig,
       );
 
       if (response) {
@@ -58,10 +58,10 @@ export const useCartActions = (fetchCartProduct: () => void) => {
       }
       const response = await axios.delete(
         `${API_URL}/api/v1/cart/items/${id}`,
-        headerConfig
+        headerConfig,
       );
       if (response) {
-        toast.success("Delete product successfully");
+        toast.success('Delete product successfully');
         fetchCartProduct();
       }
     } catch (error) {

@@ -1,60 +1,60 @@
-import ROUTES from "@/types/routes";
+import ROUTES from '@/types/routes';
 
 export const TITLE_HEADING = [
   {
     value: ROUTES.SIGNIN,
-    label: "Login",
+    label: 'Login',
   },
   {
     value: ROUTES.SIGNUP,
-    label: "Register",
+    label: 'Register',
   },
   {
     value: ROUTES.FORGOTPASSWORD,
-    label: "Forgot Password",
+    label: 'Forgot Password',
   },
   {
     value: ROUTES.SHOP,
-    label: "Product",
+    label: 'Product',
   },
   {
     value: ROUTES.SHOP,
-    label: "shop",
+    label: 'shop',
   },
   {
     value: ROUTES.CART,
-    label: "cart",
+    label: 'cart',
   },
   {
     value: ROUTES.CHECKOUT,
-    label: "checkout",
+    label: 'checkout',
   },
   {
     value: ROUTES.PROFILE,
-    label: "profile",
+    label: 'profile',
   },
   {
     value: ROUTES.ABOUTUS,
-    label: "about us",
+    label: 'about us',
   },
   {
     value: ROUTES.BLOG,
-    label: "blog",
+    label: 'blog',
   },
   {
     value: ROUTES.FAQ,
-    label: "faq",
+    label: 'faq',
   },
   {
     value: ROUTES.PURCHASEORDER,
-    label: "purchase order",
+    label: 'purchase order',
   },
   {
     value: ROUTES.CHANGEPASSWORD,
-    label: "change password",
+    label: 'change password',
   },
   {
     value: ROUTES.ACTIVEACCOUNT,
-    label: "active account",
+    label: 'active account',
   },
 ];

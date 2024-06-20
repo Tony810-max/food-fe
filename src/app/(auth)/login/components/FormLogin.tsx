@@ -1,19 +1,19 @@
-"use client";
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import ROUTES from "@/types/routes";
-import Link from "next/link";
+'use client';
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import ROUTES from '@/types/routes';
+import Link from 'next/link';
 
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { LoginSubmitType, loginSchema } from "../types/validate";
-import axios from "axios";
-import { API_URL } from "@/types/common";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { LoginSubmitType, loginSchema } from '../types/validate';
+import axios from 'axios';
+import { API_URL } from '@/types/common';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const FormLogin = () => {
   const {
@@ -24,27 +24,27 @@ const FormLogin = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const router = useRouter()
-  
+  const router = useRouter();
+
   const onSubmit: SubmitHandler<LoginSubmitType> = async (data) => {
     try {
       const response = await axios.post(`${API_URL}/api/v1/auth/sign-in`, data);
-      if (response && typeof localStorage !== "undefined") {
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+      if (response && typeof localStorage !== 'undefined') {
+        localStorage.setItem('user', JSON.stringify(response.data.user));
         localStorage.setItem(
-          "accessToken",
-          JSON.stringify(response?.data?.token?.accessToken)
+          'accessToken',
+          JSON.stringify(response?.data?.token?.accessToken),
         );
 
-        toast.success("Login successfully!");
-        const preHref = localStorage.getItem("preHref");
+        toast.success('Login successfully!');
+        const preHref = localStorage.getItem('preHref');
         setTimeout(() => {
-          preHref ? router.push(preHref) : router.push(ROUTES?.HOME)
-          localStorage.removeItem('preHref')
-        },3000)
+          preHref ? router.push(preHref) : router.push(ROUTES?.HOME);
+          localStorage.removeItem('preHref');
+        }, 3000);
       }
     } catch (error) {
-      toast.error("Password or email is incorrect");
+      toast.error('Password or email is incorrect');
     }
   };
 
@@ -55,7 +55,7 @@ const FormLogin = () => {
           Email Address
         </Label>
         <Input
-          {...register("email")}
+          {...register('email')}
           id="email"
           type="text"
           name="email"
@@ -71,7 +71,7 @@ const FormLogin = () => {
           Password
         </Label>
         <Input
-          {...register("password")}
+          {...register('password')}
           id="password"
           type="password"
           name="password"
@@ -97,7 +97,7 @@ const FormLogin = () => {
         </Link>
       </div>
       <div className="flex justify-between items-center">
-        <Button type="submit" variant={"destructive"} className="px-5">
+        <Button type="submit" variant={'destructive'} className="px-5">
           Login
         </Button>
         <Link href={ROUTES.SIGNUP} className="hover:opacity-70 text-gray-500">

@@ -1,18 +1,16 @@
-"use client";
-import React, {  useState } from "react";
-import Social from "@/components/Social";
+'use client';
+import React from 'react';
+import Social from '@/components/Social';
 
-import HealthMainBlog from "./HealthMainBlog";
-import BreadcrumbMainBlog from "./BreadcrumbMainBlog";
-import BannerBlog from "./BannerBlog";
-import ViewBlog from "./ViewBlog";
-import DialogBlog from "./DialogBlog";
-import useBlog from "../../hooks/useBlog";
+import HealthMainBlog from './HealthMainBlog';
+import BreadcrumbMainBlog from './BreadcrumbMainBlog';
+import BannerBlog from './BannerBlog';
+import ViewBlog from './ViewBlog';
+import DialogBlog from './DialogBlog';
+import useBlog from '../../hooks/useBlog';
 
 const MainBlog = () => {
-  const {dataBlog} = useBlog()
-
-  const [checkStatus, setCheckStatus] = useState<boolean>(false);
+  const { dataBlog } = useBlog();
 
   return (
     <div className="w-fit px-4 col-span-2 space-y-[2.125rem]">
@@ -21,15 +19,20 @@ const MainBlog = () => {
         <BreadcrumbMainBlog />
         <HealthMainBlog />
         <div className="space-y-4">
-          {dataBlog?.map(item => (
-          <ViewBlog key={item?.id} checkStatus={checkStatus} onSetCheckStatus={setCheckStatus} likeCount={item?.likeCount} id={item?.id} description={item?.description} image={item?.images[0]} title={item?.title} />
+          {dataBlog?.map((item) => (
+            <ViewBlog
+              key={item?.id}
+              id={item?.id}
+              description={item?.description}
+              image={item?.images[0]}
+              title={item?.title}
+            />
           ))}
         </div>
 
         <div className="flex justify-end">
           <DialogBlog />
         </div>
-        
       </div>
       <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-between border rounded-[0.313rem] p-[1rem]">
         <div className="flex gap-6">

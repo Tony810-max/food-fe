@@ -1,8 +1,8 @@
-import Image from "next/image";
-import React from "react";
-import { Button } from "../../../../../components/ui/button";
-import Link from "next/link";
-import ROUTES from "@/types/routes";
+import Image from 'next/image';
+import React from 'react';
+import { Button } from '../../../../../components/ui/button';
+import Link from 'next/link';
+import ROUTES from '@/types/routes';
 
 interface SaleProps {
   image: string;
@@ -46,7 +46,7 @@ const TabPannel: React.FC<SaleProps> = ({ image, valueSale, name }) => {
 
             <Link href={ROUTES.SHOP} className="flex justify-center">
               <Button
-                variant={"destructive"}
+                variant={'destructive'}
                 className="capitalize font-bold tracking-widest bg-[#f53e32]"
               >
                 shop now

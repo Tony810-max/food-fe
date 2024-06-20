@@ -1,7 +1,7 @@
-"use client";
-import { Input } from "@/components/ui/input";
-import React, { useEffect, useState } from "react";
-import { FieldError, UseFormRegister } from "react-hook-form";
+'use client';
+import { Input } from '@/components/ui/input';
+import React, { useEffect, useState } from 'react';
+import { FieldError, UseFormRegister } from 'react-hook-form';
 
 interface infoProfileProps {
   variable: string;

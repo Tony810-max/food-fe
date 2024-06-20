@@ -1,31 +1,31 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { IProduct } from "@/types/common";
+'use client';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { IProduct } from '@/types/common';
 
-import useCategory from "@/hooks/useCategory";
+import useCategory from '@/hooks/useCategory';
 
-import HeadingHomePage from "@/components/Heading";
-import ProductCard from "../../../../../components/ProductCard";
-import ListItem from "./ListItem";
-import useProduct from "@/hooks/useProduct";
-import Link from "next/link";
-import ROUTES from "@/types/routes";
+import HeadingHomePage from '@/components/Heading';
+import ProductCard from '../../../../../components/ProductCard';
+import ListItem from './ListItem';
+import useProduct from '@/hooks/useProduct';
+import Link from 'next/link';
+import ROUTES from '@/types/routes';
 
 const PopularProductsSection: React.FC = () => {
   const { categories } = useCategory();
   const { products } = useProduct();
-  const [categoryFilter, setCategoryFilter] = useState<number | string>("");
+  const [categoryFilter, setCategoryFilter] = useState<number | string>('');
   const [productFilter, setProductFilter] = useState<IProduct[]>([]);
   useEffect(() => {
-    if (categoryFilter === "all") {
+    if (categoryFilter === 'all') {
       setProductFilter(products);
       return;
     }
 
     if (categoryFilter) {
       const filterdData = products.filter(
-        (product) => product.category.id === categoryFilter
+        (product) => product.category.id === categoryFilter,
       );
 
       setProductFilter(filterdData);
@@ -49,8 +49,8 @@ const PopularProductsSection: React.FC = () => {
             <ListItem
               categoryFilter={categoryFilter}
               onClick={setCategoryFilter}
-              id={"all"}
-              name={"All"}
+              id={'all'}
+              name={'All'}
             />
             {categories.map((category, index) => {
               return (
@@ -72,7 +72,7 @@ const PopularProductsSection: React.FC = () => {
           </div>
           <div className="relative hidden md:block w-full h-full rounded-lg aspect-[1/2]">
             <Image
-              src={"/images/product-banner.webp"}
+              src={'/images/product-banner.webp'}
               alt="product-banner"
               fill
               sizes="(min-width: 768px) 100vw"

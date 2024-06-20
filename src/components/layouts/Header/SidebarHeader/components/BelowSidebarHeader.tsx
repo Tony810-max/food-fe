@@ -1,9 +1,9 @@
-import ROUTES from "@/types/routes";
-import Link from "next/link";
-import React from "react";
-import { useAuth } from "@/hooks/useAuth";
-import { LogOut, ShoppingCart, User } from "lucide-react";
-import { cn } from "@/lib/utils";
+import ROUTES from '@/types/routes';
+import Link from 'next/link';
+import React from 'react';
+import { useAuth } from '@/hooks/useAuth';
+import { LogOut, ShoppingCart, User } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,9 +12,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
-import { Button } from "@/components/ui/button";
-import FormBelowSidebarHeader from "./FormBelowSidebarHeader";
+} from '@radix-ui/react-dropdown-menu';
+import { Button } from '@/components/ui/button';
+import FormBelowSidebarHeader from './FormBelowSidebarHeader';
 
 const BelowSidebarHeader = () => {
   const { handleLogOut, user } = useAuth();
@@ -31,15 +31,15 @@ const BelowSidebarHeader = () => {
             <span className="text-lg font-semibold capitalize">login</span>
           </Link>
         ) : (
-          ""
+          ''
         )}
         <Link
           href={ROUTES.CART}
           className={cn(
-            "flex items-center gap-2 cursor-pointer hover:text-orange-400",
+            'flex items-center gap-2 cursor-pointer hover:text-orange-400',
             {
-              "pointer-events-none": !user,
-            }
+              'pointer-events-none': !user,
+            },
           )}
         >
           <ShoppingCart color="white" width={20} height={20} />
@@ -83,7 +83,7 @@ const BelowSidebarHeader = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
-          ""
+          ''
         )}
       </div>
     </div>

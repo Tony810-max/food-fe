@@ -1,8 +1,8 @@
-import Image from "next/image";
-import React from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import ROUTES from "@/types/routes";
+import Image from 'next/image';
+import React from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import ROUTES from '@/types/routes';
 
 const BannerSection: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const BannerSection: React.FC = () => {
       <div className="container">
         <div className="min-h-[calc(100vh-176px)] ">
           <Image
-            src={"/images/banner.webp"}
+            src={'/images/banner.webp'}
             alt="banner"
             fill
             unoptimized
@@ -35,7 +35,7 @@ const BannerSection: React.FC = () => {
             animi reprehenderit qui a illo eum quibusdam recusandae porro saepe.
           </span>
           <Link href={ROUTES.SHOP} className="mt-4">
-            <Button variant={"destructive"} className=" font-bold">
+            <Button variant={'destructive'} className=" font-bold">
               Shop Now
             </Button>
           </Link>

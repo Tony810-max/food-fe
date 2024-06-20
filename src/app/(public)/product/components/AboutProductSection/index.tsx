@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import HeadingAboutProduct from "./HeadingAboutProduct";
-import { Separator } from "@/components/ui/separator";
-import { Product } from "@/types/common";
-import InformationTabAboutProduct from "./InformationTabAboutProduct";
-import ReviewTabAboutProduct from "./ReviewTabAboutProduct";
-import DescriptionTabAboutProduct from "./DescriptionTabAboutProduct";
-import CommentTabAboutProduct from "./CommentTabAboutProduct";
+import React, { useState } from 'react';
+import HeadingAboutProduct from './HeadingAboutProduct';
+import { Separator } from '@/components/ui/separator';
+import { Product } from '@/types/common';
+import InformationTabAboutProduct from './InformationTabAboutProduct';
+import ReviewTabAboutProduct from './ReviewTabAboutProduct';
+import DescriptionTabAboutProduct from './DescriptionTabAboutProduct';
+import CommentTabAboutProduct from './CommentTabAboutProduct';
 
 interface AboutProps {
   data: Product | undefined;
@@ -14,23 +14,23 @@ interface AboutProps {
 const DATA_HEADING = [
   {
     id: 1,
-    name: "Description",
-    value: "description",
+    name: 'Description',
+    value: 'description',
   },
   {
     id: 2,
-    name: "Information",
-    value: "information",
+    name: 'Information',
+    value: 'information',
   },
   {
     id: 3,
-    name: "Review",
-    value: "review",
+    name: 'Review',
+    value: 'review',
   },
   {
     id: 4,
-    name: "Comment",
-    value: "comment",
+    name: 'Comment',
+    value: 'comment',
   },
 ];
 
@@ -39,14 +39,14 @@ const AboutProduct: React.FC<AboutProps> = ({ data }) => {
 
   const renderContent = () => {
     switch (valueLabel) {
-      case "description":
+      case 'description':
         return <DescriptionTabAboutProduct description={data?.description} />;
 
-      case "information":
+      case 'information':
         return <InformationTabAboutProduct />;
-      case "review":
+      case 'review':
         return <ReviewTabAboutProduct />;
-      case "comment":
+      case 'comment':
         return <CommentTabAboutProduct />;
 
       default:

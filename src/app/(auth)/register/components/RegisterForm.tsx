@@ -1,13 +1,13 @@
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { yupResolver } from "@hookform/resolvers/yup";
-import React from "react";
-import { useForm } from "react-hook-form";
-import { registerSchema } from "../types/validate";
-import Link from "next/link";
-import ROUTES from "@/types/routes";
-import { Button } from "@/components/ui/button";
-import useRegister from "../hook/useRegister";
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { yupResolver } from '@hookform/resolvers/yup';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { registerSchema } from '../types/validate';
+import Link from 'next/link';
+import ROUTES from '@/types/routes';
+import { Button } from '@/components/ui/button';
+import useRegister from '../hook/useRegister';
 
 const RegisterForm = () => {
   const {
@@ -17,12 +17,12 @@ const RegisterForm = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
+      firstName: '',
+      lastName: '',
+      email: '',
       // address: "",
-      password: "",
-      phone: "",
+      password: '',
+      phone: '',
     },
     resolver: yupResolver(registerSchema),
   });
@@ -36,7 +36,7 @@ const RegisterForm = () => {
             First Name
           </Label>
           <Input
-            {...register("firstName")}
+            {...register('firstName')}
             type="text"
             id="firstName"
             placeholder="Enter your first name"
@@ -53,7 +53,7 @@ const RegisterForm = () => {
             Last Name
           </Label>
           <Input
-            {...register("lastName")}
+            {...register('lastName')}
             type="text"
             id="lastName"
             placeholder="Enter your last name"
@@ -70,7 +70,7 @@ const RegisterForm = () => {
             Email
           </Label>
           <Input
-            {...register("email")}
+            {...register('email')}
             type="email"
             id="email"
             placeholder="Enter your email"
@@ -87,7 +87,7 @@ const RegisterForm = () => {
             Phone Number
           </Label>
           <Input
-            {...register("phone")}
+            {...register('phone')}
             type="text"
             id="phone"
             placeholder="Enter your phone number"
@@ -121,7 +121,7 @@ const RegisterForm = () => {
             Password
           </Label>
           <Input
-            {...register("password")}
+            {...register('password')}
             type="password"
             id="password"
             placeholder="Enter your password"
@@ -142,13 +142,13 @@ const RegisterForm = () => {
             Confirm Password
           </Label>
           <Input
-            {...register("confirmPassword")}
+            {...register('confirmPassword')}
             type="password"
             id="confirmPassword"
             placeholder="Confirm Password"
             className="w-full"
           />
-          {password && checkPassword !== "" && (
+          {password && checkPassword !== '' && (
             <p className="text-red-500 leading-normal font-medium">
               {checkPassword}
             </p>
@@ -157,7 +157,7 @@ const RegisterForm = () => {
       </div>
       <div className="flex justify-between items-center py-6">
         <Button
-          variant={"default"}
+          variant={'default'}
           type="submit"
           className="bg-[#F53E32] text-white text-lg"
         >

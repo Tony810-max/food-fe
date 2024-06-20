@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Mail, MapPin, Phone } from "lucide-react";
-import AuthLogo from "@/components/AuthLogo";
-import ContactItem from "./ContactItem";
+import { Mail, MapPin, Phone } from 'lucide-react';
+import AuthLogo from '@/components/AuthLogo';
+import ContactItem from './ContactItem';
 
 const ContactFooter = () => {
   return (

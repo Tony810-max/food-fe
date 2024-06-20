@@ -1,6 +1,6 @@
-import React from "react";
-import { Button } from "./ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React from 'react';
+import { Button } from './ui/button';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface PaginationProps {
   currentPage: number;
@@ -25,7 +25,9 @@ const Pagination: React.FC<PaginationProps> = ({
       >
         <ChevronLeft />
       </Button>
-      <div>{totalProduct < limit ? currentPage : `${ currentPage } / ${ totalPage }`} </div>
+      <div>
+        {totalProduct < limit ? currentPage : `${currentPage} / ${totalPage}`}{' '}
+      </div>
       <Button
         disabled={totalProduct < limit || currentPage === totalPage}
         onClick={() => setCurrentPage(currentPage + 1)}

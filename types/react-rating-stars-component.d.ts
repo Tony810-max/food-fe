@@ -1,5 +1,5 @@
 // ./types/react-rating-stars-component.d.ts
-declare module "react-rating-stars-component" {
+declare module 'react-rating-stars-component' {
   export interface ReactStarsProps {
     count?: number;
     onChange?: (newRating: number) => void;

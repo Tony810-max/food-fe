@@ -1,7 +1,7 @@
-import AuthLogo from "@/components/AuthLogo";
+import AuthLogo from '@/components/AuthLogo';
 
-import React from "react";
-import FormLogin from "./components/FormLogin";
+import React from 'react';
+import FormLogin from './components/FormLogin';
 
 const SignInPage: React.FC = () => {
   return (

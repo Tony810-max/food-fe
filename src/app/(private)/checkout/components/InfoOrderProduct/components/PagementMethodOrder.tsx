@@ -1,5 +1,5 @@
-import Checkbox from "@/components/Checkbox";
-import React from "react";
+import Checkbox from '@/components/Checkbox';
+import React from 'react';
 
 const PagementMethodOrder = () => {
   return (
@@ -11,9 +11,9 @@ const PagementMethodOrder = () => {
         Please select the preferred payment method to use on this order.
       </span>
       <div className="space-y-[0.938rem]">
-        <Checkbox id={"delivery"} value="delivery" title={"Cash On Delivery"} />
-        <Checkbox id={"UPI"} value="UPI" title={"UPI"} />
-        <Checkbox id={"transfer"} value="transfer" title={"Bank Transfer"} />
+        <Checkbox id={'delivery'} value="delivery" title={'Cash On Delivery'} />
+        <Checkbox id={'UPI'} value="UPI" title={'UPI'} />
+        <Checkbox id={'transfer'} value="transfer" title={'Bank Transfer'} />
       </div>
     </div>
   );

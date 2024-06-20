@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Slash } from "lucide-react";
-import ROUTES from "@/types/routes";
+} from '@/components/ui/breadcrumb';
+import { Slash } from 'lucide-react';
+import ROUTES from '@/types/routes';
 
 const BreadcrumbMainBlog = () => {
   return (

@@ -1,6 +1,6 @@
-import { API_URL, IProduct } from "@/types/common";
-import axios from "axios";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { API_URL, IProduct } from '@/types/common';
+import axios from 'axios';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const useProduct = (limit = 10) => {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -12,7 +12,7 @@ const useProduct = (limit = 10) => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `${API_URL}/api/v1/products?page=${currentPage}&limit=${limit}`
+        `${API_URL}/api/v1/products?page=${currentPage}&limit=${limit}`,
       );
       if (response) {
         setProducts(response.data.products);

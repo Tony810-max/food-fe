@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/carousel";
+} from '@/components/ui/carousel';
 
-import Autoplay from "embla-carousel-autoplay";
-import useProduct from "@/hooks/useProduct";
-import Image from "next/image";
+import Autoplay from 'embla-carousel-autoplay';
+import useProduct from '@/hooks/useProduct';
+import Image from 'next/image';
 
 const BannerBlog = () => {
   const { products } = useProduct();
@@ -19,7 +19,7 @@ const BannerBlog = () => {
         }),
       ]}
       opts={{
-        align: "start",
+        align: 'start',
         loop: true,
       }}
     >

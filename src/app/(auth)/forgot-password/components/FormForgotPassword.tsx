@@ -1,14 +1,14 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import React from "react";
-import { schema } from "../types/comon";
+'use client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import React from 'react';
+import { schema } from '../types/comon';
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import axios, { AxiosError } from "axios";
-import { API_URL } from "@/types/common";
-import { toast } from "react-toastify";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import axios, { AxiosError } from 'axios';
+import { API_URL } from '@/types/common';
+import { toast } from 'react-toastify';
 
 interface dataProps {
   email: string;
@@ -29,7 +29,7 @@ const FormForgotPassword = () => {
         `${API_URL}/api/v1/auth/forgot-password`,
         {
           email: data?.email,
-        }
+        },
       );
       if (response) {
         toast.success(response?.data?.message);
@@ -38,7 +38,7 @@ const FormForgotPassword = () => {
       const axiosError = error as AxiosError;
       if (axiosError?.response?.status === 404) {
         toast.error(
-          "The email has not been registered, please sign up to continue."
+          'The email has not been registered, please sign up to continue.',
         );
       }
     }
@@ -46,7 +46,7 @@ const FormForgotPassword = () => {
 
   return (
     <form className="space-y-4" onSubmit={handleSubmit(handleForgotPassword)}>
-      <Input placeholder="Enter email address..." {...register("email")} />
+      <Input placeholder="Enter email address..." {...register('email')} />
       {errors.email?.message && (
         <p className="font-sans text-base text-red-600 ">
           {errors.email?.message}
@@ -54,7 +54,7 @@ const FormForgotPassword = () => {
       )}
       <Button
         type="submit"
-        variant={"destructive"}
+        variant={'destructive'}
         className="font-sans text-lg w-full"
       >
         Confirm

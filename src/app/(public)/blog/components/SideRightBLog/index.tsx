@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import SearchSideRight from "./SearchSideRight";
-import CategorySideRight from "./CategorySideRight";
-import RecentPostSideRight from "./RecentPostSideRight";
-import LatestSideRight from "./LatestSideRight";
-import PopularSideRight from "./PopularSideRight";
+import SearchSideRight from './SearchSideRight';
+import CategorySideRight from './CategorySideRight';
+import RecentPostSideRight from './RecentPostSideRight';
+import LatestSideRight from './LatestSideRight';
+import PopularSideRight from './PopularSideRight';
 
 const SideRightBLog = () => {
   return (

@@ -1,5 +1,5 @@
-import Image from "next/image";
-import React, { useState } from "react";
+import Image from 'next/image';
+import React, { useState } from 'react';
 import {
   User,
   ShoppingCart,
@@ -7,12 +7,12 @@ import {
   ShoppingBag,
   Bell,
   LockKeyhole,
-} from "lucide-react";
+} from 'lucide-react';
 
-import ROUTES from "@/types/routes";
-import FormBelowHeader from "./FormBelowHeader";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import ROUTES from '@/types/routes';
+import FormBelowHeader from './FormBelowHeader';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 import {
   DropdownMenu,
@@ -22,16 +22,16 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from '@/components/ui/popover';
 
-import { Button } from "@/components/ui/button";
-import { useAuth } from "@/hooks/useAuth";
+import { Button } from '@/components/ui/button';
+import { useAuth } from '@/hooks/useAuth';
 
 const BelowHeader = () => {
   const { handleLogOut, user } = useAuth();
@@ -41,7 +41,7 @@ const BelowHeader = () => {
     <div className="container py-5 lg:flex items-center gap-2 justify-between hidden ">
       <Link href={ROUTES.HOME} className="relative aspect-[5/2] w-40">
         <Image
-          src={"/images/logo.webp"}
+          src={'/images/logo.webp'}
           alt="logo"
           fill
           sizes="(min-width: 768px) 100vw"
@@ -58,15 +58,15 @@ const BelowHeader = () => {
             <span className="text-lg font-semibold capitalize">login</span>
           </Link>
         ) : (
-          ""
+          ''
         )}
         <Link
           href={ROUTES.CART}
           className={cn(
-            "flex items-center gap-2 cursor-pointer hover:text-orange-400",
+            'flex items-center gap-2 cursor-pointer hover:text-orange-400',
             {
-              "pointer-events-none": !user,
-            }
+              'pointer-events-none': !user,
+            },
           )}
         >
           <ShoppingCart width={20} height={20} />
@@ -75,10 +75,10 @@ const BelowHeader = () => {
         <Link
           href={ROUTES.PURCHASEORDER}
           className={cn(
-            "flex items-center gap-2 cursor-pointer hover:text-orange-400",
+            'flex items-center gap-2 cursor-pointer hover:text-orange-400',
             {
-              "pointer-events-none": !user,
-            }
+              'pointer-events-none': !user,
+            },
           )}
         >
           <ShoppingBag width={20} height={20} />
@@ -88,7 +88,7 @@ const BelowHeader = () => {
         </Link>
         {user ? (
           <DropdownMenu>
-            <DropdownMenuTrigger asChild className={"w-56"}>
+            <DropdownMenuTrigger asChild className={'w-56'}>
               <Button variant="outline">{`${user?.firstName} ${user?.lastName}`}</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
@@ -123,7 +123,7 @@ const BelowHeader = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
-          ""
+          ''
         )}
         {user ? (
           <div>
@@ -143,7 +143,7 @@ const BelowHeader = () => {
             </Popover>
           </div>
         ) : (
-          ""
+          ''
         )}
       </div>
     </div>

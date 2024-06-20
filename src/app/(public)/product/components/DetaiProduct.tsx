@@ -1,10 +1,10 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import ImageProduct from "./ImageProduct";
-import ContentProduct from "./ContentProduct";
-import AboutProduct from "./AboutProductSection";
-import { Product } from "@/types/common";
+import ImageProduct from './ImageProduct';
+import ContentProduct from './ContentProduct';
+import AboutProduct from './AboutProductSection';
+import { Product } from '@/types/common';
 
 interface Props {
   dataDetailProducts: Product | undefined;

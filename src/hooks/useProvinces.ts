@@ -1,6 +1,6 @@
-import { API_URL, IProvince } from "@/types/common";
-import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { API_URL, IProvince } from '@/types/common';
+import axios from 'axios';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useProvinces = () => {
   const [provinces, setProvinces] = useState<IProvince[]>([]);

@@ -1,8 +1,8 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import React, { useEffect, useState } from "react";
-import CheckBox from "../../../../../components/Checkbox";
+'use client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import React, { useEffect, useState } from 'react';
+import CheckBox from '../../../../../components/Checkbox';
 import {
   Select,
   SelectContent,
@@ -11,17 +11,17 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select';
 
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { API_URL } from "@/types/common";
-import axios from "axios";
-import { useGetHeaderConfig } from "@/hooks/useGetHeaderConfig";
-import { useProvinces } from "@/hooks/useProvinces";
-import useCartProduct from "@/hooks/useCartProduct";
-import { useAddress } from "@/hooks/useAddress";
-import { toast } from "react-toastify";
-import { useUser } from "@/hooks/useUser";
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { API_URL } from '@/types/common';
+import axios from 'axios';
+import { useGetHeaderConfig } from '@/hooks/useGetHeaderConfig';
+import { useProvinces } from '@/hooks/useProvinces';
+import useCartProduct from '@/hooks/useCartProduct';
+import { useAddress } from '@/hooks/useAddress';
+import { toast } from 'react-toastify';
+import { useUser } from '@/hooks/useUser';
 
 type Inputs = {
   address: string;
@@ -38,7 +38,7 @@ const BillingDetailsProduct = () => {
   const { headerConfig } = useGetHeaderConfig();
   const { dataCartProduct } = useCartProduct();
   const { provinces } = useProvinces();
-  const [valueCheckbox, setValueCheckbox] = useState("existingAddress");
+  const [valueCheckbox, setValueCheckbox] = useState('existingAddress');
   const {
     register,
     handleSubmit,
@@ -48,10 +48,10 @@ const BillingDetailsProduct = () => {
     setValue,
     reset,
   } = useForm<Inputs>({
-    mode: "onChange",
+    mode: 'onChange',
   });
 
-  const [address] = watch(["address"]);
+  const [address] = watch(['address']);
   const { addressSearch, setIsChooseAddress, isChooseAddress } =
     useAddress(address);
 
@@ -92,11 +92,11 @@ const BillingDetailsProduct = () => {
       const response = await axios.post(
         `${API_URL}/api/v1/orders`,
         formData,
-        headerConfig
+        headerConfig,
       );
       if (response) {
         toast.success(
-          "Ban da dat hang thanh cong, hang dang duoc giao den ban"
+          'Ban da dat hang thanh cong, hang dang duoc giao den ban',
         );
       }
     } catch (error) {
@@ -105,9 +105,9 @@ const BillingDetailsProduct = () => {
   };
 
   useEffect(() => {
-    if (valueCheckbox === "newAddress") {
-      setValue("name", "");
-      setValue("address", "");
+    if (valueCheckbox === 'newAddress') {
+      setValue('name', '');
+      setValue('address', '');
     }
   }, [setValue, valueCheckbox]);
 
@@ -126,16 +126,16 @@ const BillingDetailsProduct = () => {
           </span>
           <div className="flex gap-[3.074rem] py-3">
             <CheckBox
-              id={"existingAddress"}
-              value={"existingAddress"}
-              title={"I want to use an existing address"}
+              id={'existingAddress'}
+              value={'existingAddress'}
+              title={'I want to use an existing address'}
               onSetValueCheckbox={setValueCheckbox}
               valueCheckbox={valueCheckbox}
             />
             <CheckBox
-              value={"newAddress"}
-              id={"newAddress"}
-              title={"I want to use a new address"}
+              value={'newAddress'}
+              id={'newAddress'}
+              title={'I want to use a new address'}
               onSetValueCheckbox={setValueCheckbox}
               valueCheckbox={valueCheckbox}
             />
@@ -143,13 +143,13 @@ const BillingDetailsProduct = () => {
           <div className="w-full grid grid-cols-2 gap-[1.875rem] pt-[1.938rem]">
             <div className="col-span-2">
               <label>Full name*</label>
-              {valueCheckbox === "existingAddress" ? (
+              {valueCheckbox === 'existingAddress' ? (
                 <Input
                   value={`${dataProfile?.firstName} ${dataProfile?.lastName}`}
-                  {...register("name", { required: true })}
+                  {...register('name', { required: true })}
                 />
               ) : (
-                <Input {...register("name", { required: true })} />
+                <Input {...register('name', { required: true })} />
               )}
 
               {errors.name && (
@@ -161,14 +161,14 @@ const BillingDetailsProduct = () => {
             <div className="col-span-2">
               <label>Address*</label>
               <div className="relative">
-                {valueCheckbox === "existingAddress" ? (
+                {valueCheckbox === 'existingAddress' ? (
                   <Input
                     value={dataProfile?.address}
-                    {...register("address", { required: true })}
+                    {...register('address', { required: true })}
                   />
                 ) : (
                   <Input
-                    {...(register("address", { required: true }), reset)}
+                    {...(register('address', { required: true }), reset)}
                   />
                 )}
                 {errors.address && (
@@ -181,7 +181,7 @@ const BillingDetailsProduct = () => {
                     {addressSearch?.map((address: any) => (
                       <button
                         onClick={() => {
-                          setValue("address", address.description);
+                          setValue('address', address.description);
                           setIsChooseAddress(true);
                         }}
                         key={address.place_id}
@@ -220,7 +220,7 @@ const BillingDetailsProduct = () => {
             </div>
             <div>
               <label>Country*</label>
-              <Input {...register("country", { required: true })} />
+              <Input {...register('country', { required: true })} />
               {errors.country && (
                 <span className="text-red-500 italic">
                   This field is required
@@ -229,7 +229,7 @@ const BillingDetailsProduct = () => {
             </div>
             <div>
               <label>Region State*</label>
-              <Input {...register("state", { required: true })} />
+              <Input {...register('state', { required: true })} />
               {errors.state && (
                 <span className="text-red-500 italic">
                   This field is required
@@ -238,7 +238,7 @@ const BillingDetailsProduct = () => {
             </div>
             <div>
               <label>Phone number*</label>
-              <Input {...register("phoneNumber", { required: true })} />
+              <Input {...register('phoneNumber', { required: true })} />
               {errors.phoneNumber && (
                 <span className="text-red-500 italic">
                   This field is required
@@ -247,13 +247,13 @@ const BillingDetailsProduct = () => {
             </div>
             <div>
               <label>Post Code</label>
-              <Input {...register("postCode", { required: true })} />
+              <Input {...register('postCode', { required: true })} />
             </div>
           </div>
         </div>
       </div>
       <div className="flex justify-end">
-        <Button type="submit" variant={"destructive"}>
+        <Button type="submit" variant={'destructive'}>
           Place Order
         </Button>
       </div>

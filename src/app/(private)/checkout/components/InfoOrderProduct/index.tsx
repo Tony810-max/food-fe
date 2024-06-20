@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import PagementMethodOrder from "./components/PagementMethodOrder";
-import PagementMethodImage from "./components/PagementMethodImage";
-import SummaryOrderProduct from "./components/SummaryOrderProduct";
+import PagementMethodOrder from './components/PagementMethodOrder';
+import PagementMethodImage from './components/PagementMethodImage';
+import SummaryOrderProduct from './components/SummaryOrderProduct';
 
 const InfoOrderProduct = () => {
   return (

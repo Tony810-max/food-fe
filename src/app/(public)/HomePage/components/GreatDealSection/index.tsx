@@ -1,8 +1,8 @@
-import Image from "next/image";
-import React from "react";
-import dynamic from "next/dynamic";
+import Image from 'next/image';
+import React from 'react';
+import dynamic from 'next/dynamic';
 
-const TimerBoxGreatDeal = dynamic(() => import("./TimerBoxGreatDeal"), {
+const TimerBoxGreatDeal = dynamic(() => import('./TimerBoxGreatDeal'), {
   ssr: false,
 });
 

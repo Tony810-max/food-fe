@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import React from "react";
+import { Button } from '@/components/ui/button';
+import React from 'react';
 
 interface HeadingProps {
   onSetValueLabel: (value: string) => void;
@@ -19,7 +19,7 @@ const HeadingAboutProduct: React.FC<HeadingProps> = ({
       {data?.map((data) => (
         <Button
           key={data.id}
-          variant={"ghost"}
+          variant={'ghost'}
           className="text-center font-sans text-lg leading-normal font-semibold"
           onClick={() => onSetValueLabel(data.value)}
         >

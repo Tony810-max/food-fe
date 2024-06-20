@@ -1,4 +1,4 @@
-declare module "embla-carousel-autoplay" {
+declare module 'embla-carousel-autoplay' {
   interface AutoplayOptions {
     delay?: number;
     stopOnInteraction?: boolean;

@@ -1,8 +1,8 @@
-import { AlignLeft, Phone } from "lucide-react";
-import React from "react";
-import Link from "next/link";
-import ROUTES from "@/types/routes";
-import CategoryNavBar from "./components/CategoryNavBar";
+import { AlignLeft, Phone } from 'lucide-react';
+import React from 'react';
+import Link from 'next/link';
+import ROUTES from '@/types/routes';
+import CategoryNavBar from './components/CategoryNavBar';
 
 interface AboveProps {
   check: boolean;

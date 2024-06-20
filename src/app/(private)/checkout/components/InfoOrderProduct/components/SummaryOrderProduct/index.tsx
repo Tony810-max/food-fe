@@ -1,8 +1,8 @@
-"use client";
-import React from "react";
-import PriceSummary from "./PriceSummary";
-import ProductSummary from "./ProductSummary";
-import useCartProduct from "@/hooks/useCartProduct";
+'use client';
+import React from 'react';
+import PriceSummary from './PriceSummary';
+import ProductSummary from './ProductSummary';
+import useCartProduct from '@/hooks/useCartProduct';
 
 const SummaryOrderPrice = () => {
   const { dataCartProduct, summaryValue } = useCartProduct();

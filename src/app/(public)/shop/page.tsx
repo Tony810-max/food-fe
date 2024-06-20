@@ -1,13 +1,13 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import SidebarProduct from "./components/SidebarProduct";
-import HeadingFilterShop from "./components/HeadingFilterShop";
-import ProductCard from "@/components/ProductCard";
-import useProduct from "@/hooks/useProduct";
-import { IProduct } from "@/types/common";
-import Pagination from "@/components/Pagination";
+'use client';
+import React, { useEffect, useState } from 'react';
+import SidebarProduct from './components/SidebarProduct';
+import HeadingFilterShop from './components/HeadingFilterShop';
+import ProductCard from '@/components/ProductCard';
+import useProduct from '@/hooks/useProduct';
+import { IProduct } from '@/types/common';
+import Pagination from '@/components/Pagination';
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from 'next/navigation';
 
 const ShopPage = () => {
   const {
@@ -20,15 +20,15 @@ const ShopPage = () => {
     limit,
   } = useProduct(6);
   const [currentProducts, setCurrentProducts] = useState<IProduct[]>([]);
-  const [curCategory, setCurCategory] = useState("");
+  const [curCategory, setCurCategory] = useState('');
   const param = useSearchParams();
-  const search = param?.get("search");
-  const category = param?.get("category");
+  const search = param?.get('search');
+  const category = param?.get('category');
 
   const handleFilter = () => {
     if (!curCategory) {
       const filterdData = products.filter(
-        (product) => Number(product.price) <= Number(priceFilter[0])
+        (product) => Number(product.price) <= Number(priceFilter[0]),
       );
       setCurrentProducts(filterdData);
       return;
@@ -37,7 +37,7 @@ const ShopPage = () => {
       const filterdData = products.filter(
         (product) =>
           Number(product.price) <= Number(priceFilter[0]) ||
-          product?.category?.title === curCategory
+          product?.category?.title === curCategory,
       );
       setCurrentProducts(filterdData);
       return;

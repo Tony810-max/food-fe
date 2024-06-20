@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import { Input } from "@/components/ui/input";
+'use client';
+import React from 'react';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -8,13 +8,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import useCategory from "@/hooks/useCategory";
-import ROUTES from "@/types/routes";
-import { useRouter } from "next/navigation";
+} from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
+import { Search } from 'lucide-react';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import useCategory from '@/hooks/useCategory';
+import ROUTES from '@/types/routes';
+import { useRouter } from 'next/navigation';
 
 type Inputs = {
   searchValue: string;
@@ -35,7 +35,7 @@ const FormBelowSidebarHeader = () => {
     const searchItem = data?.searchValue?.trim()?.toLocaleLowerCase();
 
     router?.replace(
-      `${ROUTES?.SHOP}?search=${searchItem}&category=${data?.categoryValue}`
+      `${ROUTES?.SHOP}?search=${searchItem}&category=${data?.categoryValue}`,
     );
   };
 
@@ -44,13 +44,13 @@ const FormBelowSidebarHeader = () => {
       <Input
         type="text"
         placeholder="Search for items..."
-        {...register("searchValue")}
+        {...register('searchValue')}
         className="border border-[#64B496] min-w-80 rounded-r-none focus:outline-transparent active:outline-transparent focus-visible:ring-transparent"
       />
       <div className="flex justify-center">
         <Controller
-          name="categoryValue" 
-          control={control} 
+          name="categoryValue"
+          control={control}
           render={({ field }) => (
             <Select {...field} onValueChange={field.onChange}>
               <SelectTrigger className="w-full rounded-none border border-[#64B496] border-l-transparent focus:outline-transparent active:outline-transparent focus-visible:ring-transparent">
@@ -60,7 +60,7 @@ const FormBelowSidebarHeader = () => {
                 ref={field.ref}
                 className=" focus:outline-transparent active:outline-transparent focus-visible:ring-transparent"
               >
-                <SelectGroup >
+                <SelectGroup>
                   {categories?.map((item) => (
                     <SelectItem key={item.id} value={item?.title}>
                       {item?.title}

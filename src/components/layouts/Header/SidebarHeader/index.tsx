@@ -1,10 +1,10 @@
-import Link from "next/link";
-import React from "react";
-import CategoryNavBar from "../AboveHeader/components/CategoryNavBar";
-import ROUTES from "@/types/routes";
-import { X } from "lucide-react";
-import BelowSidebarHeader from "./components/BelowSidebarHeader";
-import Image from "next/image";
+import Link from 'next/link';
+import React from 'react';
+import CategoryNavBar from '../AboveHeader/components/CategoryNavBar';
+import ROUTES from '@/types/routes';
+import { X } from 'lucide-react';
+import BelowSidebarHeader from './components/BelowSidebarHeader';
+import Image from 'next/image';
 
 interface SidebarHeaderProps {
   check: boolean;
@@ -20,7 +20,7 @@ const SidebarHeader: React.FC<SidebarHeaderProps> = ({ onSetCheck, check }) => {
       >
         <X color="black" />
       </div>
-     
+
       <div className="flex flex-col items-center gap-6">
         <Link href={ROUTES.HOME} className="text-white font-semibold text-base">
           Home

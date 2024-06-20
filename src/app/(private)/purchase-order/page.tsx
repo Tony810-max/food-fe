@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   Table,
@@ -8,9 +8,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import axios from "axios";
-import { API_URL } from "@/types/common";
+} from '@/components/ui/table';
+import axios from 'axios';
+import { API_URL } from '@/types/common';
 
 const PurchaseOrder = () => {
   const getOrderId = async () => {

@@ -1,7 +1,7 @@
-import { API_URL, CartProduct } from "@/types/common";
-import axios from "axios";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { useGetHeaderConfig } from "./useGetHeaderConfig";
+import { API_URL, CartProduct } from '@/types/common';
+import axios from 'axios';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useGetHeaderConfig } from './useGetHeaderConfig';
 
 const useCartProduct = () => {
   const [dataCartProduct, setDataCartProduct] = useState<CartProduct[]>([]);
@@ -14,7 +14,7 @@ const useCartProduct = () => {
       }
       const respone = await axios.get(
         `${API_URL}/api/v1/cart/user`,
-        headerConfig
+        headerConfig,
       );
       if (respone) {
         setDataCartProduct(respone.data.cart.items);

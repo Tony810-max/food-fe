@@ -1,5 +1,5 @@
-import React from "react";
-import FormForgotPassword from "./FormForgotPassword";
+import React from 'react';
+import FormForgotPassword from './FormForgotPassword';
 
 const ContentForgotPassword = () => {
   return (

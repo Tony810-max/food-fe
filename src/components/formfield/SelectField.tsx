@@ -1,10 +1,5 @@
-import React from "react";
-import {
-  Control,
-  Controller,
-  FieldPath,
-  FieldValues,
-} from "react-hook-form";
+import React from 'react';
+import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form';
 import {
   Select,
   SelectContent,
@@ -13,7 +8,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
+} from '../ui/select';
 
 interface IData {
   label: string;

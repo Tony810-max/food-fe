@@ -1,11 +1,11 @@
-import * as yup from "yup";
+import * as yup from 'yup';
 
 export const schemaActive = yup
   .object()
   .shape({
     code: yup
       .string()
-      .required("Please enter the code sent to your email into this field."),
+      .required('Please enter the code sent to your email into this field.'),
   })
   .required();
 

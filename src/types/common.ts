@@ -1,7 +1,7 @@
 export const REGEX_PHONE_NUMBER =
   /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
 
-export const API_URL = "https://phanhoangquoctu-datn-be.onrender.com";
+export const API_URL = 'https://phanhoangquoctu-datn-be.onrender.com';
 
 export interface ICategory {
   id: number;
@@ -133,75 +133,74 @@ export interface IReviewProduct {
   };
 }
 
-export interface IBlog 
-  {
-    id: number,
-    title: string,
-    description: string,
-    images: string[],
-    isApproved: boolean,
-    commentCount: number,
-    createdAt: string,
-    updatedAt: string,
-    deletedAt: null | string,
-    likeCount: number,
-    author: {
-      id: number,
-      firstName: string
-      lastName: string,
-      email: string,
-      phoneNumber: string,
-      address: null | string,
-      gender: null | string,
-      dateOfBirth: null | string,
-      roles: string[],
-      createdAt: string,
-      updatedAt: string,
-      deletedAt: null | string,
-      isActice: boolean,
-      verifyCode: null
-    },
-    likes: []
+export interface IBlog {
+  id: number;
+  title: string;
+  description: string;
+  images: string[];
+  isApproved: boolean;
+  commentCount: number;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null | string;
+  likeCount: number;
+  author: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    address: null | string;
+    gender: null | string;
+    dateOfBirth: null | string;
+    roles: string[];
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: null | string;
+    isActice: boolean;
+    verifyCode: null;
+  };
+  likes: [];
 }
 
 export interface IComment {
-  content: string,
+  content: string;
   author: {
-    id: number,
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: string,
-    address: null | string,
-    gender: null | string,
-    dateOfBirth: null | string,
-    roles: string[],
-    createdAt: string,
-    updatedAt: string,
-    deletedAt: null | string,
-    isActice: boolean,
-    verifyCode: null | string
-  },
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    address: null | string;
+    gender: null | string;
+    dateOfBirth: null | string;
+    roles: string[];
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: null | string;
+    isActice: boolean;
+    verifyCode: null | string;
+  };
   post: {
-    id: number,
-    title: string,
-    description: string,
-    images: string[],
-    isApproved: boolean,
-    commentCount: number,
-    createdAt: string,
-    updatedAt: string,
-    deletedAt: null | string,
-    likeCount: number
-  },
-  id: number,
-  createdAt: string,
-  deletedAt: null | string
-  }
+    id: number;
+    title: string;
+    description: string;
+    images: string[];
+    isApproved: boolean;
+    commentCount: number;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: null | string;
+    likeCount: number;
+  };
+  id: number;
+  createdAt: string;
+  deletedAt: null | string;
+}
 
 export interface metaComment {
-  limit: string,
-  totalItems: number,
-  totalPages: number,
-  currentPage: string
+  limit: string;
+  totalItems: number;
+  totalPages: number;
+  currentPage: string;
 }

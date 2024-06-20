@@ -1,6 +1,6 @@
-import React from "react";
-import InfoOrderProduct from "./components/InfoOrderProduct";
-import BillingDetailsProduct from "./components/BillingDetailsProduct";
+import React from 'react';
+import InfoOrderProduct from './components/InfoOrderProduct';
+import BillingDetailsProduct from './components/BillingDetailsProduct';
 
 const CheckoutPage = () => {
   return (

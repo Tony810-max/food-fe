@@ -1,7 +1,7 @@
-import FeatureSection from "@/components/Feature";
-import Image from "next/image";
-import React from "react";
-import CoutAboutUs from "./components/CountAboutUs";
+import FeatureSection from '@/components/Feature';
+import Image from 'next/image';
+import React from 'react';
+import CoutAboutUs from './components/CountAboutUs';
 
 const AboutUsPage = () => {
   return (
@@ -32,13 +32,13 @@ const AboutUsPage = () => {
             </div>
           </div>
           <div className="grid grid-cols-3 rounded-[0.313rem] bg-[#f7f7f8] py-6 px-3">
-            <CoutAboutUs value={0.1} title={"Vendor"} />
-            <CoutAboutUs value={23} title={"Customers"} />
-            <CoutAboutUs value={2} title={"Products"} />
+            <CoutAboutUs value={0.1} title={'Vendor'} />
+            <CoutAboutUs value={23} title={'Customers'} />
+            <CoutAboutUs value={2} title={'Products'} />
           </div>
         </div>
         <div className="relative w-full h-full">
-          <Image src={"/images/imageAboutUs.webp"} alt="imageAboutUs" fill />
+          <Image src={'/images/imageAboutUs.webp'} alt="imageAboutUs" fill />
         </div>
       </div>
       <FeatureSection />

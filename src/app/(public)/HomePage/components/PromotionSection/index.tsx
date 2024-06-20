@@ -1,6 +1,6 @@
-import PromotionCard from "@/app/(public)/HomePage/components/PromotionSection/PromotionCard";
+import PromotionCard from '@/app/(public)/HomePage/components/PromotionSection/PromotionCard';
 
-import React from "react";
+import React from 'react';
 
 const PromotionSection: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
-import ROUTES from "@/types/routes";
-import Link from "next/link";
-import React from "react";
+import ROUTES from '@/types/routes';
+import Link from 'next/link';
+import React from 'react';
 
 const CompanyFooter = () => {
   return (

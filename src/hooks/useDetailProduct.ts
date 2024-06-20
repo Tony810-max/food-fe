@@ -1,7 +1,7 @@
-import { API_URL, Product } from "@/types/common";
-import axios from "axios";
-import { useParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { API_URL, Product } from '@/types/common';
+import axios from 'axios';
+import { useParams } from 'next/navigation';
+import { useCallback, useEffect, useState } from 'react';
 
 const useDetailProduct = () => {
   const [dataDetailProducts, setDataDetailProducts] = useState<Product>();
@@ -13,7 +13,7 @@ const useDetailProduct = () => {
     try {
       setIsLoading(true);
       const reponse = await axios.get(
-        `${API_URL}/api/v1/products/${idProduct}`
+        `${API_URL}/api/v1/products/${idProduct}`,
       );
       if (reponse) {
         setDataDetailProducts(reponse.data);

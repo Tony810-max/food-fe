@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import ROUTES from "@/types/routes";
-import Link from "next/link";
-import React from "react";
+import { Button } from '@/components/ui/button';
+import ROUTES from '@/types/routes';
+import Link from 'next/link';
+import React from 'react';
 
 const OrganicHealth = () => {
   return (
@@ -15,7 +15,7 @@ const OrganicHealth = () => {
       </div>
       <Link href={ROUTES.SHOP} className="flex justify-end">
         <Button
-          variant={"destructive"}
+          variant={'destructive'}
           className="text-lg font-bold font-sans capitalize "
         >
           Shop now

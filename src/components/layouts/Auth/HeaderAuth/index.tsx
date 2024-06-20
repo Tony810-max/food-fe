@@ -1,14 +1,14 @@
-"use client";
-import { usePathname } from "next/navigation";
-import React, { useMemo } from "react";
-import { TITLE_HEADING } from "../types/labelHeading";
+'use client';
+import { usePathname } from 'next/navigation';
+import React, { useMemo } from 'react';
+import { TITLE_HEADING } from '../types/labelHeading';
 
 const HeaderAuth: React.FC = () => {
   const pathname = usePathname();
 
   const label = TITLE_HEADING.find(
     (pathnameItem) =>
-      pathnameItem.value === pathname || pathname.includes(pathnameItem.value)
+      pathnameItem.value === pathname || pathname.includes(pathnameItem.value),
   );
 
   return (

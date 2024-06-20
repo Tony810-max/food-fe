@@ -1,5 +1,5 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
 
 interface SliderProps {
   image: string;
@@ -27,7 +27,9 @@ const SliderReviewSection: React.FC<SliderProps> = ({
       <div className="flex flex-col gap-2 items-center">
         <span className="text-[#7A7A7A] font-sans text-base">{role}</span>
         <span className="text-lg font-extrabold font-sans">{name}</span>
-        <span className="text-lg font-sans text-center italic">{description}</span>
+        <span className="text-lg font-sans text-center italic">
+          {description}
+        </span>
       </div>
     </div>
   );

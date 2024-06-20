@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import GoBackLoginForgotPassword from "./components/GoBackLoginForgotPassword";
-import ContentForgotPassword from "./components/ContentForgotPassword";
+import GoBackLoginForgotPassword from './components/GoBackLoginForgotPassword';
+import ContentForgotPassword from './components/ContentForgotPassword';
 
 const ForgotPassword = () => {
   return (

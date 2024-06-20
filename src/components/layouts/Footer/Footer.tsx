@@ -1,8 +1,8 @@
-import React from "react";
-import ContactFooter from "./components/ContactFooter/ContactFooter";
-import CompanyFooter from "./components/CompanyFooter";
-import CategoryFooter from "./components/CategoryFooter";
-import SubscribeFooter from "./components/SubscribeFooter";
+import React from 'react';
+import ContactFooter from './components/ContactFooter/ContactFooter';
+import CompanyFooter from './components/CompanyFooter';
+import CategoryFooter from './components/CategoryFooter';
+import SubscribeFooter from './components/SubscribeFooter';
 
 const Footer = () => {
   return (

@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { ChevronLeft } from "lucide-react";
-import Link from "next/link";
+import { ChevronLeft } from 'lucide-react';
+import Link from 'next/link';
 
 const GoBackLoginForgotPassword = () => {
   return (

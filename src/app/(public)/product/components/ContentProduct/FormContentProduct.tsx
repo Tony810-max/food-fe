@@ -1,17 +1,17 @@
-import { Button } from "@/components/ui/button";
-import { useGetHeaderConfig } from "@/hooks/useGetHeaderConfig";
-import { API_URL } from "@/types/common";
-import axios from "axios";
-import { Minus, Plus } from "lucide-react";
-import { useParams, useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { toast } from "react-toastify";
+import { Button } from '@/components/ui/button';
+import { useGetHeaderConfig } from '@/hooks/useGetHeaderConfig';
+import { API_URL } from '@/types/common';
+import axios from 'axios';
+import { Minus, Plus } from 'lucide-react';
+import { useParams, useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const FormContentProduct = () => {
   const [value, setValue] = useState<number>(1);
   const { headerConfig } = useGetHeaderConfig();
   const params = useParams();
-  const router = useRouter()
+  const router = useRouter();
 
   const handleMinus = (value: number) => {
     if (value > 1) {
@@ -22,22 +22,22 @@ const FormContentProduct = () => {
   const handleAddToCart = async () => {
     try {
       if (!headerConfig) {
-        toast.error("You need to login to access!!!");
-        localStorage.setItem('preHref',window.location.href)
-        console.log(window.location.href)
+        toast.error('You need to login to access!!!');
+        localStorage.setItem('preHref', window.location.href);
+        console.log(window.location.href);
         return setTimeout(() => {
-          router?.push('/login')
-        }, 2000);;
+          router?.push('/login');
+        }, 2000);
       }
       const reponse = await axios.post(
         `${API_URL}/api/v1/cart/add/${params.id}`,
         {
           quantity: value,
         },
-        headerConfig
+        headerConfig,
       );
       if (reponse) {
-        toast.success("Add to cart successfully!");
+        toast.success('Add to cart successfully!');
       }
     } catch (error) {
       console.log(error);
@@ -66,7 +66,7 @@ const FormContentProduct = () => {
           />
         </div>
       </div>
-      <Button variant={"destructive"} type="button" onClick={handleAddToCart}>
+      <Button variant={'destructive'} type="button" onClick={handleAddToCart}>
         Add to cart
       </Button>
     </div>

@@ -1,6 +1,6 @@
-import { Star } from "lucide-react";
-import Image from "next/image";
-import React from "react";
+import { Star } from 'lucide-react';
+import Image from 'next/image';
+import React from 'react';
 
 interface ProductProps {
   image: string;
@@ -21,7 +21,7 @@ const ProductSummary: React.FC<ProductProps> = ({
 }) => {
   const renderStars = () => {
     return Array.from({ length: 5 }, (_, index) => {
-      const fill = index < rating ? "#F4A263" : "none";
+      const fill = index < rating ? '#F4A263' : 'none';
       return <Star key={index} size={18} color="#F4A263" fill={fill} />;
     });
   };

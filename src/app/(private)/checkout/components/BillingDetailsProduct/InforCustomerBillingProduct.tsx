@@ -1,17 +1,17 @@
-import { Input } from "@/components/ui/input";
-import React from "react";
+import { Input } from '@/components/ui/input';
+import React from 'react';
 
 interface InfoCustomerProps {
-    title: string;
+  title: string;
 }
 
 const InforCustomerBillingProduct: React.FC<InfoCustomerProps> = ({
-    title,
+  title,
 }) => {
   return (
     <div className="col-span-2">
       <label>{title}*</label>
-      <Input  />
+      <Input />
     </div>
   );
 };

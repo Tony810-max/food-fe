@@ -1,23 +1,23 @@
-"use client";
-import React, { useState } from "react";
-import ReactStars from "react-rating-stars-component";
+'use client';
+import React, { useState } from 'react';
+import ReactStars from 'react-rating-stars-component';
 
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { Textarea } from "@/components/ui/textarea";
-import { useParams } from "next/navigation";
-import axios from "axios";
-import { API_URL } from "@/types/common";
-import { toast } from "react-toastify";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { Textarea } from '@/components/ui/textarea';
+import { useParams } from 'next/navigation';
+import axios from 'axios';
+import { API_URL } from '@/types/common';
+import { toast } from 'react-toastify';
 
 const schema = yup
   .object()
   .shape({
-    comment: yup.string().required("Please enter a comment"),
+    comment: yup.string().required('Please enter a comment'),
   })
   .required();
 
@@ -41,16 +41,16 @@ const CommentTabAboutProduct = () => {
     };
 
     try {
-      const accessToken = JSON.parse(localStorage.getItem("accessToken")!);
+      const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
       const response = await axios.post(
         `${API_URL}/api/v1/reviews`,
         dataComment,
         {
           headers: { Authorization: `Bearer ${accessToken}` },
-        }
+        },
       );
       if (response) {
-        toast.success("Thank you for providing us with your feedback");
+        toast.success('Thank you for providing us with your feedback');
       }
     } catch (error) {
       console.log(error);
@@ -79,7 +79,7 @@ const CommentTabAboutProduct = () => {
         <Textarea
           id="comment"
           placeholder="Express your thoughts here"
-          {...register("comment")}
+          {...register('comment')}
         />
       </div>
       {errors.comment?.message && (
@@ -89,7 +89,7 @@ const CommentTabAboutProduct = () => {
       )}
 
       <Button
-        variant={"destructive"}
+        variant={'destructive'}
         type="submit"
         className="font-sans text-lg capitalize"
       >

@@ -1,15 +1,15 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import React from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schemaActive } from "../profile/types/common";
-import { API_URL } from "@/types/common";
-import { toast } from "react-toastify";
-import axios from "axios";
-import Link from "next/link";
-import { useUser } from "@/hooks/useUser";
+'use client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schemaActive } from '../profile/types/common';
+import { API_URL } from '@/types/common';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import Link from 'next/link';
+import { useUser } from '@/hooks/useUser';
 
 interface activeProps {
   code: string;
@@ -36,7 +36,7 @@ const ActiveAcoutPage = () => {
             Check your email and enter the code below
           </label>
           <Input
-            {...register("code")}
+            {...register('code')}
             className="font-sans text-base font-semibold leading-normal"
           />
           {errors.code?.message && (
@@ -48,7 +48,7 @@ const ActiveAcoutPage = () => {
             If you do not receive the code, click
             <Button
               type="button"
-              variant={"link"}
+              variant={'link'}
               className="font-sans text-base px-1 italic font-bold hover:opacity-80"
               onClick={handleGetCode}
             >
@@ -59,7 +59,7 @@ const ActiveAcoutPage = () => {
 
         <Button
           type="submit"
-          variant={"destructive"}
+          variant={'destructive'}
           className="font-sans w-full text-lg font-medium"
         >
           Save

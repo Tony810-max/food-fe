@@ -1,10 +1,10 @@
-import React from "react";
-import CheckboxProduct from "./CheckboxProduct";
-import { Slider } from "@/components/ui/slider";
-import { Button } from "@/components/ui/button";
-import useCategory from "@/hooks/useCategory";
-import { Input } from "@/components/ui/input";
-import useProduct from "@/hooks/useProduct";
+import React from 'react';
+import CheckboxProduct from './CheckboxProduct';
+import { Slider } from '@/components/ui/slider';
+import { Button } from '@/components/ui/button';
+import useCategory from '@/hooks/useCategory';
+import { Input } from '@/components/ui/input';
+import useProduct from '@/hooks/useProduct';
 
 interface formProps {
   setPriceFilter: (value: number[]) => void;
@@ -60,9 +60,9 @@ const SidebarProduct: React.FC<formProps> = ({
         />
         <Input
           type="number"
-          value={priceFilter.length > 0 ? priceFilter[0]?.toString() : "0"}
+          value={priceFilter.length > 0 ? priceFilter[0]?.toString() : '0'}
           defaultValue={
-            priceFilter.length > 0 ? priceFilter[0]?.toString() : "0"
+            priceFilter.length > 0 ? priceFilter[0]?.toString() : '0'
           }
           onChange={handleInputChange}
         />
@@ -76,7 +76,7 @@ const SidebarProduct: React.FC<formProps> = ({
         </div>
         <Button
           type="button"
-          variant={"destructive"}
+          variant={'destructive'}
           className="w-fit rounded-[0.31rem]"
           onClick={() => handleFilter()}
         >

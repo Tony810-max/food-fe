@@ -1,5 +1,5 @@
-import React from "react";
-import ImageLatestSideRight from "./ImageLatestSideRight";
+import React from 'react';
+import ImageLatestSideRight from './ImageLatestSideRight';
 
 const LatestSideRight = () => {
   return (
@@ -8,12 +8,12 @@ const LatestSideRight = () => {
         Latest Gallery
       </span>
       <div className="grid grid-cols-3 gap-4">
-        <ImageLatestSideRight image={"/images/imgLatest1.webp"} />
-        <ImageLatestSideRight image={"/images/imgLatest2.webp"} />
-        <ImageLatestSideRight image={"/images/imgLatest3.webp"} />
-        <ImageLatestSideRight image={"/images/imgLatest4.webp"} />
-        <ImageLatestSideRight image={"/images/imgLatest5.webp"} />
-        <ImageLatestSideRight image={"/images/imgLatest6.webp"} />
+        <ImageLatestSideRight image={'/images/imgLatest1.webp'} />
+        <ImageLatestSideRight image={'/images/imgLatest2.webp'} />
+        <ImageLatestSideRight image={'/images/imgLatest3.webp'} />
+        <ImageLatestSideRight image={'/images/imgLatest4.webp'} />
+        <ImageLatestSideRight image={'/images/imgLatest5.webp'} />
+        <ImageLatestSideRight image={'/images/imgLatest6.webp'} />
       </div>
     </div>
   );

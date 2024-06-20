@@ -1,7 +1,7 @@
-"use client";
-import { API_URL } from "@/types/common";
-import axios from "axios";
-import { useEffect, useState } from "react";
+'use client';
+import { API_URL } from '@/types/common';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 interface CategoryData {
   id: number;

@@ -1,9 +1,9 @@
-import { Input } from "@/components/ui/input";
-import { CartProduct } from "@/types/common";
-import { Minus, Plus, Trash2 } from "lucide-react";
-import Image from "next/image";
-import React from "react";
-import { useCartActions } from "../hooks/useCartActions";
+import { Input } from '@/components/ui/input';
+import { CartProduct } from '@/types/common';
+import { Minus, Plus, Trash2 } from 'lucide-react';
+import Image from 'next/image';
+import React from 'react';
+import { useCartActions } from '../hooks/useCartActions';
 
 interface ProductCartProps {
   data: CartProduct;

@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import ROUTES from "@/types/routes";
-import Link from "next/link";
-import React from "react";
+import { Button } from '@/components/ui/button';
+import ROUTES from '@/types/routes';
+import Link from 'next/link';
+import React from 'react';
 
 const NoProductExists = () => {
   return (
@@ -10,7 +10,10 @@ const NoProductExists = () => {
         Your cart is empty
       </span>
       <Link href={ROUTES.SHOP}>
-        <Button variant={"destructive"} className="bg-[#ee4d2d] font-sans text-lg">
+        <Button
+          variant={'destructive'}
+          className="bg-[#ee4d2d] font-sans text-lg"
+        >
           Go Shopping Now
         </Button>
       </Link>

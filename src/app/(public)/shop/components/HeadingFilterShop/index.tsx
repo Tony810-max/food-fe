@@ -1,5 +1,5 @@
-import React from "react";
-import { BetweenVerticalStart, Table } from "lucide-react";
+import React from 'react';
+import { BetweenVerticalStart, Table } from 'lucide-react';
 
 import {
   Select,
@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select';
 
 interface filterProps {
   count: number;

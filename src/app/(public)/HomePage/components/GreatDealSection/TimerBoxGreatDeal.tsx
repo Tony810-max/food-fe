@@ -1,5 +1,5 @@
-import React from "react";
-import CountdownTimer from "./CountdownTimer";
+import React from 'react';
+import CountdownTimer from './CountdownTimer';
 
 const TimerBoxGreatDeal = () => {
   return (

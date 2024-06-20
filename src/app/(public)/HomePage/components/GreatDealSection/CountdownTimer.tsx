@@ -1,5 +1,5 @@
-"use client";
-import React, { useState, useEffect, useCallback } from "react";
+'use client';
+import React, { useState, useEffect, useCallback } from 'react';
 
 interface ITime {
   days: number;
@@ -17,7 +17,7 @@ const CountdownTimer = () => {
     if (difference > 0) {
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
       );
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
@@ -32,7 +32,7 @@ const CountdownTimer = () => {
   }, []);
 
   const [timeLeft, setTimeLeft] = useState<ITime | undefined>(
-    calculateTimeLeft()
+    calculateTimeLeft(),
   );
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const CountdownTimer = () => {
     <div className="flex gap-3 items-center border-2 border-[#E9CBBE] rounded-lg px-6 py-3 w-fit">
       <div className="flex flex-col">
         <span className="text-center text-xl font-bold font-sans">
-          {timeLeft?.days}{" "}
+          {timeLeft?.days}{' '}
         </span>
         <span className="font-sans text-[#7A7A7A]">Days</span>
       </div>

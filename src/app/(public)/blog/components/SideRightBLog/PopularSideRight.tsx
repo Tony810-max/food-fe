@@ -1,6 +1,6 @@
-"use client";
-import useCategory from "@/hooks/useCategory";
-import React from "react";
+'use client';
+import useCategory from '@/hooks/useCategory';
+import React from 'react';
 
 const PopularSideRight = () => {
   const { categories } = useCategory();

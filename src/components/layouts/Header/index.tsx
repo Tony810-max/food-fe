@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import AboveHeader from "./AboveHeader/AboveHeader";
-import dynamic from "next/dynamic";
-import SidebarHeader from "./SidebarHeader";
+import AboveHeader from './AboveHeader/AboveHeader';
+import dynamic from 'next/dynamic';
+import SidebarHeader from './SidebarHeader';
 
-const BelowHeader = dynamic(() => import("./BelowHeader/BelowHeader"), {
+const BelowHeader = dynamic(() => import('./BelowHeader/BelowHeader'), {
   ssr: false,
 });
 

@@ -1,5 +1,5 @@
-import { Product } from "@/types/common";
-import React from "react";
+import { Product } from '@/types/common';
+import React from 'react';
 
 interface ContentProps {
   data: Product | undefined;

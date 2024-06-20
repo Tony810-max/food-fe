@@ -1,8 +1,8 @@
-import { Product } from "@/types/common";
-import Image, { StaticImageData } from "next/image";
-import React, { useEffect, useState } from "react";
-import blankImage from "/public/images/Blank-Image.webp";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Product } from '@/types/common';
+import Image, { StaticImageData } from 'next/image';
+import React, { useEffect, useState } from 'react';
+import blankImage from '/public/images/Blank-Image.webp';
+import { Skeleton } from '@/components/ui/skeleton';
 interface ImageProps {
   data: Product | undefined;
   isLoading: boolean;
@@ -10,7 +10,7 @@ interface ImageProps {
 
 const ImageProduct: React.FC<ImageProps> = ({ data, isLoading }) => {
   const [currentImage, setCurrentImage] = useState<string | StaticImageData>(
-    ""
+    '',
   );
   const [isLoadingStatus, setIsLoadingStatus] = useState<boolean>(isLoading);
 
@@ -18,7 +18,7 @@ const ImageProduct: React.FC<ImageProps> = ({ data, isLoading }) => {
     setIsLoadingStatus(true);
 
     if (!data) {
-      setCurrentImage("");
+      setCurrentImage('');
       setIsLoadingStatus(false);
     }
 

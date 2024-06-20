@@ -1,14 +1,14 @@
-import Heading from "@/components/Heading";
-import ProductCard from "@/components/ProductCard";
-import { IProduct } from "@/types/common";
-import React from "react";
+import Heading from '@/components/Heading';
+import ProductCard from '@/components/ProductCard';
+import { IProduct } from '@/types/common';
+import React from 'react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "./ui/carousel";
+} from './ui/carousel';
 
 interface ProductProps {
   data: undefined | IProduct[];
@@ -25,7 +25,7 @@ const PopularProductDetail: React.FC<ProductProps> = ({ data }) => {
 
       <Carousel
         opts={{
-          align: "start",
+          align: 'start',
         }}
       >
         <CarouselContent>
@@ -41,7 +41,7 @@ const PopularProductDetail: React.FC<ProductProps> = ({ data }) => {
                   desc={data.description}
                   image={data.images[0]}
                   salePrice={data.price}
-                  originalPrice={""}
+                  originalPrice={''}
                 />
               </CarouselItem>
             ))}
