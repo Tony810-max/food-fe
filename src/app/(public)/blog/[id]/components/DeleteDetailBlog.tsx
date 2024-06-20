@@ -1,27 +1,15 @@
 import React from 'react'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Trash2 } from 'lucide-react';
-import axios from 'axios';
-import { API_URL } from '@/types/common';
-import { toast } from 'react-toastify';
+import useBlog from '../../hooks/useBlog';
 
 interface deleteDetailBlog {
   id: number
 }
 
 const DeleteDetailBlog:React.FC<deleteDetailBlog> = ({id}) => {
-
-  const handleDeleteComment = async() => {
-    try {
-        const accessToken = JSON.parse(localStorage.getItem('accessToken')!)
-        const response = await axios.delete(`${API_URL}/api/v1/comment/${id}`,{ headers: { Authorization: `Bearer ${accessToken}` } })
-        if(response){
-          toast.success('Comment deleted...!!!')
-                  }
-      } catch (error) {
-        console.log(error)
-    }
-}
+  const {handleDeleteComment} = useBlog()
+  
   return (
     <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -37,10 +25,10 @@ const DeleteDetailBlog:React.FC<deleteDetailBlog> = ({id}) => {
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={handleDeleteComment}>Continue</AlertDialogAction>
+                <AlertDialogAction onClick={() => handleDeleteComment(id)}>Continue</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
-          </AlertDialog>
+      </AlertDialog>
   )
 }
 

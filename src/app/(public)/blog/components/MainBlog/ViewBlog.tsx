@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +18,6 @@ interface ViewBlog {
 
 const ViewBlog:React.FC<ViewBlog> = ({description,image,title,id,likeCount,checkStatus,onSetCheckStatus}) => {
   const [checkHeart, setCheckHeart] = useState<boolean>(false);
-  const [likeCurr, setLikeCurr] = useState(0)
 
   const handleLikeBlog = async(id: number) => {
     try {
@@ -27,20 +26,13 @@ const ViewBlog:React.FC<ViewBlog> = ({description,image,title,id,likeCount,check
       if(response){
       onSetCheckStatus(!checkStatus)
       localStorage.setItem('statusLike',checkStatus.toString());
-      console.log(response)
-      console.log("check trong handle: ", checkStatus)
       }
     } catch (error) {
       console.log(error)
     }
   }
-  useEffect(() => {
-    const statusLike = localStorage.getItem('statusLike') === "true";
-    onSetCheckStatus(!statusLike);
-  }, [onSetCheckStatus]);
- const statusLike =  localStorage.getItem('statusLike')
- console.log("check ngoai handle: ",checkStatus)
-  
+ 
+
     return (
     <div className="flex gap-4">
       <div className="relative w-48 h-40">
@@ -67,7 +59,7 @@ const ViewBlog:React.FC<ViewBlog> = ({description,image,title,id,likeCount,check
             />
               <span>{likeCount}</span>
             </div>
-          <Link href={`${ROUTES.BLOG}/${id}`} className="opacity-70 hover:text-[#f53e32]">
+          <Link href={`${ROUTES.BLOG}/${id}?page=1&limit=4`} className="opacity-70 hover:text-[#f53e32]">
             View details
           </Link>
         </div>

@@ -13,6 +13,7 @@ import { LoginSubmitType, loginSchema } from "../types/validate";
 import axios from "axios";
 import { API_URL } from "@/types/common";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const FormLogin = () => {
   const {
@@ -23,6 +24,8 @@ const FormLogin = () => {
     resolver: yupResolver(loginSchema),
   });
 
+  const router = useRouter()
+  
   const onSubmit: SubmitHandler<LoginSubmitType> = async (data) => {
     try {
       const response = await axios.post(`${API_URL}/api/v1/auth/sign-in`, data);
@@ -34,9 +37,11 @@ const FormLogin = () => {
         );
 
         toast.success("Login successfully!");
+        const preHref = localStorage.getItem("preHref");
         setTimeout(() => {
-          window.location.href = ROUTES.HOME;
-        }, 3000);
+          preHref ? router.push(preHref) : router.push(ROUTES?.HOME)
+          localStorage.removeItem('preHref')
+        },3000)
       }
     } catch (error) {
       toast.error("Password or email is incorrect");

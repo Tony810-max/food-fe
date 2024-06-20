@@ -3,7 +3,7 @@ import { useGetHeaderConfig } from "@/hooks/useGetHeaderConfig";
 import { API_URL } from "@/types/common";
 import axios from "axios";
 import { Minus, Plus } from "lucide-react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -11,6 +11,7 @@ const FormContentProduct = () => {
   const [value, setValue] = useState<number>(1);
   const { headerConfig } = useGetHeaderConfig();
   const params = useParams();
+  const router = useRouter()
 
   const handleMinus = (value: number) => {
     if (value > 1) {
@@ -22,7 +23,11 @@ const FormContentProduct = () => {
     try {
       if (!headerConfig) {
         toast.error("You need to login to access!!!");
-        return;
+        localStorage.setItem('preHref',window.location.href)
+        console.log(window.location.href)
+        return setTimeout(() => {
+          router?.push('/login')
+        }, 2000);;
       }
       const reponse = await axios.post(
         `${API_URL}/api/v1/cart/add/${params.id}`,

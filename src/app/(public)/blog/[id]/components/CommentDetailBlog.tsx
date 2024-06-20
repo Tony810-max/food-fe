@@ -14,10 +14,13 @@ interface commentProps{
     idUser: number;
     id: number;
 }
+export const commentContext = createContext('');
+
 const CommentDetailBlog:React.FC<commentProps> = ({id,idUser,comment,name,dataUpdate}) => {
 const {dataProfile} = useUser()
 
   return (
+    <commentContext.Provider value={comment}>
     <div className='border rounded-lg py-4 px-4 space-y-2 shadow-md'>
           <div className='flex justify-between items-center'>
             <div className='flex flex-col gap-1'>
@@ -26,13 +29,14 @@ const {dataProfile} = useUser()
             </div>
          {idUser === dataProfile?.id &&  
          <div className='flex gap-2'>
-            <UpdateDetailBlog id={id} />
+            <UpdateDetailBlog id={id}  />
             <DeleteDetailBlog id={id} />        
           </div>
           }
           </div>
           <span className='block font-sans text-base leading-normal'>{comment}</span>
     </div>
+    </commentContext.Provider>
   )
 }
 

@@ -1,21 +1,16 @@
 import { Button } from '@/components/ui/button'
-import { DialogFooter } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { API_URL } from '@/types/common'
-import axios from 'axios'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { toast } from 'react-toastify'
-
-interface formUpdateProps{
-    comment: string;
-}
+import { commentContext } from './CommentDetailBlog'
+import useBlog from '../../hooks/useBlog';
 
 interface formUpdate{
     id: number;
+    onSetOpen: (value: boolean) => void;
 }
 
 const schema = yup
@@ -25,36 +20,23 @@ const schema = yup
   })
   .required();
 
-const FormUpdateDetailBlog:React.FC<formUpdate> = ({id}) => {
+const FormUpdateDetailBlog:React.FC<formUpdate> = ({id, onSetOpen}) => {
     const { register, handleSubmit } = useForm({
         resolver: yupResolver(schema),
       });
-
-      const handleUpdateComment = async(data: formUpdateProps) => {
+      const {handleUpdateComment} = useBlog()
+      const comment = useContext(commentContext)
       
-        try {
-            const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
-            const response = await axios.patch(`${API_URL}/api/v1/comment/${id}`,{
-                content: data?.comment,
-                postId: id,
-              },{ headers: { Authorization: `Bearer ${accessToken}` } })
-        if(response) {
-            toast.success('Updated comment')
-        }
-        } catch (error) {
-            console.log(error)
-        }
-    }
   return (
     <form className="grid gap-4 py-4" 
-    onSubmit={handleSubmit(handleUpdateComment)}>
+    onSubmit={handleSubmit((data) => handleUpdateComment(data, id, onSetOpen))}>
     <div className="grid grid-cols-4 items-center gap-4">
       <Label htmlFor="name" className="text-right">
         Comment
       </Label>
       <Input
         id="name"
-        defaultValue=""
+        placeholder={comment}
         className="col-span-3"
         {...register('comment')}
       />
@@ -64,8 +46,6 @@ const FormUpdateDetailBlog:React.FC<formUpdate> = ({id}) => {
     <Button type="submit" variant={"destructive"}>Save</Button>
     </div>
     </form>
-
-
   )
 }
 

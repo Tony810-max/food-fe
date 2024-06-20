@@ -1,23 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useState } from 'react'
 
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Pencil } from 'lucide-react';
-import axios from 'axios';
-import { API_URL } from '@/types/common';
 import FormUpdateDetailBlog from './FormUpdateDetailBlog';
 
 interface updateProps{ 
-    id:number
+    id: number
 }
 
 const UpdateDetailBlog:React.FC<updateProps> = ({id}) => {
-   
-       
-  return (
-    <Dialog>
+  const [open,setOpen] = useState<boolean>(false)
+   return (
+    <Dialog open={open} onOpenChange={setOpen}>
      <DialogTrigger asChild>
         <Pencil className='cursor-pointer hover:opacity-70'/>
       </DialogTrigger>
@@ -25,10 +19,10 @@ const UpdateDetailBlog:React.FC<updateProps> = ({id}) => {
            <DialogHeader>
                   <DialogTitle>Edit comment</DialogTitle>
                   <DialogDescription>
-                    Make changes to your comment here. Click save when you're done.
+                    Make changes to your comment here. Click save when you are done.
             </DialogDescription>
              </DialogHeader>
-            <FormUpdateDetailBlog id={id} />
+            <FormUpdateDetailBlog id={id}  onSetOpen={setOpen}/>
             
      </DialogContent>
     </Dialog>

@@ -7,7 +7,7 @@ import NoProductExists from "./NoProductExists";
 const CartProduct = () => {
   const { dataCartProduct, fetchCartProduct } = useCartProduct();
   return (
-    <div className="">
+    <div >
       {dataCartProduct?.length > 0 ? (
         <TableProduct
           dataCartProduct={dataCartProduct}

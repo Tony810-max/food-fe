@@ -1,5 +1,5 @@
 import { AlignLeft, Phone } from "lucide-react";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import ROUTES from "@/types/routes";
 import CategoryNavBar from "./components/CategoryNavBar";
@@ -18,22 +18,22 @@ const AboveHeader: React.FC<AboveProps> = ({ onSetCheck, check }) => {
           size={36}
           onClick={() => onSetCheck(!check)}
         />
-        <div className="lg:flex items-center gap-6 hidden ">
-          <Link href={ROUTES.HOME} className="font-semibold text-base">
+        <div className="lg:flex items-center justify-between gap-3 hidden ">
+          <Link href={ROUTES.HOME} className="font-semibold text-base px-3">
             Home
           </Link>
           <CategoryNavBar />
           <Link
             href={ROUTES.SHOP}
-            className="capitalize font-semibold text-base"
+            className="capitalize font-semibold text-base px-3"
           >
             Products
           </Link>
           <Link
             href={ROUTES.BLOG}
-            className="capitalize font-semibold text-base"
+            className="capitalize font-semibold text-base px-3"
           >
-            BLOG
+            Blog
           </Link>
         </div>
         <div className="flex items-center gap-2">

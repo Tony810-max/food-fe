@@ -197,4 +197,11 @@ export interface IComment {
   id: number,
   createdAt: string,
   deletedAt: null | string
+  }
+
+export interface metaComment {
+  limit: string,
+  totalItems: number,
+  totalPages: number,
+  currentPage: string
 }

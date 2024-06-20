@@ -14,7 +14,7 @@ const CategoryNavBar = () => {
   const { categories } = useCategory();
 
   return (
-    <Menubar className="border-none p-0">
+    <Menubar className="border-none ">
       <MenubarMenu>
         <MenubarTrigger className="flex gap-1">
           <span className="capitalize font-semibold text-base">category</span>
