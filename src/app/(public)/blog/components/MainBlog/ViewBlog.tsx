@@ -1,23 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Heart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ROUTES from '@/types/routes';
 import { API_URL } from '@/types/common';
 import axios from 'axios';
+import {  idUserLikeContext } from '.';
+import useDetailBlog from '../../hooks/useDetailBlog';
 
 interface ViewBlog {
   image: string;
   title: string;
   description: string;
   id: number;
+  likeCount: number;
+  idUser: number;
 }
 
-const ViewBlog: React.FC<ViewBlog> = ({ description, image, title, id }) => {
+const ViewBlog: React.FC<ViewBlog> = ({ description, image, title, id, idUser,likeCount }) => {
   const [checkHeart, setCheckHeart] = useState<boolean>(false);
   const [checkLike, setCheckLike] = useState<boolean>(false);
-  const [likeCount, setLikeCount] = useState<number>(0);
-
+  const idUserLike = useContext(idUserLikeContext)
+  const {fetchDetailBlog} =useDetailBlog()
+  // console.log("idUserLike" ,idUserLike)
+  console.log("checkLike" ,checkLike)
   const handleLikeBlog = async (id: number) => {
     try {
       const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
@@ -28,15 +34,20 @@ const ViewBlog: React.FC<ViewBlog> = ({ description, image, title, id }) => {
       );
       if (response) {
         console.log(response);
-        setCheckLike(!checkHeart);
-        setLikeCount(response?.data?.data?.likeCount);
+        setCheckLike(!checkLike);
+        fetchDetailBlog(id)
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() =>{
+      const checkUser =  idUserLike?.some(user => user?.includes(idUser))
+      if(checkUser){
+        setCheckLike(true)
+       }
+  } ,[idUserLike, idUser])
 
   return (
     <div className="flex gap-4">
@@ -54,7 +65,7 @@ const ViewBlog: React.FC<ViewBlog> = ({ description, image, title, id }) => {
           <div className="flex gap-2">
             <Heart
               color={checkLike || checkHeart ? '#f53e32' : 'black'}
-              fill={checkLike || checkHeart ? '#f53e32' : 'none'}
+              fill={checkLike  ? '#f53e32' : 'none'}
               className="cursor-pointer "
               onMouseEnter={() => setCheckHeart(true)}
               onMouseLeave={() => setCheckHeart(false)}

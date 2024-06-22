@@ -10,7 +10,7 @@ import InforProfile from './components/InforProfile';
 import { schemaProfile } from './types/common';
 import { useAddress } from '@/hooks/useAddress';
 
-const ProfilePage: React.FC = () => {
+const ProfilePage = () => {
   const {
     createDate,
     dataProfile,
@@ -21,14 +21,13 @@ const ProfilePage: React.FC = () => {
     setEditProfile,
   } = useUser();
 
-  const { register, handleSubmit, watch, setValue } = useForm({
+  const { register, handleSubmit, watch } = useForm({
     resolver: yupResolver(schemaProfile),
   });
 
   const addressInput = watch('address');
 
-  const { addressSearch, isChooseAddress, setIsChooseAddress } =
-    useAddress(addressInput);
+  const { addressSearch } = useAddress(addressInput);
 
   return (
     <form
@@ -65,8 +64,9 @@ const ProfilePage: React.FC = () => {
           </div>
           <div className="absolute z-10">
             {addressSearch?.length > 0 &&
-              addressSearch?.map((address: any, index) => (
-                <Button key={address?.description} onClick={() => {}}>
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              addressSearch?.map((address: any) => (
+                <Button key={address?.description}>
                   {address?.description}
                 </Button>
               ))}

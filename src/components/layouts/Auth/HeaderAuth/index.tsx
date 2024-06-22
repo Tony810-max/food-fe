@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { TITLE_HEADING } from '../types/labelHeading';
 
 const HeaderAuth: React.FC = () => {

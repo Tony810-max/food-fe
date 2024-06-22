@@ -7,7 +7,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { commentContext } from './CommentDetailBlog';
 
-import useDetailBlog from '../../hooks/useDetailBlog';
+import { formUpdateProps } from '../types/const';
+import { API_URL } from '@/types/common';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 interface formUpdate {
   id: number;
@@ -25,8 +28,32 @@ const FormUpdateDetailBlog: React.FC<formUpdate> = ({ id, onSetOpen }) => {
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
-  const { handleUpdateComment } = useDetailBlog();
+  // const { fetchDetailBlog } = useDetailBlog();
   const comment = useContext(commentContext);
+
+  const handleUpdateComment = async (
+    data: formUpdateProps,
+    id: number,
+    setOpen: (value: boolean) => void,
+  ) => {
+    try {
+      const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
+      const response = await axios.patch(
+        `${API_URL}/api/v1/comment/${id}`,
+        {
+          content: data?.comment,
+          postId: id,
+        },
+        { headers: { Authorization: `Bearer ${accessToken}` } },
+      );
+      if (response) {
+        setOpen(false);
+        toast.success('Updated comment');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <form

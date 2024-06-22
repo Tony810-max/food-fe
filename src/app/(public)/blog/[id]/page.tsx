@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -10,24 +10,64 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import PaginationDetailBlog from './components/PaginationDetailBlog';
 import useDetailBlog from '../hooks/useDetailBlog';
-import { commentSchema } from './types/const';
+import { commentSchema, dataCommentProps } from './types/const';
+import axios from 'axios';
+import { API_URL } from '@/types/common';
+import { toast } from 'react-toastify';
+import { useParams, useSearchParams } from 'next/navigation';
+import useCommentDetailBlog from '../hooks/useCommentDetailBlog';
+import usePagination from '../hooks/usePagination';
 
 const DetaiBlogPage = () => {
-  const { dataDetailBlog, dataCommentDetailBlog, handleComment } =
-    useDetailBlog();
+  const { fetchDetailBlog, dataDetailBlog } = useDetailBlog();
+  const { fetchCommentDetailBlog, dataCommentDetailBlog } =
+    useCommentDetailBlog();
+  const { fetchMetaComment, metaComment } = usePagination();
+  console.log('dataCommentDetailBlog', dataCommentDetailBlog);
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(commentSchema),
   });
 
-  const isLogined = React.useMemo(() => {
-    if (!localStorage) return false;
+  const params = useParams<{ id: string }>();
+  const idBlog = params?.id;
+  const search = useSearchParams();
+  const searchPage = search.get('page');
+  // const router = useRouter();
 
-    const user = localStorage?.getItem('user');
+  const handleComment = async (data: dataCommentProps) => {
+    try {
+      const accessToken = await JSON.parse(
+        localStorage.getItem('accessToken')!,
+      );
+      const response = await axios.post(
+        `${API_URL}/api/v1/comment/comment/${idBlog}`,
+        {
+          content: data?.comment,
+          postId: Number(idBlog),
+        },
+        { headers: { Authorization: `Bearer ${accessToken}` } },
+      );
+      if (response) {
+        toast.success('Commented');
+        fetchCommentDetailBlog();
+        fetchMetaComment();
+        // router.push('/blog/1?page=1&limit=4');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    if (user) return true;
+  useEffect(() => {
+    if (idBlog) {
+      fetchDetailBlog(idBlog);
+      fetchMetaComment();
+    }
+  }, [idBlog]);
 
-    return false;
-  }, []);
+  useEffect(() => {
+    fetchCommentDetailBlog();
+  }, [searchPage]);
 
   return (
     <div className="container py-20 space-y-4">
@@ -55,25 +95,25 @@ const DetaiBlogPage = () => {
               />
             ))}
           </div>
-          <PaginationDetailBlog />
+          <PaginationDetailBlog metaComment={metaComment} />
         </div>
-        {isLogined && (
-          <form
-            className="space-y-4 border rounded-lg border-black shadow-md px-4 py-4"
-            onSubmit={handleSubmit(handleComment)}
-          >
-            <Textarea
-              placeholder="Type your comment here..."
-              {...register('comment')}
-              className="border font-sans text-lg border-black "
-            />
-            <div className="flex justify-end py-2">
-              <Button type="submit" variant={'destructive'}>
-                Comment
-              </Button>
-            </div>
-          </form>
-        )}
+        {/* {isLogined && ( */}
+        <form
+          className="space-y-4 border rounded-lg border-black shadow-md px-4 py-4"
+          onSubmit={handleSubmit(handleComment)}
+        >
+          <Textarea
+            placeholder="Type your comment here..."
+            {...register('comment')}
+            className="border font-sans text-lg border-black "
+          />
+          <div className="flex justify-end py-2">
+            <Button type="submit" variant={'destructive'}>
+              Comment
+            </Button>
+          </div>
+        </form>
+        {/* )} */}
       </div>
     </div>
   );

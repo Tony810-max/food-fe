@@ -11,14 +11,32 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Trash2 } from 'lucide-react';
-import useDetailBlog from '../../hooks/useDetailBlog';
+import axios from 'axios';
+import { API_URL } from '@/types/common';
+import { toast } from 'react-toastify';
+import useCommentDetailBlog from '../../hooks/useCommentDetailBlog';
 
 interface deleteDetailBlog {
   id: number;
 }
 
 const DeleteDetailBlog: React.FC<deleteDetailBlog> = ({ id }) => {
-  const { handleDeleteComment } = useDetailBlog();
+  const { fetchCommentDetailBlog } = useCommentDetailBlog();
+
+  const handleDeleteComment = async (id: number) => {
+    try {
+      const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
+      const response = await axios.delete(`${API_URL}/api/v1/comment/${id}`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      if (response) {
+        toast.success('Comment deleted...!!!');
+        fetchCommentDetailBlog();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <AlertDialog>

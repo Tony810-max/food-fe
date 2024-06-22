@@ -1,6 +1,5 @@
 import Heading from '@/components/Heading';
 import ProductCard from '@/components/ProductCard';
-import { IProduct } from '@/types/common';
 import React from 'react';
 import {
   Carousel,
@@ -9,12 +8,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from './ui/carousel';
+import useProduct from '@/hooks/useProduct';
 
-interface ProductProps {
-  data: undefined | IProduct[];
-}
+const PopularProductDetail = () => {
+  const { products } = useProduct();
 
-const PopularProductDetail: React.FC<ProductProps> = ({ data }) => {
   return (
     <div className="w-full">
       <Heading
@@ -29,18 +27,18 @@ const PopularProductDetail: React.FC<ProductProps> = ({ data }) => {
         }}
       >
         <CarouselContent>
-          {data &&
-            data?.length > 0 &&
-            data?.map((data, index) => (
+          {products &&
+            products?.length > 0 &&
+            products?.map((product, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <ProductCard
                   key={index}
-                  id={data?.id}
-                  category={data.category?.title}
+                  id={product?.id}
+                  category={product.category?.title}
                   rating={4}
-                  desc={data.description}
-                  image={data.images[0]}
-                  salePrice={data.price}
+                  desc={product.description}
+                  image={product.images[0]}
+                  salePrice={product.price}
                   originalPrice={''}
                 />
               </CarouselItem>

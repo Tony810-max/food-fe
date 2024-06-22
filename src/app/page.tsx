@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import BannerSection from './(public)/HomePage/components/BannerSection';
 import SaleSection from './(public)/HomePage/components/SaleSection';

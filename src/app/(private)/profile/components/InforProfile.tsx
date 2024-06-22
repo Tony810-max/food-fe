@@ -1,7 +1,7 @@
 'use client';
 import { Input } from '@/components/ui/input';
 import React, { useEffect, useState } from 'react';
-import { FieldError, UseFormRegister } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
 
 interface infoProfileProps {
   variable: string;
@@ -9,6 +9,7 @@ interface infoProfileProps {
   value: string;
   className?: string;
   status?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register?: UseFormRegister<any>;
 }
 

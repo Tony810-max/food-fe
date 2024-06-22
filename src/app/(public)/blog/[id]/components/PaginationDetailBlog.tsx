@@ -9,22 +9,28 @@ import {
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import usePagination from '../../hooks/usePagination';
+import { metaComment } from '@/types/common';
 
-const PaginationDetailBlog = () => {
-  const { metaComment } = usePagination();
+interface paginationProps {
+  metaComment: metaComment | undefined;
+}
+
+const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {
   const param = useParams<{ id: string }>()?.id;
   const searchParam = useSearchParams();
   const searchPage = searchParam.get('page');
-  // const limit = metaComment && metaComment?.limit;
+  const currentPage = parseInt(searchParam.get('page') || '1', 10);
   const totalPages = metaComment && metaComment?.totalPages;
   const previous =
-    totalPages && totalPages <= 1 ? 1 : totalPages && totalPages - 1;
-  const next =
-    totalPages && Number(searchPage) >= totalPages
-      ? Number(searchPage)
-      : Number(searchPage) + 1;
-  console.log('totalPages 0', totalPages);
+  currentPage && currentPage <= 1 ? 1 : currentPage && currentPage - 1;
+  
+    const next =
+    totalPages && currentPage && currentPage >= totalPages
+      ? totalPages
+      : currentPage + 1;
+
+    const startPage = currentPage && Math.max(currentPage - 2, 1);
+    const endPage = startPage && totalPages && Math.min(startPage + 4, totalPages);
 
   return (
     <Pagination>
@@ -38,26 +44,50 @@ const PaginationDetailBlog = () => {
             Previous
           </Link>
         </PaginationItem>
-        {totalPages &&
-          Array.from({ length: totalPages }, (_, index) => (
+        { startPage && startPage > 1 && (
+          <>
+            <PaginationItem>
+              <Link
+                href={`/blog/${param}?page=1`}
+                className="px-4 hover:opacity-70"
+                scroll={false}
+              >
+                1
+              </Link>
+            </PaginationItem>
+            <PaginationItem><PaginationEllipsis /></PaginationItem>
+          </>
+        )}
+        { endPage &&
+          Array.from({ length: endPage - startPage + 1 }, (_, index) => (
             <PaginationItem key={index}>
               <Link
-                href={`/blog/${param}?page=${index + 1}`}
+                href={`/blog/${param}?page=${startPage + index}`}
                 className={cn('px-4 hover:opacity-70', {
                   'text-[#F53E32] shadow-md py-2 border rounded-lg':
-                    index + 1 === Number(searchPage),
+                  startPage + index === Number(searchPage),
                 })}
                 scroll={false}
               >
-                {index + 1}
+                {startPage + index}
               </Link>
             </PaginationItem>
           ))}
-        {totalPages && totalPages > 2 && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
+        {endPage && endPage < totalPages && (
+          <>
+            <PaginationItem><PaginationEllipsis /></PaginationItem>
+            <PaginationItem>
+              <Link
+                href={`/blog/${param}?page=${totalPages}`}
+                className="px-4 hover:opacity-70"
+                scroll={false}
+              >
+                {totalPages}
+              </Link>
+            </PaginationItem>
+          </>
         )}
+
         <PaginationItem>
           <Link
             href={`/blog/${param}?page=${next}`}

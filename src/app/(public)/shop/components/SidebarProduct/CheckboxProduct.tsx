@@ -15,7 +15,7 @@ const CheckboxProduct: React.FC<ProductProps> = ({
   onSetCurCategory,
 }) => {
   const handleChange = () => {
-    if (value !== undefined && onSetCurCategory) {
+    if (value && onSetCurCategory) {
       onSetCurCategory(value);
     }
   };

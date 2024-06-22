@@ -1,6 +1,6 @@
 import { API_URL, IBlog } from '@/types/common';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const useBlog = () => {
   const [dataBlog, setDataBlog] = useState<IBlog[]>();
@@ -15,10 +15,6 @@ const useBlog = () => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    fetchBlog();
-  }, []);
 
   return {
     dataBlog,

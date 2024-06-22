@@ -6,3 +6,8 @@ export const commentSchema = yup
     comment: yup.string().required(),
   })
   .required();
+
+export interface dataCommentProps {
+  comment: string;
+}
+export interface formUpdateProps extends dataCommentProps {}

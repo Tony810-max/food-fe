@@ -21,16 +21,18 @@ export interface IProduct {
   createdAt: string;
   updatedAt: string;
   deletedAt: null;
-  category: {
-    id: number;
-    title: string;
-    description: string;
-    createdAt: string;
-    updatedAt: string;
-    deletedAt: null;
-  };
+  category: ICategory;
   author: null;
   publisher: null;
+}
+
+export interface ICategory {
+  id: number;
+  title: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null;
 }
 
 export interface Product {
@@ -103,17 +105,7 @@ export interface IReviewProduct {
   ratings: number;
   createdAt: string;
   updatedAt: string;
-  user: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phoneNumber: string;
-    address: string;
-    roles: string[];
-    createdAt: string;
-    updatedAt: string;
-  };
+  user: IUser;
   product: {
     id: number;
     title: string;
@@ -123,14 +115,20 @@ export interface IReviewProduct {
     images: string[];
     createdAt: string;
     updatedAt: string;
-    category: {
-      id: number;
-      title: string;
-      description: string;
-      createdAt: string;
-      updatedAt: string;
-    };
+    category: ICategory;
   };
+}
+
+export interface IUser {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  address: string;
+  roles: string[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface IBlog {
@@ -144,58 +142,52 @@ export interface IBlog {
   updatedAt: string;
   deletedAt: null | string;
   likeCount: number;
-  author: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phoneNumber: string;
-    address: null | string;
-    gender: null | string;
-    dateOfBirth: null | string;
-    roles: string[];
-    createdAt: string;
-    updatedAt: string;
-    deletedAt: null | string;
-    isActice: boolean;
-    verifyCode: null;
-  };
-  likes: [];
+  author: IAuth;
+  likes: [
+    {
+      id: number,
+      user: IAuth
+    }
+  ];
+}
+
+export interface IAuth {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  address: null | string;
+  gender: null | string;
+  dateOfBirth: null | string;
+  roles: string[];
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null | string;
+  isActice: boolean;
+  verifyCode: null;
 }
 
 export interface IComment {
   content: string;
-  author: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phoneNumber: string;
-    address: null | string;
-    gender: null | string;
-    dateOfBirth: null | string;
-    roles: string[];
-    createdAt: string;
-    updatedAt: string;
-    deletedAt: null | string;
-    isActice: boolean;
-    verifyCode: null | string;
-  };
-  post: {
-    id: number;
-    title: string;
-    description: string;
-    images: string[];
-    isApproved: boolean;
-    commentCount: number;
-    createdAt: string;
-    updatedAt: string;
-    deletedAt: null | string;
-    likeCount: number;
-  };
+  author: IAuth;
+  post: IPost;
   id: number;
   createdAt: string;
   deletedAt: null | string;
+}
+
+export interface IPost {
+  id: number;
+  title: string;
+  description: string;
+  images: string[];
+  isApproved: boolean;
+  commentCount: number;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null | string;
+  likeCount: number;
 }
 
 export interface metaComment {

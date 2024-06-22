@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { createContext, useEffect } from 'react';
 import Social from '@/components/Social';
 
 import HealthMainBlog from './HealthMainBlog';
@@ -8,11 +8,26 @@ import BannerBlog from './BannerBlog';
 import ViewBlog from './ViewBlog';
 import DialogBlog from './DialogBlog';
 import useBlog from '../../hooks/useBlog';
+import { useUser } from '@/hooks/useUser';
+
+export const idUserLikeContext = createContext<number[][] | null>(null)
 
 const MainBlog = () => {
-  const { dataBlog } = useBlog();
+  const { dataBlog,fetchBlog } = useBlog();
+  const {dataProfile} = useUser()
+  console.log("dataBlog", dataBlog)
+  const data = dataBlog?.map(item => 
+    {
+     return item?.likes?.map(item => item?.user?.id)
+    }
+  )
+
+  useEffect(() => {
+    fetchBlog()
+  },[])
 
   return (
+    <idUserLikeContext.Provider value={data || null}>
     <div className="w-fit px-4 col-span-2 space-y-[2.125rem]">
       <BannerBlog />
       <div className="space-y-4">
@@ -23,6 +38,8 @@ const MainBlog = () => {
             <ViewBlog
               key={item?.id}
               id={item?.id}
+              idUser = {dataProfile && dataProfile?.id}
+              likeCount={item?.likeCount}
               description={item?.description}
               image={item?.images[0]}
               title={item?.title}
@@ -49,6 +66,7 @@ const MainBlog = () => {
         <Social />
       </div>
     </div>
+    </idUserLikeContext.Provider>
   );
 };
 
