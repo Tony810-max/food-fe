@@ -6,7 +6,7 @@ import ROUTES from '@/types/routes';
 import { API_URL } from '@/types/common';
 import axios from 'axios';
 import {  idUserLikeContext } from '.';
-import useDetailBlog from '../../hooks/useDetailBlog';
+import useDetailBlog from '../../../../../modules/DetailBlogPage/hooks/useDetailBlog';
 
 interface ViewBlog {
   image: string;

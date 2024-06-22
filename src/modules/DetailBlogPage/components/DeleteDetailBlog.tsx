@@ -14,7 +14,7 @@ import { Trash2 } from 'lucide-react';
 import axios from 'axios';
 import { API_URL } from '@/types/common';
 import { toast } from 'react-toastify';
-import useCommentDetailBlog from '../../hooks/useCommentDetailBlog';
+import useCommentDetailBlog from '../hooks/useCommentDetailBlog';
 
 interface deleteDetailBlog {
   id: number;
