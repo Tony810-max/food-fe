@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 import {
   User,
   ShoppingCart,
@@ -32,10 +32,15 @@ import {
 
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
+import { ICategory } from '@/types/common';
 
-const BelowHeader = () => {
+interface Props {
+  categories: ICategory[];
+}
+const BelowHeader: React.FC<Props> = ({ categories }) => {
   const { handleLogOut, user } = useAuth();
-  const [checkNotifications, setCheckNotifications] = useState<boolean>(false);
+  const [checkNotifications, setCheckNotifications] =
+    React.useState<boolean>(false);
 
   return (
     <div className="container py-5 lg:flex items-center gap-2 justify-between hidden ">
@@ -47,7 +52,7 @@ const BelowHeader = () => {
           sizes="(min-width: 768px) 100vw"
         />
       </Link>
-      <FormBelowHeader />
+      <FormBelowHeader categories={categories} />
       <div className="flex gap-7">
         {!user ? (
           <Link
@@ -125,6 +130,7 @@ const BelowHeader = () => {
         ) : (
           ''
         )}
+
         {user ? (
           <div>
             <Popover>

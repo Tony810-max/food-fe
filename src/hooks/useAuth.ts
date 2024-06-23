@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 
 export const useAuth = () => {
-  const user: any = useMemo(() => {
+  const user = useMemo(() => {
     if (typeof localStorage !== 'undefined') {
       const user = localStorage.getItem('user')
-        ? JSON.parse(localStorage?.getItem('user')!)
+        ? JSON.parse(localStorage?.getItem('user') ?? "")
         : null;
       const accessToken = localStorage.getItem('accessToken')
         ? JSON.parse(localStorage.getItem('accessToken')!)
@@ -23,6 +23,7 @@ export const useAuth = () => {
       window?.location?.reload();
     }
   };
+
   return {
     user,
     handleLogOut,

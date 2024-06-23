@@ -1,29 +1,23 @@
-import React, { useContext, useEffect, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useContext } from 'react';
 import { Heart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ROUTES from '@/types/routes';
-import { API_URL } from '@/types/common';
+import { API_URL, IBlog } from '@/types/common';
 import axios from 'axios';
-import {  idUserLikeContext } from '.';
-import useDetailBlog from '../../../../../modules/DetailBlogPage/hooks/useDetailBlog';
+import { useAuth } from '@/hooks/useAuth';
+import { TextContext } from '@/contexts/useTextContext';
+import { format } from 'date-fns';
 
 interface ViewBlog {
-  image: string;
-  title: string;
-  description: string;
-  id: number;
-  likeCount: number;
-  idUser: number;
+  blog: IBlog;
 }
 
-const ViewBlog: React.FC<ViewBlog> = ({ description, image, title, id, idUser,likeCount }) => {
-  const [checkHeart, setCheckHeart] = useState<boolean>(false);
-  const [checkLike, setCheckLike] = useState<boolean>(false);
-  const idUserLike = useContext(idUserLikeContext)
-  const {fetchDetailBlog} =useDetailBlog()
-  // console.log("idUserLike" ,idUserLike)
-  console.log("checkLike" ,checkLike)
+const ViewBlog: React.FC<ViewBlog> = ({ blog }) => {
+  const { user } = useAuth();
+  const context: any = useContext(TextContext);
+
   const handleLikeBlog = async (id: number) => {
     try {
       const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
@@ -33,48 +27,50 @@ const ViewBlog: React.FC<ViewBlog> = ({ description, image, title, id, idUser,li
         { headers: { Authorization: `Bearer ${accessToken}` } },
       );
       if (response) {
-        console.log(response);
-        setCheckLike(!checkLike);
-        fetchDetailBlog(id)
+        context?.fetchBlog();
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
-  useEffect(() =>{
-      const checkUser =  idUserLike?.some(user => user?.includes(idUser))
-      if(checkUser){
-        setCheckLike(true)
-       }
-  } ,[idUserLike, idUser])
+  const isLiked = React.useMemo(() => {
+    return blog?.likes?.some((like) => like?.user?.id === user?.id);
+  }, [blog]);
 
   return (
     <div className="flex gap-4">
       <div className="relative w-48 h-40">
-        <Image src={image} alt="foodImage" fill />
+        <Image
+          src={blog?.images?.length ? blog?.images[0] : ''}
+          alt="foodImage"
+          fill
+        />
       </div>
       <div className="flex flex-col items-start gap-2 w-full">
-        <span className="font-sans text-lg capitalize italic font-bold">
-          {title}
-        </span>
+        <div className="flex flex-col gap-2">
+          <span className="font-sans text-lg capitalize italic font-bold">
+            {blog?.title}
+          </span>
+          <span className="font-sans text-base capitalize italic font-medium">
+            {format(new Date(blog?.createdAt), 'dd-MM-yyyy hh:mm')}
+          </span>
+        </div>
         <p className="font-sans text-base truncate max-w-48 min-h-5">
-          {description}
+          {blog?.description}
         </p>
         <div className="w-full h-full font-sans text-base flex justify-between items-end">
           <div className="flex gap-2">
             <Heart
-              color={checkLike || checkHeart ? '#f53e32' : 'black'}
-              fill={checkLike  ? '#f53e32' : 'none'}
+              color={isLiked ? '#f53e32' : 'black'}
+              fill={isLiked ? '#f53e32' : 'none'}
               className="cursor-pointer "
-              onMouseEnter={() => setCheckHeart(true)}
-              onMouseLeave={() => setCheckHeart(false)}
-              onClick={() => handleLikeBlog(id)}
+              onClick={() => handleLikeBlog(blog?.id)}
             />
-            <span>{likeCount}</span>
+            <span>{blog?.likeCount}</span>
           </div>
           <Link
-            href={`${ROUTES.BLOG}/${id}?page=1&limit=4`}
+            href={`${ROUTES.BLOG}/${blog?.id}?page=1&limit=4`}
             className="opacity-70 hover:text-[#f53e32]"
           >
             View details

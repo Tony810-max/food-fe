@@ -3,13 +3,19 @@ import React from 'react';
 import Link from 'next/link';
 import ROUTES from '@/types/routes';
 import CategoryNavBar from './components/CategoryNavBar';
+import { ICategory } from '@/types/common';
 
 interface AboveProps {
   check: boolean;
   onSetCheck: (value: boolean) => void;
+  categories: ICategory[];
 }
 
-const AboveHeader: React.FC<AboveProps> = ({ onSetCheck, check }) => {
+const AboveHeader: React.FC<AboveProps> = ({
+  onSetCheck,
+  check,
+  categories,
+}) => {
   return (
     <div className=" flex shadow-md">
       <div className="container flex py-3 items-center justify-between">
@@ -22,7 +28,7 @@ const AboveHeader: React.FC<AboveProps> = ({ onSetCheck, check }) => {
           <Link href={ROUTES.HOME} className="font-semibold text-base px-3">
             Home
           </Link>
-          <CategoryNavBar />
+          <CategoryNavBar categories={categories} />
           <Link
             href={ROUTES.SHOP}
             className="capitalize font-semibold text-base px-3"

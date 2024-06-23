@@ -1,16 +1,16 @@
-import { API_URL, IComment } from '@/types/common';
+import { API_URL, IComment, IMetaComment } from '@/types/common';
 import axios from 'axios';
 import { useParams, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
 const useCommentDetailBlog = () => {
-  const [dataCommentDetailBlog, setDataCommentDetailBlog] =
-    useState<IComment[]>();
-
   const params = useParams<{ id: string }>();
   const idBlog = params?.id;
   const searchParam = useSearchParams();
   const search = searchParam?.get('page');
+  const [dataCommentDetailBlog, setDataCommentDetailBlog] =
+    useState<IComment[]>();
+  const [metaComment, setMetaComment] = useState<IMetaComment>();
 
   const fetchCommentDetailBlog = async () => {
     try {
@@ -19,8 +19,8 @@ const useCommentDetailBlog = () => {
       );
 
       if (response) {
-        console.log(response);
         setDataCommentDetailBlog(response?.data?.comments);
+        setMetaComment(response?.data?.meta);
       }
     } catch (error) {
       console.log(error);
@@ -30,6 +30,9 @@ const useCommentDetailBlog = () => {
   return {
     fetchCommentDetailBlog,
     dataCommentDetailBlog,
+    metaComment,
+    search,
+    idBlog,
   };
 };
 

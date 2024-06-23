@@ -4,7 +4,9 @@ import { API_URL, IBlog } from '@/types/common';
 import axios from 'axios';
 import React, { useState } from 'react';
 
-const useBlog = () => {
+export const TextContext = React.createContext({});
+
+export const TextProvider = ({ children }: { children: React.ReactNode }) => {
   const [dataBlog, setDataBlog] = useState<IBlog[]>();
 
   const fetchBlog = async () => {
@@ -22,10 +24,14 @@ const useBlog = () => {
     fetchBlog();
   }, []);
 
-  return {
-    dataBlog,
-    fetchBlog,
-  };
-};
+  const context = React.useMemo(() => {
+    return {
+      dataBlog,
+      fetchBlog,
+    };
+  }, [dataBlog, fetchBlog]);
 
-export default useBlog;
+  return (
+    <TextContext.Provider value={context}>{children}</TextContext.Provider>
+  );
+};

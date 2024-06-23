@@ -2,21 +2,28 @@
 
 import React, { useState } from 'react';
 
-import AboveHeader from './AboveHeader/AboveHeader';
+import AboveHeader from './AboveHeader';
 import dynamic from 'next/dynamic';
 import SidebarHeader from './SidebarHeader';
+import useCategory from '@/hooks/useCategory';
 
-const BelowHeader = dynamic(() => import('./BelowHeader/BelowHeader'), {
+const BelowHeader = dynamic(() => import('./BelowHeader'), {
   ssr: false,
 });
 
 const HeaderMain = () => {
   const [check, setCheck] = useState(false);
+  const { categories } = useCategory();
+
   return (
     <div className="relative">
-      <AboveHeader check={check} onSetCheck={setCheck} />
-      {check && <SidebarHeader onSetCheck={setCheck} check={check} />}
-      <BelowHeader />
+      <AboveHeader
+        check={check}
+        onSetCheck={setCheck}
+        categories={categories}
+      />
+      {check && <SidebarHeader categories={categories} onSetCheck={setCheck} check={check} />}
+      <BelowHeader categories={categories} />
     </div>
   );
 };

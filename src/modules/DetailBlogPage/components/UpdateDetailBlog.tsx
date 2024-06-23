@@ -13,9 +13,10 @@ import FormUpdateDetailBlog from './FormUpdateDetailBlog';
 
 interface updateProps {
   id: number;
+  fetchCommentDetailBlog: () => void;
 }
 
-const UpdateDetailBlog: React.FC<updateProps> = ({ id }) => {
+const UpdateDetailBlog: React.FC<updateProps> = ({ id,fetchCommentDetailBlog }) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -29,7 +30,7 @@ const UpdateDetailBlog: React.FC<updateProps> = ({ id }) => {
             Make changes to your comment here. Click save when you are done.
           </DialogDescription>
         </DialogHeader>
-        <FormUpdateDetailBlog id={id} onSetOpen={setOpen} />
+        <FormUpdateDetailBlog id={id} onSetOpen={setOpen} fetchCommentDetailBlog={fetchCommentDetailBlog} />
       </DialogContent>
     </Dialog>
   );

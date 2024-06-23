@@ -11,7 +11,6 @@ const useDetailBlog = () => {
     try {
       const response = await axios.get(`${API_URL}/api/v1/post/${id}`);
       if (response) {
-        console.log("response dataDetailBlog",response);
         setDataDetailBlog(response?.data);
       }
     } catch (error) {

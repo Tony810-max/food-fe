@@ -1,9 +1,11 @@
-'use client';
-import useCategory from '@/hooks/useCategory';
+import { ICategory } from '@/types/common';
 import React from 'react';
 
-const PopularSideRight = () => {
-  const { categories } = useCategory();
+interface Props {
+  categories: ICategory[];
+}
+
+const PopularSideRight: React.FC<Props> = ({ categories }) => {
   return (
     <div className="py-5 space-y-5">
       <span className="font-sans text-lg leading-none text-[#2b2b2d] font-medium">

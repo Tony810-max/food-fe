@@ -15,6 +15,7 @@ import { toast } from 'react-toastify';
 interface formUpdate {
   id: number;
   onSetOpen: (value: boolean) => void;
+  fetchCommentDetailBlog: () => void;
 }
 
 const schema = yup
@@ -24,11 +25,14 @@ const schema = yup
   })
   .required();
 
-const FormUpdateDetailBlog: React.FC<formUpdate> = ({ id, onSetOpen }) => {
+const FormUpdateDetailBlog: React.FC<formUpdate> = ({
+  id,
+  onSetOpen,
+  fetchCommentDetailBlog,
+}) => {
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
-  // const { fetchDetailBlog } = useDetailBlog();
   const comment = useContext(commentContext);
 
   const handleUpdateComment = async (
@@ -49,6 +53,7 @@ const FormUpdateDetailBlog: React.FC<formUpdate> = ({ id, onSetOpen }) => {
       if (response) {
         setOpen(false);
         toast.success('Updated comment');
+        fetchCommentDetailBlog();
       }
     } catch (error) {
       console.log(error);

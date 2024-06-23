@@ -9,17 +9,18 @@ import {
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { metaComment } from '@/types/common';
+import { IMetaComment } from '@/types/common';
 
 interface paginationProps {
-  metaComment: metaComment | undefined;
+  metaComment: IMetaComment | undefined;
 }
 
 const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {
   const param = useParams<{ id: string }>()?.id;
   const searchParam = useSearchParams();
   const searchPage = searchParam.get('page');
-  const currentPage = parseInt(searchParam.get('page') || '1', 10);
+  
+  const currentPage = Number(searchParam.get('page') || '1');
   const totalPages = metaComment && metaComment?.totalPages;
   const previous =
   currentPage && currentPage <= 1 ? 1 : currentPage && currentPage - 1;
@@ -29,7 +30,7 @@ const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {
       ? totalPages
       : currentPage + 1;
 
-    const startPage = currentPage && Math.max(currentPage - 2, 1);
+    const startPage = currentPage && Math.max(currentPage - 5, 1);
     const endPage = startPage && totalPages && Math.min(startPage + 4, totalPages);
 
   return (

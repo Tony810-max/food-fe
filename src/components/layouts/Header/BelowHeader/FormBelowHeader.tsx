@@ -12,17 +12,20 @@ import {
 import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import useCategory from '@/hooks/useCategory';
 import ROUTES from '@/types/routes';
 import { useRouter } from 'next/navigation';
+import { ICategory } from '@/types/common';
 
 type Inputs = {
   searchValue: string;
   categoryValue: string;
 };
 
-const FormBelowHeader = () => {
-  const { categories } = useCategory();
+interface Props {
+  categories: ICategory[];
+}
+
+const FormBelowHeader: React.FC<Props> = ({ categories }) => {
   const router = useRouter();
   const { register, handleSubmit, control } = useForm<Inputs>();
 

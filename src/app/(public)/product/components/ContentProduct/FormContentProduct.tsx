@@ -24,7 +24,6 @@ const FormContentProduct = () => {
       if (!headerConfig) {
         toast.error('You need to login to access!!!');
         localStorage.setItem('preHref', window.location.href);
-        console.log(window.location.href);
         return setTimeout(() => {
           router?.push('/login');
         }, 2000);

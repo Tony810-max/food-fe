@@ -9,6 +9,7 @@ export interface ICategory {
   description: string;
   createdAt: string;
   updatedAt: string;
+  deletedAt: null;
 }
 
 export interface IProduct {
@@ -143,12 +144,12 @@ export interface IBlog {
   deletedAt: null | string;
   likeCount: number;
   author: IAuth;
-  likes: [
-    {
-      id: number,
-      user: IAuth
-    }
-  ];
+  likes: ILike[];
+}
+
+export interface ILike {
+  id: number;
+  user: IAuth;
 }
 
 export interface IAuth {
@@ -190,7 +191,7 @@ export interface IPost {
   likeCount: number;
 }
 
-export interface metaComment {
+export interface IMetaComment {
   limit: string;
   totalItems: number;
   totalPages: number;

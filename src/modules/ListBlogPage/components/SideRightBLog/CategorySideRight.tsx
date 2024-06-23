@@ -1,14 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import useCategory from '@/hooks/useCategory';
-import useProduct from '@/hooks/useProduct';
-import React, { useMemo } from 'react';
 
-const CategorySideRight = () => {
-  const { categories } = useCategory();
+import useProduct from '@/hooks/useProduct';
+import { ICategory } from '@/types/common';
+import React from 'react';
+
+interface Props {
+  categories: ICategory[];
+}
+
+const CategorySideRight: React.FC<Props> = ({ categories }) => {
   const { products } = useProduct();
 
   // Hàm này sẽ trả về số lượng sản phẩm theo danh mục
-  const countProductsByCategory = useMemo(() => {
+  const countProductsByCategory = React.useMemo(() => {
     return categories.reduce((acc: any, category) => {
       acc[category?.title] = products.filter(
         (product) => product?.category?.id === category.id,

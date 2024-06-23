@@ -14,15 +14,16 @@ import { Trash2 } from 'lucide-react';
 import axios from 'axios';
 import { API_URL } from '@/types/common';
 import { toast } from 'react-toastify';
-import useCommentDetailBlog from '../hooks/useCommentDetailBlog';
 
 interface deleteDetailBlog {
   id: number;
+  fetchCommentDetailBlog: () => void;
 }
 
-const DeleteDetailBlog: React.FC<deleteDetailBlog> = ({ id }) => {
-  const { fetchCommentDetailBlog } = useCommentDetailBlog();
-
+const DeleteDetailBlog: React.FC<deleteDetailBlog> = ({
+  id,
+  fetchCommentDetailBlog,
+}) => {
   const handleDeleteComment = async (id: number) => {
     try {
       const accessToken = JSON.parse(localStorage.getItem('accessToken')!);

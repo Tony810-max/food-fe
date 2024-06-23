@@ -5,14 +5,15 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from '@/components/ui/menubar';
-import useCategory from '@/hooks/useCategory';
+import { ICategory } from '@/types/common';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
-const CategoryNavBar = () => {
-  const { categories } = useCategory();
-
+interface Props {
+  categories: ICategory[];
+}
+const CategoryNavBar: React.FC<Props> = ({ categories }) => {
   return (
     <Menubar className="border-none ">
       <MenubarMenu>

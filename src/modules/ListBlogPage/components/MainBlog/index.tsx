@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import React, { createContext, useEffect } from 'react';
+
+import React, { useContext } from 'react';
 import Social from '@/components/Social';
 
 import HealthMainBlog from './HealthMainBlog';
@@ -7,44 +9,19 @@ import BreadcrumbMainBlog from './BreadcrumbMainBlog';
 import BannerBlog from './BannerBlog';
 import ViewBlog from './ViewBlog';
 import DialogBlog from './DialogBlog';
-import useBlog from '../../hooks/useBlog';
-import { useUser } from '@/hooks/useUser';
-
-export const idUserLikeContext = createContext<number[][] | null>(null)
+import { TextContext } from '@/contexts/useTextContext';
 
 const MainBlog = () => {
-  const { dataBlog,fetchBlog } = useBlog();
-  const {dataProfile} = useUser()
-  console.log("dataBlog", dataBlog)
-  const data = dataBlog?.map(item => 
-    {
-     return item?.likes?.map(item => item?.user?.id)
-    }
-  )
-
-  useEffect(() => {
-    fetchBlog()
-  },[])
+  const context: any = useContext(TextContext);
 
   return (
-    <idUserLikeContext.Provider value={data || null}>
     <div className="w-fit px-4 col-span-2 space-y-[2.125rem]">
       <BannerBlog />
       <div className="space-y-4">
         <BreadcrumbMainBlog />
         <HealthMainBlog />
         <div className="space-y-4">
-          {dataBlog?.map((item) => (
-            <ViewBlog
-              key={item?.id}
-              id={item?.id}
-              idUser = {dataProfile && dataProfile?.id}
-              likeCount={item?.likeCount}
-              description={item?.description}
-              image={item?.images[0]}
-              title={item?.title}
-            />
-          ))}
+          {context?.dataBlog?.map((item: any) => <ViewBlog key={item?.id} blog={item} />)}
         </div>
 
         <div className="flex justify-end">
@@ -66,7 +43,6 @@ const MainBlog = () => {
         <Social />
       </div>
     </div>
-    </idUserLikeContext.Provider>
   );
 };
 

@@ -13,26 +13,24 @@ import { commentSchema, dataCommentProps } from './types/const';
 import axios from 'axios';
 import { API_URL } from '@/types/common';
 import { toast } from 'react-toastify';
-import { useParams, useSearchParams } from 'next/navigation';
 import useDetailBlog from './hooks/useDetailBlog';
 import useCommentDetailBlog from './hooks/useCommentDetailBlog';
-import usePagination from './hooks/usePagination';
+import { useRouter } from 'next/navigation';
 
 const DetaiBlogPage = () => {
   const { fetchDetailBlog, dataDetailBlog } = useDetailBlog();
-  const { fetchCommentDetailBlog, dataCommentDetailBlog } =
-    useCommentDetailBlog();
-  const { fetchMetaComment, metaComment } = usePagination();
-  console.log('dataCommentDetailBlog', dataCommentDetailBlog);
-  const { register, handleSubmit } = useForm({
+  const {
+    fetchCommentDetailBlog,
+    dataCommentDetailBlog,
+    metaComment,
+    idBlog,
+    search,
+  } = useCommentDetailBlog();
+
+  const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(commentSchema),
   });
-
-  const params = useParams<{ id: string }>();
-  const idBlog = params?.id;
-  const search = useSearchParams();
-  const searchPage = search.get('page');
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleComment = async (data: dataCommentProps) => {
     try {
@@ -50,24 +48,24 @@ const DetaiBlogPage = () => {
       if (response) {
         toast.success('Commented');
         fetchCommentDetailBlog();
-        fetchMetaComment();
-        // router.push('/blog/1?page=1&limit=4');
+        reset();
+        router.push('/blog/1?page=1&limit=4', { scroll: false });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   useEffect(() => {
     if (idBlog) {
       fetchDetailBlog(idBlog);
-      fetchMetaComment();
+      fetchCommentDetailBlog();
     }
   }, [idBlog]);
 
   useEffect(() => {
     fetchCommentDetailBlog();
-  }, [searchPage]);
+  }, [search]);
 
   return (
     <div className="container py-20 space-y-4">
@@ -92,6 +90,7 @@ const DetaiBlogPage = () => {
                 comment={item?.content}
                 name={`${item?.author?.firstName} ${item?.author?.lastName}`}
                 dataUpdate={item?.createdAt}
+                fetchCommentDetailBlog={fetchCommentDetailBlog}
               />
             ))}
           </div>

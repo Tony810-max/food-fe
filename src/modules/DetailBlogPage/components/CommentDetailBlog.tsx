@@ -13,6 +13,7 @@ interface commentProps {
   dataUpdate: string;
   idUser: number;
   id: number;
+  fetchCommentDetailBlog: () => void;
 }
 export const commentContext = createContext('');
 
@@ -22,9 +23,9 @@ const CommentDetailBlog: React.FC<commentProps> = ({
   comment,
   name,
   dataUpdate,
+  fetchCommentDetailBlog,
 }) => {
   const { dataProfile } = useUser();
-
   return (
     <commentContext.Provider value={comment}>
       <div className="border rounded-lg py-4 px-4 space-y-2 shadow-md">
@@ -39,8 +40,14 @@ const CommentDetailBlog: React.FC<commentProps> = ({
           </div>
           {idUser === dataProfile?.id && (
             <div className="flex gap-2">
-              <UpdateDetailBlog id={id} />
-              <DeleteDetailBlog id={id} />
+                <UpdateDetailBlog
+                  id={id}
+                  fetchCommentDetailBlog={fetchCommentDetailBlog}
+                />
+                <DeleteDetailBlog
+                  id={id}
+                  fetchCommentDetailBlog={fetchCommentDetailBlog}
+                />
             </div>
           )}
         </div>

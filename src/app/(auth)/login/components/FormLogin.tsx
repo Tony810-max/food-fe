@@ -31,6 +31,10 @@ const FormLogin = () => {
           'accessToken',
           JSON.stringify(response?.data?.token?.accessToken),
         );
+        localStorage.setItem(
+          'refreshToken',
+          JSON.stringify(response?.data?.token?.refreshToken),
+        );
 
         toast.success('Login successfully!');
         setTimeout(() => {
