@@ -21,7 +21,9 @@ const MainBlog = () => {
         <BreadcrumbMainBlog />
         <HealthMainBlog />
         <div className="space-y-4">
-          {context?.dataBlog?.map((item: any) => <ViewBlog key={item?.id} blog={item} />)}
+          {context?.dataBlog?.map((item: any) => (
+            <ViewBlog key={item?.id} blog={item} />
+          ))}
         </div>
 
         <div className="flex justify-end">
