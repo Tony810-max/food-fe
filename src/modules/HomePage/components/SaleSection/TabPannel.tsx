@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
-import { Button } from '../../../../../components/ui/button';
 import Link from 'next/link';
 import ROUTES from '@/types/routes';
+import { Button } from '@/components/ui/button';
 
 interface SaleProps {
   image: string;

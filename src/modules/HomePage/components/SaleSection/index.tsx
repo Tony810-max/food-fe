@@ -4,13 +4,14 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import TabList from './TabList';
 import TabPannel from './TabPannel';
-import useCategory from '@/hooks/useCategory';
 import ROUTES from '@/types/routes';
-import useProduct from '@/hooks/useProduct';
+import { ICategory } from '@/types/common';
 
-const SaleSection = () => {
-  const { categories } = useCategory();
-  const { products } = useProduct();
+interface saleProps {
+  categories: ICategory[];
+}
+
+const SaleSection: React.FC<saleProps> = ({ categories }) => {
   const [idCategory, setIdCategory] = useState<number>(categories[0]?.id);
 
   return (

@@ -1,19 +1,22 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { IProduct } from '@/types/common';
-
-import useCategory from '@/hooks/useCategory';
+import { ICategory, IProduct } from '@/types/common';
 
 import HeadingHomePage from '@/components/Heading';
-import ProductCard from '../../../../../components/ProductCard';
 import ListItem from './ListItem';
 import useProduct from '@/hooks/useProduct';
 import Link from 'next/link';
 import ROUTES from '@/types/routes';
+import ProductCard from '@/components/ProductCard';
 
-const PopularProductsSection: React.FC = () => {
-  const { categories } = useCategory();
+interface popularProductProps {
+  categories: ICategory[];
+}
+
+const PopularProductsSection: React.FC<popularProductProps> = ({
+  categories,
+}) => {
   const { products } = useProduct();
   const [categoryFilter, setCategoryFilter] = useState<number | string>('');
   const [productFilter, setProductFilter] = useState<IProduct[]>([]);
@@ -91,7 +94,7 @@ const PopularProductsSection: React.FC = () => {
                   salePrice={product?.price}
                   desc={product?.description}
                   category={product?.category?.title}
-                  image={product?.images[0]}
+                  image={product?.images[1]}
                 />
               );
             }

@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { Button } from '../../../../../components/ui/button';
 import ROUTES from '@/types/routes';
+import { Button } from '@/components/ui/button';
 
 interface PromotionProps {
   image: string;
