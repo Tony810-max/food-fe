@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -54,7 +55,7 @@ const BillingDetailsProduct = () => {
   const [address] = watch(['address']);
   const { addressSearch, setIsChooseAddress, isChooseAddress } =
     useAddress(address);
-
+ 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       if (!headerConfig) {
@@ -162,10 +163,7 @@ const BillingDetailsProduct = () => {
               <label>Address*</label>
               <div className="relative">
                 {valueCheckbox === 'existingAddress' ? (
-                  <Input
-                    value={dataProfile?.address}
-                    {...register('address', { required: true })}
-                  />
+                  <Input value={dataProfile?.address} />
                 ) : (
                   <Input
                     {...(register('address', { required: true }), reset)}
@@ -176,7 +174,7 @@ const BillingDetailsProduct = () => {
                     This field is required
                   </span>
                 )}
-                {addressSearch?.length > 0 && !isChooseAddress && !!address && (
+                {addressSearch?.length > 0 && !isChooseAddress && (
                   <div className="absolute w-full flex flex-col bg-white border border-slate-400 rounded-md p-2 mt-2">
                     {addressSearch?.map((address: any) => (
                       <button

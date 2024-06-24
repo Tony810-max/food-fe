@@ -115,6 +115,7 @@ export const useUser = () => {
         { headers: { Authorization: `Bearer ${accessToken}` } },
       );
       if (response) {
+        console.log(response);
         toast.success('Update profile successfully');
         fetchDataProfile();
         setEditProfile(false);
@@ -126,7 +127,7 @@ export const useUser = () => {
 
   useEffect(() => {
     fetchDataProfile();
-  }, [fetchDataProfile]);
+  }, []);
 
   return {
     dataProfile,

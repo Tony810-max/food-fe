@@ -21,13 +21,13 @@ const ProfilePage = () => {
     setEditProfile,
   } = useUser();
 
-  const { register, handleSubmit, watch } = useForm({
+  const { register, handleSubmit, watch, setValue } = useForm({
     resolver: yupResolver(schemaProfile),
   });
 
   const addressInput = watch('address');
-
-  const { addressSearch } = useAddress(addressInput);
+  const { addressSearch, isChooseAddress, setIsChooseAddress } =
+    useAddress(addressInput);
 
   return (
     <form
@@ -58,15 +58,24 @@ const ProfilePage = () => {
               address
             </label>
             <Input
+              defaultValue={dataProfile?.address}
+              disabled={!editProfile}
               {...register('address')}
               className="font-sans text-base font-semibold leading-normal"
             />
           </div>
-          <div className="absolute z-10">
+          <div className="absolute flex flex-col gap-2  z-10">
             {addressSearch?.length > 0 &&
+              !isChooseAddress &&
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               addressSearch?.map((address: any) => (
-                <Button key={address?.description}>
+                <Button
+                  key={address?.description}
+                  onClick={() => {
+                    setValue('address', address?.description);
+                    setIsChooseAddress(true);
+                  }}
+                >
                   {address?.description}
                 </Button>
               ))}
