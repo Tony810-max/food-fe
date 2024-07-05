@@ -1,14 +1,25 @@
 import React from 'react';
 
-import PagementMethodOrder from './components/PagementMethodOrder';
-import PagementMethodImage from './components/PagementMethodImage';
 import SummaryOrderProduct from './components/SummaryOrderProduct';
+import PagementMethodImage from './components/PaymentMethodImage';
+import PaymentMethodOrder from './components/PagementMethodOrder';
 
-const InfoOrderProduct = () => {
+interface IInfoOrder {
+  paymentMethod?: string;
+  onSetPaymentMethod: (value: string) => void;
+}
+
+const InfoOrderProduct: React.FC<IInfoOrder> = ({
+  paymentMethod,
+  onSetPaymentMethod,
+}) => {
   return (
     <div className="col-span-1 px-3 space-y-[1.875rem]">
-      <SummaryOrderProduct />
-      <PagementMethodOrder />
+      <SummaryOrderProduct  />
+      <PaymentMethodOrder
+        paymentMethod={paymentMethod}
+        onSetPaymentMethod={onSetPaymentMethod}
+      />
       <PagementMethodImage />
     </div>
   );

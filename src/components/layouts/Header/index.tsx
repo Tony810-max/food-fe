@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 import AboveHeader from './AboveHeader';
 import dynamic from 'next/dynamic';
-import SidebarHeader from './SidebarHeader';
 import useCategory from '@/hooks/useCategory';
 
 const BelowHeader = dynamic(() => import('./BelowHeader'), {
@@ -22,7 +21,7 @@ const HeaderMain = () => {
         onSetCheck={setCheck}
         categories={categories}
       />
-      {check && <SidebarHeader categories={categories} onSetCheck={setCheck} check={check} />}
+
       <BelowHeader categories={categories} />
     </div>
   );

@@ -1,4 +1,4 @@
-import { API_URL, IComment, IMetaComment } from '@/types/common';
+import { API_URL, IComment, IMeta } from '@/types/common';
 import axios from 'axios';
 import { useParams, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
@@ -10,7 +10,7 @@ const useCommentDetailBlog = () => {
   const search = searchParam?.get('page');
   const [dataCommentDetailBlog, setDataCommentDetailBlog] =
     useState<IComment[]>();
-  const [metaComment, setMetaComment] = useState<IMetaComment>();
+  const [metaComment, setMetaComment] = useState<IMeta>();
 
   const fetchCommentDetailBlog = async () => {
     try {

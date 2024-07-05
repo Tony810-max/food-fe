@@ -12,21 +12,6 @@ export interface ICategory {
   deletedAt: null;
 }
 
-export interface IProduct {
-  id: number;
-  title: string;
-  description: string;
-  price: string;
-  stock: number;
-  images: string[];
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: null;
-  category: ICategory;
-  author: null;
-  publisher: null;
-}
-
 export interface ICategory {
   id: number;
   title: string;
@@ -36,42 +21,75 @@ export interface ICategory {
   deletedAt: null;
 }
 
-export interface Product {
+export interface IProduct {
+  id: 1;
+  title: 'Hamburger';
+  description: 'Description';
+  price: '10.00';
+  discount: '10.00';
+  stock: 10;
+  images: string;
+  createdAt: '2024-05-31T13:40:22.445Z';
+  updatedAt: '2024-05-31T13:40:22.445Z';
+  deletedAt: null;
+  category: ICategory;
+  author: IAuthor;
+  publisher: IPublisher;
+}
+
+export interface IProductMain {
+  products: IProduct[];
+  meta: IMeta;
+}
+
+export interface IProductDetail {
   id: number;
-  addedBy: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phoneNumber: string;
-    address: string;
-    createdAt: string;
-    updatedAt: string;
-  };
-  category: {
-    id: number;
-    title: string;
-  };
+  title: string;
+  description: string;
+  price: string;
+  discount: string;
+  stock: number;
+  images: string[];
   createdAt: string;
   updatedAt: string;
+  deletedAt: null | string;
+  addedBy: IAuth;
+  category: ICategory;
+  author: IAuthor;
+  publisher: IPublisher;
+}
+
+export interface IAuthor {
+  id: number;
+  name: string;
+  gender: string;
+  dateOfBirth: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null | string;
+}
+
+export interface IPublisher {
+  id: number;
+  name: string;
   description: string;
-  images: string[];
-  price: number | string;
-  stock: number;
-  title: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null | string;
+}
+
+export interface IItemCart {
+  id: number;
+  quantity: number;
+  product: IProductDetail;
 }
 
 export interface CartProduct {
   id: number;
-  product: {
-    images: string[] | string;
-    category: { id: number; title: string };
-    id: number;
-    title: string;
-    price: number | string;
-    stock: number;
-  };
-  quantity: number;
+  isOrdered: boolean;
+  createdAt: string;
+  updatedAt: string;
+  items: IItemCart[];
 }
 
 export interface IProvince {
@@ -84,50 +102,12 @@ export interface IProvince {
   _id: string;
 }
 
-export interface IProfile {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  address: string;
-  gender: null | string;
-  dateOfBirth: null | string;
-  roles: string[];
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: null | string;
-  isActice: boolean;
-}
-
-export interface IReviewProduct {
-  id: number;
-  comment: string;
+export interface IReviewProductDetail {
   ratings: number;
-  createdAt: string;
-  updatedAt: string;
-  user: IUser;
-  product: {
-    id: number;
-    title: string;
-    description: string;
-    price: string;
-    stock: number;
-    images: string[];
-    createdAt: string;
-    updatedAt: string;
-    category: ICategory;
-  };
-}
-
-export interface IUser {
+  comment: string;
+  user: IAuth;
+  product: IProductDetail;
   id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  address: string;
-  roles: string[];
   createdAt: string;
   updatedAt: string;
 }
@@ -158,7 +138,7 @@ export interface IAuth {
   lastName: string;
   email: string;
   phoneNumber: string;
-  address: null | string;
+  address: string;
   gender: null | string;
   dateOfBirth: null | string;
   roles: string[];
@@ -191,9 +171,9 @@ export interface IPost {
   likeCount: number;
 }
 
-export interface IMetaComment {
-  limit: string;
+export interface IMeta {
+  limit: string | string;
   totalItems: number;
   totalPages: number;
-  currentPage: string;
+  currentPage: string | number;
 }

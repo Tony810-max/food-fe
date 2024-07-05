@@ -14,7 +14,7 @@ const PopularProductDetail = () => {
   const { products } = useProduct();
 
   return (
-    <div className="w-full">
+    <div className="w-full py-12">
       <Heading
         title="Popular Products"
         des="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

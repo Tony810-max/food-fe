@@ -4,9 +4,10 @@ import React from 'react';
 interface checkboxProps {
   id?: string;
   title?: string;
-  value?: string;
+  value: string;
   onSetValueCheckbox?: (value: string) => void;
   valueCheckbox?: string;
+  check: boolean;
 }
 
 const Checkbox: React.FC<checkboxProps> = ({
@@ -14,7 +15,7 @@ const Checkbox: React.FC<checkboxProps> = ({
   title,
   value,
   onSetValueCheckbox,
-  valueCheckbox,
+  check,
 }) => {
   return (
     <div className="space-x-[0.625rem]">
@@ -22,14 +23,14 @@ const Checkbox: React.FC<checkboxProps> = ({
         type="radio"
         value={value}
         id={id}
-        name="addressOption"
+        name="paymentMethod"
         className="rounded-full"
         onChange={() => {
           if (value !== undefined && onSetValueCheckbox) {
             onSetValueCheckbox(value);
           }
         }}
-        defaultChecked={value === valueCheckbox}
+        defaultChecked={check}
       />
       <label htmlFor={id}>{title}</label>
     </div>

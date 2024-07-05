@@ -9,10 +9,10 @@ import {
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { IMetaComment } from '@/types/common';
+import { IMeta } from '@/types/common';
 
 interface paginationProps {
-  metaComment: IMetaComment | undefined;
+  metaComment: IMeta | undefined;
 }
 
 const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {

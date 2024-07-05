@@ -1,32 +1,33 @@
-import { Product } from '@/types/common';
 import Image, { StaticImageData } from 'next/image';
 import React, { useEffect, useState } from 'react';
-import blankImage from '/public/images/Blank-Image.webp';
 import { Skeleton } from '@/components/ui/skeleton';
-interface ImageProps {
-  data: Product | undefined;
-  isLoading: boolean;
-}
+import { DetailProductContext } from '@/contexts/useProductDetailContext';
 
-const ImageProduct: React.FC<ImageProps> = ({ data, isLoading }) => {
+const ImageProduct = () => {
   const [currentImage, setCurrentImage] = useState<string | StaticImageData>(
     '',
   );
-  const [isLoadingStatus, setIsLoadingStatus] = useState<boolean>(isLoading);
+  const context = React.useContext(DetailProductContext);
+  const [isLoadingStatus, setIsLoadingStatus] = useState<boolean>(
+    context?.isLoading,
+  );
 
   useEffect(() => {
     setIsLoadingStatus(true);
 
-    if (!data) {
+    if (!context?.dataDetailProducts) {
       setCurrentImage('');
       setIsLoadingStatus(false);
     }
 
-    if (data?.images && data.images.length > 0) {
-      setCurrentImage(data?.images[0]);
+    if (
+      context?.dataDetailProducts?.images &&
+      context?.dataDetailProducts.images.length > 0
+    ) {
+      setCurrentImage(context?.dataDetailProducts?.images[0]);
       setIsLoadingStatus(false);
     }
-  }, [data]);
+  }, [context?.dataDetailProducts]);
 
   return (
     <div className="col-span-1 flex flex-col">
@@ -45,22 +46,24 @@ const ImageProduct: React.FC<ImageProps> = ({ data, isLoading }) => {
         )}
       </div>
       <div className="grid grid-cols-4 gap-3 py-4">
-        {Array.isArray(data?.images) &&
-          data?.images?.map((image: string, index: number) => (
-            <div
-              key={index}
-              className="relative w-full col-span-1 aspect-square"
-            >
-              <Image
-                src={image}
-                alt="ImageProduct"
-                fill
-                onClick={() => setCurrentImage(image)}
-                className="cursor-pointer "
-                sizes="(min-width: 768px) 100vw"
-              />
-            </div>
-          ))}
+        {Array.isArray(context?.dataDetailProducts?.images) &&
+          context?.dataDetailProducts?.images?.map(
+            (image: string, index: number) => (
+              <div
+                key={index}
+                className="relative w-full col-span-1 aspect-square"
+              >
+                <Image
+                  src={image}
+                  alt="ImageProduct"
+                  fill
+                  onClick={() => setCurrentImage(image)}
+                  className="cursor-pointer "
+                  sizes="(min-width: 768px) 100vw"
+                />
+              </div>
+            ),
+          )}
       </div>
     </div>
   );

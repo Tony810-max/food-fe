@@ -6,8 +6,8 @@ interface ProductProps {
   image: string;
   name: string;
   rating: number;
-  price: number;
-  discount: number;
+  price: number | string;
+  discount: number | string;
   quantity: number;
 }
 

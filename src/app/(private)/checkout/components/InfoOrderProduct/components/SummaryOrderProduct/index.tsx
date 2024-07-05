@@ -2,25 +2,28 @@
 import React from 'react';
 import PriceSummary from './PriceSummary';
 import ProductSummary from './ProductSummary';
-import useCartProduct from '@/hooks/useCartProduct';
+import { CartContext } from '@/contexts/useSummaryOrder';
 
 const SummaryOrderPrice = () => {
-  const { dataCartProduct, summaryValue } = useCartProduct();
+  const context = React.useContext(CartContext);
+  
   return (
     <div className="p-4 border rounded-[0.313rem] space-y-[2.125rem]">
-      <PriceSummary total={summaryValue} />
+      <PriceSummary total={context?.summaryValue} />
       <div className="space-y-6">
-        {dataCartProduct?.map((product) => (
+        {context?.dataCartProduct?.items?.map((product) => 
+        (
           <ProductSummary
             key={product?.id}
             image={product?.product?.images[0]}
-            name={product?.product?.title}
-            price={Number(product?.product?.price)}
+            name={product?.product.title}
+            price={product?.product.price}
             discount={2}
             rating={5}
             quantity={product?.quantity}
           />
-        ))}
+        )
+        )}
       </div>
     </div>
   );

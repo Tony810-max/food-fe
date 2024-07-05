@@ -1,48 +1,27 @@
-import { Product } from '@/types/common';
+import { DetailProductContext } from '@/contexts/useProductDetailContext';
 import React from 'react';
 
-interface ContentProps {
-  data: Product | undefined;
-}
-
-const InfoContentProduct: React.FC<ContentProps> = ({ data }) => {
+const InfoContentProduct = () => {
+  const context = React.useContext(DetailProductContext);
+  const data = context.dataDetailProducts;
   return (
     <table>
       <tbody className="flex flex-col gap-[0.6rem]">
         <tr>
-          <th className="min-w-24 text-left">Brand </th>
+          <th className="min-w-24 text-left">Name food </th>
           <td>:</td>
           <td className="px-[0.6rem]">{data?.title}</td>
         </tr>
         <tr>
-          <th className="min-w-24 text-left">Flavour</th>
+          <th className="min-w-24 text-left">Stock</th>
           <td>:</td>
-          <td className="px-[0.6rem]">Super Saver Pack</td>
+          <td className="px-[0.6rem]">{data?.stock}</td>
         </tr>
-        <tr>
-          <th className="min-w-24 text-left">Diet Type</th>
-          <td>:</td>
-          <td className="px-[0.6rem]">{data?.id}</td>
-        </tr>
-        <tr>
-          <th className="min-w-24 text-left">Weight</th>
-          <td>:</td>
-          <td className="px-[0.6rem]">200 Grams</td>
-        </tr>
-        <tr>
-          <th className="min-w-24 text-left">Speciality</th>
-          <td>:</td>
-          <td className="px-[0.6rem]">Gluten Free, Sugar Free</td>
-        </tr>
-        <tr>
-          <th className="min-w-24 text-left">Info</th>
-          <td>:</td>
-          <td className="px-[0.6rem]">Gluten Free, Sugar Free</td>
-        </tr>
+
         <tr>
           <th className="min-w-24 text-left">Item</th>
           <td>:</td>
-          <td className="px-[0.6rem]">{data?.category?.id}</td>
+          <td className="px-[0.6rem]">{data?.category?.title}</td>
         </tr>
       </tbody>
     </table>

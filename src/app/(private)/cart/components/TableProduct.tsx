@@ -6,7 +6,7 @@ import ROUTES from '@/types/routes';
 import { CartProduct } from '@/types/common';
 
 interface ItemProductProps {
-  dataCartProduct: CartProduct[];
+  dataCartProduct: CartProduct;
   fetchCartProduct: () => void;
 }
 
@@ -26,7 +26,7 @@ const TableProduct: React.FC<ItemProductProps> = ({
             <th className=" rounded-tr-lg">Action</th>
           </tr>
 
-          {dataCartProduct?.map((product) => (
+          {dataCartProduct?.items.map((product) => (
             <ItemProductCart
               key={product.id}
               fetchCartProduct={fetchCartProduct}
@@ -35,13 +35,7 @@ const TableProduct: React.FC<ItemProductProps> = ({
           ))}
         </tbody>
       </table>
-      <div className="flex items-center justify-between">
-        <Link
-          href={ROUTES.SHOP}
-          className="font-sans text-base leading-snug text-[#444444] font-normal underline hover:opacity-70"
-        >
-          Continue Shopping{' '}
-        </Link>
+      <div className="flex justify-end">
         <Link href={ROUTES.CHECKOUT}>
           <Button variant={'destructive'}>Checkout</Button>
         </Link>

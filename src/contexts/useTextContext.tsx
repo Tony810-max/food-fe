@@ -2,12 +2,12 @@
 
 import { API_URL, IBlog } from '@/types/common';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 
 export const TextContext = React.createContext({});
 
 export const TextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [dataBlog, setDataBlog] = useState<IBlog[]>();
+  const [dataBlog, setDataBlog] = React.useState<IBlog[]>();
 
   const fetchBlog = async () => {
     try {

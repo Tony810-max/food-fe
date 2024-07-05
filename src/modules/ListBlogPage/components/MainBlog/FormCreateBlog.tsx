@@ -39,7 +39,6 @@ const FormCreateBlog: React.FC<IFormProps> = ({ onSetOpen }) => {
     resolver: yupResolver(schema),
   });
   const [fileImage, setFileImage] = React.useState<FileList>();
-  console.log('fileImage', fileImage);
   const uploadImage = (files: FileList) => {
     const CLOUD_NAME = 'dehamgr2z';
     const PRESET_NAME = 'food-upload';
@@ -74,7 +73,6 @@ const FormCreateBlog: React.FC<IFormProps> = ({ onSetOpen }) => {
   const handleAddBlog = async (data: addBlog) => {
     try {
       const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
-      console.log(accessToken);
       if (!accessToken) return;
       const response = await axios.post(
         `${API_URL}/api/v1/post/create`,

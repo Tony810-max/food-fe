@@ -8,7 +8,7 @@ const CartProduct = () => {
   const { dataCartProduct, fetchCartProduct } = useCartProduct();
   return (
     <div>
-      {dataCartProduct?.length > 0 ? (
+      {dataCartProduct ? (
         <TableProduct
           dataCartProduct={dataCartProduct}
           fetchCartProduct={fetchCartProduct}

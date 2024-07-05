@@ -1,12 +1,12 @@
 import { Input } from '@/components/ui/input';
-import { CartProduct } from '@/types/common';
+import { IItemCart } from '@/types/common';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import { useCartActions } from '../hooks/useCartActions';
 
 interface ProductCartProps {
-  data: CartProduct;
+  data: IItemCart;
   fetchCartProduct: () => void;
 }
 
@@ -25,14 +25,12 @@ const ItemProductCart: React.FC<ProductCartProps> = ({
       <td className="py-6">
         <div className="flex items-center gap-5">
           <div className="relative w-[3.75rem] h-[3.75rem]">
-            {data?.product?.images?.length > 0 && (
-              <Image
-                src={data?.product?.images[0]}
-                alt="imageProductCart"
-                fill
-                sizes="(min-width: 768px) 100vw, (min-width: 1200px) 50vw, 33vw"
-              />
-            )}
+            <Image
+              src={data?.product?.images[0]}
+              alt="imageProductCart"
+              fill
+              sizes="(min-width: 768px) 100vw, (min-width: 1200px) 50vw, 33vw"
+            />
           </div>
           <span className="font-sans text-[#444444] leading-normal font-bold">
             {data?.product?.title}
@@ -54,10 +52,10 @@ const ItemProductCart: React.FC<ProductCartProps> = ({
       <td>$ {Number(data?.product?.price) * Number(data?.quantity)}</td>
       <td className="py-6 text-center">
         <button
-          className="text-center"
-          onClick={() => handleDeleteCartProduct(data?.product?.id)}
+          className="text-center hover:opacity-70"
+          onClick={() => handleDeleteCartProduct(data?.id)}
         >
-          <Trash2 />
+          <Trash2 color="red" />
         </button>
       </td>
     </tr>

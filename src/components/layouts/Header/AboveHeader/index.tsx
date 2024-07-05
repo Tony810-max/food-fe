@@ -1,9 +1,18 @@
-import { AlignLeft, Phone } from 'lucide-react';
+import { AlignJustify, Phone } from 'lucide-react';
 import React from 'react';
 import Link from 'next/link';
 import ROUTES from '@/types/routes';
 import CategoryNavBar from './components/CategoryNavBar';
 import { ICategory } from '@/types/common';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+
+import BelowSidebarHeader from './components/BelowSidebarHeader';
 
 interface AboveProps {
   check: boolean;
@@ -11,19 +20,22 @@ interface AboveProps {
   categories: ICategory[];
 }
 
-const AboveHeader: React.FC<AboveProps> = ({
-  onSetCheck,
-  check,
-  categories,
-}) => {
+const AboveHeader: React.FC<AboveProps> = ({ categories }) => {
   return (
     <div className=" flex shadow-md">
       <div className="container flex py-3 items-center justify-between">
-        <AlignLeft
-          className="block border border-border p-1 rounded-lg cursor-pointer lg:invisible"
-          size={36}
-          onClick={() => onSetCheck(!check)}
-        />
+        <Sheet>
+          <SheetTrigger asChild>
+            <AlignJustify className="block lg:hidden hover:opacity-70 cursor-pointer" />
+          </SheetTrigger>
+          <SheetContent />
+          <SheetContent className="block lg:hidden">
+            <SheetHeader>
+              <SheetTitle>Food Trove</SheetTitle>
+            </SheetHeader>
+            <BelowSidebarHeader />
+          </SheetContent>
+        </Sheet>
         <div className="lg:flex items-center justify-between gap-3 hidden ">
           <Link href={ROUTES.HOME} className="font-semibold text-base px-3">
             Home

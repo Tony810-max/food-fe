@@ -1,22 +1,19 @@
 import React from 'react';
 import DetaiProduct from './DetaiProduct';
 import PopularProductDetail from '../../../../components/PopularProductDetail';
-import useDetailProduct from '@/hooks/useDetailProduct';
+import { ProductDetailProvider } from '@/contexts/useProductDetailContext';
 
 const ProductDetailPage = () => {
-  const { dataDetailProducts, isLoading } = useDetailProduct();
-
   return (
-    <div className="container ">
-      <div className="grid grid-cols-5 gap-[5.3rem] py-[5.5rem]">
-        <DetaiProduct
-          dataDetailProducts={dataDetailProducts}
-          isLoading={isLoading}
-        />
-      </div>
+    <ProductDetailProvider>
+      <div className="container ">
+        <div className="grid grid-cols-5 gap-[5.3rem] py-[5.5rem]">
+          <DetaiProduct />
+        </div>
 
-      <PopularProductDetail />
-    </div>
+        <PopularProductDetail />
+      </div>
+    </ProductDetailProvider>
   );
 };
 

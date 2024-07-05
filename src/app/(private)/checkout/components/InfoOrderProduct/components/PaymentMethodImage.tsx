@@ -7,7 +7,7 @@ const PagementMethodImage = () => {
       <span className="text-xl font-bold text-[#000000] font-sans">
         Payment Method
       </span>
-      <div className="relative w-[20.938rem] h-[1.875rem]">
+      <div className="relative  h-[1.875rem]">
         <Image
           src={'/images/payment.webp'}
           alt="payment"

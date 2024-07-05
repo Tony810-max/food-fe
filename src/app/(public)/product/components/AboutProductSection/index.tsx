@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import HeadingAboutProduct from './HeadingAboutProduct';
 import { Separator } from '@/components/ui/separator';
-import { Product } from '@/types/common';
 import InformationTabAboutProduct from './InformationTabAboutProduct';
 import ReviewTabAboutProduct from './ReviewTabAboutProduct';
 import DescriptionTabAboutProduct from './DescriptionTabAboutProduct';
 import CommentTabAboutProduct from './CommentTabAboutProduct';
-
-interface AboutProps {
-  data: Product | undefined;
-}
+import { DetailProductContext } from '@/contexts/useProductDetailContext';
 
 const DATA_HEADING = [
   {
@@ -34,13 +30,17 @@ const DATA_HEADING = [
   },
 ];
 
-const AboutProduct: React.FC<AboutProps> = ({ data }) => {
+const AboutProduct = () => {
   const [valueLabel, setValueLabel] = useState<string>(DATA_HEADING[0].value);
-
+  const context = React.useContext(DetailProductContext);
   const renderContent = () => {
     switch (valueLabel) {
       case 'description':
-        return <DescriptionTabAboutProduct description={data?.description} />;
+        return (
+          <DescriptionTabAboutProduct
+            description={context.dataDetailProducts?.description}
+          />
+        );
 
       case 'information':
         return <InformationTabAboutProduct />;

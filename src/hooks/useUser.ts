@@ -1,4 +1,4 @@
-import { API_URL, IProfile } from '@/types/common';
+import { API_URL, IAuth } from '@/types/common';
 import { useCallback, useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import { useGetHeaderConfig } from './useGetHeaderConfig';
@@ -15,7 +15,7 @@ interface activeProps {
 export const useUser = () => {
   const [editProfile, setEditProfile] = useState<boolean>(false);
   const router = useRouter();
-  const [dataProfile, setDataProfile] = useState<IProfile>({
+  const [dataProfile, setDataProfile] = useState<IAuth>({
     id: 0,
     firstName: '',
     lastName: '',
@@ -29,6 +29,7 @@ export const useUser = () => {
     deletedAt: '',
     isActice: false,
     roles: [],
+    verifyCode: null,
   });
 
   const { headerConfig } = useGetHeaderConfig();

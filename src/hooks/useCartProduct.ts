@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useGetHeaderConfig } from './useGetHeaderConfig';
 
 const useCartProduct = () => {
-  const [dataCartProduct, setDataCartProduct] = useState<CartProduct[]>([]);
+  const [dataCartProduct, setDataCartProduct] = useState<CartProduct>();
   const { headerConfig } = useGetHeaderConfig();
 
   const fetchCartProduct = useCallback(async () => {
@@ -17,7 +17,7 @@ const useCartProduct = () => {
         headerConfig,
       );
       if (respone) {
-        setDataCartProduct(respone.data.cart.items);
+        setDataCartProduct(respone?.data?.cart);
       }
     } catch (error) {
       console.log(error);
@@ -31,7 +31,7 @@ const useCartProduct = () => {
   const summaryValue = useMemo(() => {
     let total = 0;
     if (dataCartProduct) {
-      dataCartProduct.map((item) => {
+      dataCartProduct?.items?.map((item) => {
         total += Number(item?.product?.price) * Number(item?.quantity);
       });
     }
@@ -40,7 +40,7 @@ const useCartProduct = () => {
   }, [dataCartProduct]);
 
   return {
-    dataCartProduct: dataCartProduct,
+    dataCartProduct,
     fetchCartProduct,
     summaryValue,
   };

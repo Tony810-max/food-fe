@@ -132,11 +132,11 @@ const BelowHeader: React.FC<Props> = ({ categories }) => {
         )}
 
         {user ? (
-          <div>
+          <div className='hidden md:flex items-center '>
             <Popover>
               <PopoverTrigger asChild>
                 <div
-                  className=" relative top-2 flex items-center cursor-pointer"
+                  className="relative cursor-pointer"
                   onClick={() => setCheckNotifications(true)}
                 >
                   <Bell />
@@ -145,7 +145,7 @@ const BelowHeader: React.FC<Props> = ({ categories }) => {
                   )}
                 </div>
               </PopoverTrigger>
-              <PopoverContent className="w-80">day la thong bao</PopoverContent>
+              <PopoverContent className="w-fit">day la thong bao</PopoverContent>
             </Popover>
           </div>
         ) : (

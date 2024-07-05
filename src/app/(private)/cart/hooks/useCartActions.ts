@@ -68,6 +68,7 @@ export const useCartActions = (fetchCartProduct: () => void) => {
       console.log(error);
     }
   };
+  
   return {
     handleIncreaseProduct,
     handleDeleteCartProduct,

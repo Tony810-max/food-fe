@@ -24,12 +24,7 @@ type Inputs = {
 const FormBelowSidebarHeader = () => {
   const { categories } = useCategory();
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<Inputs>();
+  const { register, handleSubmit, control } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const searchItem = data?.searchValue?.trim()?.toLocaleLowerCase();
@@ -47,18 +42,18 @@ const FormBelowSidebarHeader = () => {
         {...register('searchValue')}
         className="border border-[#64B496] min-w-80 rounded-r-none focus:outline-transparent active:outline-transparent focus-visible:ring-transparent"
       />
-      <div className="flex justify-center">
+      <div className="flex justify-center ">
         <Controller
           name="categoryValue"
           control={control}
           render={({ field }) => (
             <Select {...field} onValueChange={field.onChange}>
-              <SelectTrigger className="w-full rounded-none border border-[#64B496] border-l-transparent focus:outline-transparent active:outline-transparent focus-visible:ring-transparent">
+              <SelectTrigger className="w-full rounded-none border border-[#64B496]  focus:outline-transparent active:outline-transparent focus-visible:ring-transparent">
                 <SelectValue placeholder="Select categories" />
               </SelectTrigger>
               <SelectContent
                 ref={field.ref}
-                className=" focus:outline-transparent active:outline-transparent focus-visible:ring-transparent"
+                className="focus:outline-transparent active:outline-transparent focus-visible:ring-transparent"
               >
                 <SelectGroup>
                   {categories?.map((item) => (
