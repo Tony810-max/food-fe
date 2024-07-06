@@ -171,6 +171,57 @@ export interface IPost {
   likeCount: number;
 }
 
+export interface dataShippingAdress {
+  address: string;
+  city: string;
+  country: string;
+  name: string;
+  phoneNumber: string;
+  postCode: string;
+  state: string;
+}
+
+export interface productOrder {
+  id: number;
+  title: string;
+  description: string;
+  price: string;
+  discount: string;
+  stock: number;
+  images: string[];
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null | string;
+}
+
+export interface productOrderMain {
+  id: number;
+  product_unit_price: string;
+  product_quantity: number;
+  discount: string;
+  title: string;
+  images: string[];
+  description: string;
+  product: productOrder;
+}
+
+export interface IOrderData {
+  id: 2;
+  orderAt: string;
+  status: string;
+  type: string;
+  isPaid: string | boolean;
+  shippedAt: null | string;
+  deliveredAt: null | string;
+  shippingAddress: dataShippingAdress;
+  user: IAuth;
+  products: productOrderMain[];
+}
+export interface IOrder {
+  data: IOrderData[];
+  meta: IMeta;
+}
+
 export interface IMeta {
   limit: string | string;
   totalItems: number;

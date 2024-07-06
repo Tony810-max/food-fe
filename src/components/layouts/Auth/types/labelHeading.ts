@@ -57,4 +57,8 @@ export const TITLE_HEADING = [
     value: ROUTES.ACTIVEACCOUNT,
     label: 'active account',
   },
+  {
+    value: ROUTES.MYBLOG,
+    label: 'my blog',
+  },
 ];

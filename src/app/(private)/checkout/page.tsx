@@ -7,24 +7,18 @@ import { useForm } from 'react-hook-form';
 import BillingDetailsProduct from './components/BillingDetailsProduct';
 import { Button } from '@/components/ui/button';
 import { checkoutSchema } from './types/checkoutSchema';
-import axios from 'axios';
-import { API_URL } from '@/types/common';
 import { CartProvider } from '@/contexts/useSummaryOrder';
+import axios from 'axios';
+import { API_URL, dataShippingAdress } from '@/types/common';
+import { toast } from 'react-toastify';
 import useCartProduct from '@/hooks/useCartProduct';
-
-type dataShippingAdress = {
-  address: string;
-  city: string;
-  country: string;
-  name: string;
-  phoneNumber: string;
-  postCode: string;
-  state: string;
-};
+import { useRouter } from 'next/navigation';
+import ROUTES from '@/types/routes';
 
 const CheckoutPage = () => {
   const [paymentMethod, setPaymentMethod] = React.useState<string>('delivery');
   const { dataCartProduct } = useCartProduct();
+  const router = useRouter();
   const {
     handleSubmit,
     register,
@@ -43,15 +37,14 @@ const CheckoutPage = () => {
       const ordersProduct = dataCartProduct?.items?.map((product) => {
         return {
           id: product?.product?.id,
-          product_unit_price: product?.product?.price,
+          product_unit_price: Number(product?.product?.price),
           product_quanity: product?.quantity,
           title: product?.product?.title,
           description: product?.product?.description,
-          discount: product?.product?.discount,
+          discount: Number(product?.product?.discount),
           images: product?.product?.images,
         };
       });
-      console.log(ordersProduct);
       const dataOrder = {
         shippingAddress: {
           phoneNumber: data?.phoneNumber,
@@ -62,15 +55,7 @@ const CheckoutPage = () => {
           state: data?.state,
           country: data?.country,
         },
-        orderedProducts: {
-          id: 1,
-          product_unit_price: 100000,
-          product_quanity: 1,
-          title: 'Product 1',
-          description: 'Description 1',
-          discount: 0,
-          images: ['image1'],
-        },
+        orderedProducts: ordersProduct,
         type: 'cash',
         isPaid: 'false',
       };
@@ -78,7 +63,10 @@ const CheckoutPage = () => {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
       if (response) {
-        console.log(response);
+        toast.success('Your order has been placed successfully');
+        setTimeout(() => {
+          router.push(ROUTES.PURCHASEORDER);
+        }, 2000);
       }
     } catch (error) {
       console.error(error);
@@ -88,6 +76,7 @@ const CheckoutPage = () => {
   const handleOrderProduct = (data: dataShippingAdress) => {
     switch (paymentMethod) {
       case 'delivery':
+        console.log('working delivery order');
         fetchCashOnDelivery(data);
         break;
       case 'transfer':
@@ -102,7 +91,7 @@ const CheckoutPage = () => {
   return (
     <form
       className="container py-[6.25rem] grid grid-cols-3 gap-4"
-      onSubmit={handleSubmit(() => handleOrderProduct)}
+      onSubmit={handleSubmit(handleOrderProduct)}
     >
       <CartProvider>
         <InfoOrderProduct

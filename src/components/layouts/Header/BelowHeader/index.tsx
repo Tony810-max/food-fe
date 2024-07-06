@@ -7,6 +7,7 @@ import {
   ShoppingBag,
   Bell,
   LockKeyhole,
+  NotepadText,
 } from 'lucide-react';
 
 import ROUTES from '@/types/routes';
@@ -119,6 +120,15 @@ const BelowHeader: React.FC<Props> = ({ categories }) => {
                   Change password
                 </Link>
               </DropdownMenuItem>
+              <DropdownMenuItem>
+                <NotepadText className="mr-2 h-4 w-4 cursor-pointer hover:opacity-70" />
+                <Link
+                  href={ROUTES.MYBLOG}
+                  className="font-semibold cursor-pointer hover:opacity-70 capitalize"
+                >
+                  my blog
+                </Link>
+              </DropdownMenuItem>
               <DropdownMenuItem onClick={handleLogOut}>
                 <LogOut className="mr-2 h-4 w-4 cursor-pointer hover:opacity-70" />
                 <span className="font-semibold cursor-pointer hover:opacity-70">
@@ -132,7 +142,7 @@ const BelowHeader: React.FC<Props> = ({ categories }) => {
         )}
 
         {user ? (
-          <div className='hidden md:flex items-center '>
+          <div className="hidden md:flex items-center ">
             <Popover>
               <PopoverTrigger asChild>
                 <div
@@ -145,7 +155,9 @@ const BelowHeader: React.FC<Props> = ({ categories }) => {
                   )}
                 </div>
               </PopoverTrigger>
-              <PopoverContent className="w-fit">day la thong bao</PopoverContent>
+              <PopoverContent className="w-fit">
+                day la thong bao
+              </PopoverContent>
             </Popover>
           </div>
         ) : (
