@@ -206,7 +206,7 @@ export interface productOrderMain {
 }
 
 export interface IOrderData {
-  id: 2;
+  id: number;
   orderAt: string;
   status: string;
   type: string;

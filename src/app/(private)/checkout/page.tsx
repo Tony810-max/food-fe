@@ -59,6 +59,7 @@ const CheckoutPage = () => {
         type: 'cash',
         isPaid: 'false',
       };
+      console.log(dataOrder);
       const response = await axios.post(`${API_URL}/api/v1/orders`, dataOrder, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });

@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+src/app/(auth)/register/debug.log
+src/app/(auth)/register/components/debug.log
+src/app/(auth)/register/types/debug.log
+src/app/(private)/cart/hooks/debug.log
+src/app/(private)/profile/debug.log
+src/app/(private)/purchase-order/debug.log

@@ -4,28 +4,34 @@ import axios from 'axios';
 import { API_URL, IOrder } from '@/types/common';
 
 const UseOrder = () => {
-  const [dataOrderUser, setDataOrderUser] = React.useState<IOrder>();
+  const [dataOrderUSer, setDataOrderUSer] = React.useState<IOrder>();
+  const [tabCurr, setTabCurr] = React.useState('processing');
 
-  const getOrderId = async () => {
+  const fetchOrderUser = async () => {
     try {
       const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
-      const response = await axios.get(`${API_URL}/api/v1/orders/user/me`, {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
+      const response = await axios.get(
+        `${API_URL}/api/v1/orders/user/me/?status=${tabCurr}`,
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        },
+      );
       if (response) {
-        setDataOrderUser(response?.data);
+        setDataOrderUSer(response?.data);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   React.useEffect(() => {
-    getOrderId();
-  }, []);
+    fetchOrderUser();
+  }, [tabCurr]);
 
   return {
-    dataOrderUser,
+    dataOrderUSer,
+    setTabCurr,
+    tabCurr,
   };
 };
 
