@@ -9,17 +9,25 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import StatusOrder from '../components/StatusOrder';
-import { Ban, CheckCircle, Loader, Truck } from 'lucide-react';
-import { IOrder } from '@/types/common';
+import { Ban, CheckCircle, Loader, Trash2, Truck } from 'lucide-react';
+import { API_URL, IOrder } from '@/types/common';
 
 import DetailRecipient from './DetailRecipient';
 import { cn } from '@/lib/utils';
 import OrderInformation from './OrderInformation';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 interface ITableData {
   dataOrderUSer?: IOrder;
+  fetchOrderUser: () => void;
+  checkTab: boolean;
 }
 
-const TableData: React.FC<ITableData> = ({ dataOrderUSer }) => {
+const TableData: React.FC<ITableData> = ({
+  dataOrderUSer,
+  fetchOrderUser,
+  checkTab,
+}) => {
   const renderStatus = (status: string) => {
     switch (status) {
       case 'processing':
@@ -60,7 +68,25 @@ const TableData: React.FC<ITableData> = ({ dataOrderUSer }) => {
         );
     }
   };
-  console.log(dataOrderUSer);
+
+  const handleCancelOrder = async (orderId: number) => {
+    try {
+      const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
+      const response = await axios.put(
+        `${API_URL}/api/v1/orders/cancel/${orderId}`,
+        {},
+        { headers: { Authorization: `Bearer ${accessToken}` } },
+      );
+      if (response) {
+        console.log(response);
+        toast.success('Order cancelled successfully');
+        fetchOrderUser();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Table>
       <TableCaption>A list of your recent order.</TableCaption>
@@ -77,6 +103,11 @@ const TableData: React.FC<ITableData> = ({ dataOrderUSer }) => {
           <TableHead className="font-sans text-base font-bold text-center">
             Order information
           </TableHead>
+          {checkTab && (
+            <TableHead className="font-sans text-base font-bold text-center">
+              Cancel Order
+            </TableHead>
+          )}
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -98,6 +129,15 @@ const TableData: React.FC<ITableData> = ({ dataOrderUSer }) => {
             <TableCell className="text-center">
               <OrderInformation dataOrderInfo={order?.products} />
             </TableCell>
+            {checkTab && (
+              <TableCell className="flex justify-center ">
+                <Trash2
+                  color="red"
+                  className="hover:cursor-pointer"
+                  onClick={() => handleCancelOrder(order?.id)}
+                />
+              </TableCell>
+            )}
           </TableRow>
         ))}
       </TableBody>

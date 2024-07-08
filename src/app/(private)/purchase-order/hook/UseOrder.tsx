@@ -32,6 +32,7 @@ const UseOrder = () => {
     dataOrderUSer,
     setTabCurr,
     tabCurr,
+    fetchOrderUser,
   };
 };
 

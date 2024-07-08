@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -9,7 +9,11 @@ import Image from 'next/image';
 
 const PurchaseOrder = () => {
   const DATA_TAB = ['processing', 'shipped', 'delivered', 'cancelled'];
-  const { dataOrderUSer, tabCurr, setTabCurr } = UseOrder();
+  const { dataOrderUSer, tabCurr, setTabCurr, fetchOrderUser } = UseOrder();
+  const [checkTab, setCheckTab] = React.useState<boolean>(false);
+  useEffect(() => {
+    tabCurr === 'processing' ? setCheckTab(true) : setCheckTab(false);
+  }, [tabCurr]);
   return (
     <div className="container py-10 space-y-2">
       <div className="space-x-2 flex justify-center w-full">
@@ -17,7 +21,9 @@ const PurchaseOrder = () => {
           <Button
             key={item}
             variant={'link'}
-            onClick={() => setTabCurr(item)}
+            onClick={() => {
+              setTabCurr(item);
+            }}
             className={cn('font-sans text-base capitalize', {
               'bg-[#f53e32] text-white rounded-lg font-bold ': tabCurr === item,
             })}
@@ -27,7 +33,11 @@ const PurchaseOrder = () => {
         ))}
       </div>
       {dataOrderUSer && dataOrderUSer.data.length > 0 ? (
-        <TableData dataOrderUSer={dataOrderUSer} />
+        <TableData
+          dataOrderUSer={dataOrderUSer}
+          fetchOrderUser={fetchOrderUser}
+          checkTab={checkTab}
+        />
       ) : (
         <div className="flex flex-col gap-5 items-center py-10">
           <div className="relative w-32 h-32">

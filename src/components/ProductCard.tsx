@@ -72,7 +72,7 @@ const ProductCard: React.FC<ProductProps> = ({
           </div>
           <Link
             href={`/product/${id}`}
-            className="font-extrabold text-lg font-sans text-[#F53E32] hover:opacity-70"
+            className="font-extrabold text-base font-sans text-[#F53E32] hover:opacity-70"
           >
             View Detail
           </Link>

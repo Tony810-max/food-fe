@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { checkoutSchema } from './types/checkoutSchema';
 import { CartProvider } from '@/contexts/useSummaryOrder';
 import axios from 'axios';
-import { API_URL, dataShippingAdress } from '@/types/common';
+import { API_URL, DOMAIN_URL, dataShippingAdress } from '@/types/common';
 import { toast } from 'react-toastify';
 import useCartProduct from '@/hooks/useCartProduct';
 import { useRouter } from 'next/navigation';
@@ -74,6 +74,26 @@ const CheckoutPage = () => {
     }
   };
 
+  const fetchBankTransfer = async (data: dataShippingAdress) => {
+    console.log(data);
+    try {
+      const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
+
+      const response = await axios.post(
+        `${API_URL}/api/v1/orders/create-checkout-vnpay?returnUrlLocal=${DOMAIN_URL}/checkout/result?orderID=1`,
+        {
+          totalAmount: 10000,
+        },
+        { headers: { Authorization: `Bearer ${accessToken}` } },
+      );
+      if (response) {
+        router.push(response?.data?.url);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleOrderProduct = (data: dataShippingAdress) => {
     switch (paymentMethod) {
       case 'delivery':
@@ -82,6 +102,7 @@ const CheckoutPage = () => {
         break;
       case 'transfer':
         console.log('working transfer');
+        fetchBankTransfer(data);
         break;
       default:
         console.log('not working...!!!');
