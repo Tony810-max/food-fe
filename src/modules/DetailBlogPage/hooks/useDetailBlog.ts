@@ -1,11 +1,11 @@
 'use client';
 
-import { API_URL, IBlog } from '@/types/common';
+import { API_URL, IBlogMain } from '@/types/common';
 import axios from 'axios';
 import { useState } from 'react';
 
 const useDetailBlog = () => {
-  const [dataDetailBlog, setDataDetailBlog] = useState<IBlog>();
+  const [dataDetailBlog, setDataDetailBlog] = useState<IBlogMain>();
 
   const fetchDetailBlog = async (id: number | string) => {
     try {

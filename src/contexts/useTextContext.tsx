@@ -1,13 +1,13 @@
 'use client';
 
-import { API_URL, IBlog } from '@/types/common';
+import { API_URL, IBlogMain } from '@/types/common';
 import axios from 'axios';
 import React from 'react';
 
 export const TextContext = React.createContext({});
 
 export const TextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [dataBlog, setDataBlog] = React.useState<IBlog[]>();
+  const [dataBlog, setDataBlog] = React.useState<IBlogMain[]>();
 
   const fetchBlog = async () => {
     try {

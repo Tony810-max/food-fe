@@ -1,3 +1,3 @@
-import DetaiBlogPage from "@/modules/DetailBlogPage";
+import DetaIBlogMainPage from '@/modules/DetailBlogPage';
 
-export default DetaiBlogPage
+export default DetaIBlogMainPage;

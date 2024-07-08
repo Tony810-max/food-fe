@@ -4,14 +4,14 @@ import { Heart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ROUTES from '@/types/routes';
-import { API_URL, IBlog } from '@/types/common';
+import { API_URL, IBlogMain } from '@/types/common';
 import axios from 'axios';
 import { useAuth } from '@/hooks/useAuth';
 import { TextContext } from '@/contexts/useTextContext';
 import { format } from 'date-fns';
 
 interface ViewBlog {
-  blog: IBlog;
+  blog: IBlogMain;
 }
 
 const ViewBlog: React.FC<ViewBlog> = ({ blog }) => {

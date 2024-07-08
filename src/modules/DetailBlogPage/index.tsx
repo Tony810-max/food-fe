@@ -17,7 +17,7 @@ import useDetailBlog from './hooks/useDetailBlog';
 import useCommentDetailBlog from './hooks/useCommentDetailBlog';
 import { useRouter } from 'next/navigation';
 
-const DetaiBlogPage = () => {
+const DetaIBlogMainPage = () => {
   const { fetchDetailBlog, dataDetailBlog } = useDetailBlog();
   const {
     fetchCommentDetailBlog,
@@ -118,4 +118,4 @@ const DetaiBlogPage = () => {
   );
 };
 
-export default DetaiBlogPage;
+export default DetaIBlogMainPage;

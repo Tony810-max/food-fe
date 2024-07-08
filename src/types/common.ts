@@ -113,7 +113,7 @@ export interface IReviewProductDetail {
   updatedAt: string;
 }
 
-export interface IBlog {
+export interface IBlogMain {
   id: number;
   title: string;
   description: string;
@@ -126,6 +126,25 @@ export interface IBlog {
   likeCount: number;
   author: IAuth;
   likes: ILike[];
+}
+
+export interface IBlog {
+  id: number;
+  title: string;
+  description: string;
+  images: string[];
+  isApproved: boolean;
+  commentCount: number;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null | string;
+  likeCount: number;
+  author: IAuth;
+}
+
+export interface IBlogMe {
+  posts: IBlog[];
+  meta: IMeta;
 }
 
 export interface ILike {
