@@ -42,13 +42,13 @@ const AboveHeader: React.FC<AboveProps> = ({ categories }) => {
           </Link>
           <CategoryNavBar categories={categories} />
           <Link
-            href={ROUTES.SHOP}
+            href={`${ROUTES.SHOP}?page=1`}
             className="capitalize font-semibold text-base px-3"
           >
             Products
           </Link>
           <Link
-            href={ROUTES.BLOG}
+            href={`${ROUTES.BLOG}?page=1`}
             className="capitalize font-semibold text-base px-3"
           >
             Blog

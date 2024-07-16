@@ -1,15 +1,18 @@
 'use client';
-import React from 'react';
+import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import PopularProductDetail from '@/components/PopularProductDetail';
 
 const CartProduct = dynamic(() => import('./components/CartProduct'), {
   ssr: false,
 });
+
 const CartPage = () => {
   return (
     <div className="container py-[6.25rem]">
-      <CartProduct />
+      <Suspense fallback={<div>Loading...</div>}>
+        <CartProduct />
+      </Suspense>
       <PopularProductDetail />
     </div>
   );

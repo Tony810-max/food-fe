@@ -1,17 +1,20 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 import UseOrder from './hook/UseOrder';
 import TableData from './components/TableData';
 import Image from 'next/image';
+import PaginationPurchaseOrder from './components/PaginationPurchaseOrder';
 
 const PurchaseOrder = () => {
   const DATA_TAB = ['processing', 'shipped', 'delivered', 'cancelled'];
+
   const { dataOrderUSer, tabCurr, setTabCurr, fetchOrderUser } = UseOrder();
   const [checkTab, setCheckTab] = React.useState<boolean>(false);
-  useEffect(() => {
+
+  React.useEffect(() => {
     tabCurr === 'processing' ? setCheckTab(true) : setCheckTab(false);
   }, [tabCurr]);
   return (
@@ -32,28 +35,31 @@ const PurchaseOrder = () => {
           </Button>
         ))}
       </div>
-      {dataOrderUSer && dataOrderUSer.data.length > 0 ? (
-        <TableData
-          dataOrderUSer={dataOrderUSer}
-          fetchOrderUser={fetchOrderUser}
-          checkTab={checkTab}
-        />
-      ) : (
-        <div className="flex flex-col gap-5 items-center py-10">
-          <div className="relative w-32 h-32">
-            <Image
-              src="/images/Cancel-Order.webp"
-              alt="imgNoOrder"
-              fill
-              unoptimized
-              priority
-            />
+      <div className="min-h-80">
+        {dataOrderUSer && dataOrderUSer.data.length > 0 ? (
+          <TableData
+            dataOrderUSer={dataOrderUSer}
+            fetchOrderUser={fetchOrderUser}
+            checkTab={checkTab}
+          />
+        ) : (
+          <div className="flex flex-col gap-5 items-center py-10">
+            <div className="relative w-32 h-32">
+              <Image
+                src="/images/Cancel-Order.webp"
+                alt="imgNoOrder"
+                fill
+                unoptimized
+                priority
+              />
+            </div>
+            <span className="font-sans text-xl text-center  font-semibold italic">
+              No orders yet
+            </span>
           </div>
-          <span className="font-sans text-xl text-center  font-semibold italic">
-            No orders yet
-          </span>
-        </div>
-      )}
+        )}
+      </div>
+        <PaginationPurchaseOrder metaComment={dataOrderUSer?.meta} />
     </div>
   );
 };

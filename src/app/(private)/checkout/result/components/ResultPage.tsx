@@ -23,7 +23,7 @@ const ResultPage = () => {
         },
       );
       if (response) {
-        console.log(response);
+        response;
       }
     } catch (error) {
       console.error(error);

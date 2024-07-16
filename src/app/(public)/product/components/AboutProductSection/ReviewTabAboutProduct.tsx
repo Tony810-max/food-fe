@@ -8,7 +8,7 @@ import { useReview } from '@/hooks/useReview';
 
 const ReviewTabAboutProduct = () => {
   const { reviewProductId } = useReview();
-  console.log(reviewProductId);
+  reviewProductId;
   return (
     <div className="py-4">
       {reviewProductId?.map((product) => (

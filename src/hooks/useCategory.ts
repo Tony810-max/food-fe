@@ -13,7 +13,7 @@ const useCategory = () => {
         setData(response.data.categories);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

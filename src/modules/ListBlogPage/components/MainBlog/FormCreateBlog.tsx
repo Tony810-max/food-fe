@@ -57,7 +57,7 @@ const FormCreateBlog: React.FC<IFormProps> = ({ onSetOpen }) => {
   };
 
   const handleCreateNewBlog = async (data: formBlog) => {
-    console.log(data);
+    data;
     let images = [];
     if (fileImage) {
       images = await uploadImage(fileImage);
@@ -130,7 +130,13 @@ const FormCreateBlog: React.FC<IFormProps> = ({ onSetOpen }) => {
           multiple={true}
         />
       </div>
-      <Button type="submit">Save changes</Button>
+      <Button
+        type="submit"
+        variant={'destructive'}
+        className="font-sans text-base"
+      >
+        Create Blog
+      </Button>
     </form>
   );
 };

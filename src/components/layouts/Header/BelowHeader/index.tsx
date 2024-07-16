@@ -1,14 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import {
-  User,
-  ShoppingCart,
-  LogOut,
-  ShoppingBag,
-  Bell,
-  LockKeyhole,
-  NotepadText,
-} from 'lucide-react';
+import { User, ShoppingCart, ShoppingBag, Bell } from 'lucide-react';
 
 import ROUTES from '@/types/routes';
 import FormBelowHeader from './FormBelowHeader';
@@ -16,24 +8,14 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-
-import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
 
-import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { ICategory } from '@/types/common';
+import DropdownMenuHeader from './DropdownMenuHeader';
 
 interface Props {
   categories: ICategory[];
@@ -79,7 +61,7 @@ const BelowHeader: React.FC<Props> = ({ categories }) => {
           <span className="text-lg font-semibold capitalize">cart</span>
         </Link>
         <Link
-          href={ROUTES.PURCHASEORDER}
+          href={`${ROUTES.PURCHASEORDER}?page=1&limit=4`}
           className={cn(
             'flex items-center gap-2 cursor-pointer hover:text-orange-400',
             {
@@ -93,50 +75,10 @@ const BelowHeader: React.FC<Props> = ({ categories }) => {
           </span>
         </Link>
         {user ? (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild className={'w-56'}>
-              <Button variant="outline">{`${user?.firstName} ${user?.lastName}`}</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <User className="mr-2 h-4 w-4 cursor-pointer hover:opacity-70" />
-                  <Link
-                    href={ROUTES.PROFILE}
-                    className="font-semibold cursor-pointer hover:opacity-70"
-                  >
-                    Profile
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuItem>
-                <LockKeyhole className="mr-2 h-4 w-4 cursor-pointer hover:opacity-70" />
-                <Link
-                  href={ROUTES.CHANGEPASSWORD}
-                  className="font-semibold cursor-pointer hover:opacity-70 capitalize"
-                >
-                  Change password
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <NotepadText className="mr-2 h-4 w-4 cursor-pointer hover:opacity-70" />
-                <Link
-                  href={ROUTES.MYBLOG}
-                  className="font-semibold cursor-pointer hover:opacity-70 capitalize"
-                >
-                  my blog
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={handleLogOut}>
-                <LogOut className="mr-2 h-4 w-4 cursor-pointer hover:opacity-70" />
-                <span className="font-semibold cursor-pointer hover:opacity-70">
-                  Log out
-                </span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <DropdownMenuHeader
+            handleLogOut={handleLogOut}
+            name={`${user?.firstName} ${user?.lastName}`}
+          />
         ) : (
           ''
         )}

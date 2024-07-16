@@ -11,6 +11,7 @@ import OrganicSection from './components/OrganicSection';
 import ReviewSection from './components/ReviewSection';
 import LatestNewsSection from './components/LatestNewsSection';
 import useCategory from '@/hooks/useCategory';
+import { TextProvider } from '@/contexts/useTextContext';
 
 const HomePage: React.FC = () => {
   const { categories } = useCategory();
@@ -24,7 +25,9 @@ const HomePage: React.FC = () => {
       <GreatDealSection />
       <OrganicSection />
       <ReviewSection />
-      <LatestNewsSection />
+      <TextProvider>
+        <LatestNewsSection />
+      </TextProvider>
     </div>
   );
 };

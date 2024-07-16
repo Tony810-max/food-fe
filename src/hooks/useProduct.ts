@@ -1,36 +1,46 @@
 import { API_URL, IProduct } from '@/types/common';
 import axios from 'axios';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import React from 'react';
+
+export interface IMetaData {
+  currentPage: number;
+  limit: number;
+  totalItems: number;
+  totalPage: number;
+}
 
 const useProduct = (limit = 10) => {
-  const [products, setProducts] = useState<IProduct[]>([]);
-  const [priceFilter, setPriceFilter] = useState<number[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPage, setTotalPage] = useState<number>(1);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [products, setProducts] = React.useState<IProduct[]>([]);
+  const [priceFilter, setPriceFilter] = React.useState<number[]>([]);
+  const [meta, setMeta] = React.useState<IMetaData | undefined>();
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const searchParam = useSearchParams();
+  const searchPage = searchParam.get('page');
+  const page = searchPage ? searchPage : 1;
 
-  const fetchProduct = useCallback(async () => {
+  const fetchProduct = React.useCallback(async () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `${API_URL}/api/v1/products?page=${currentPage}&limit=${limit}`,
+        `${API_URL}/api/v1/products?page=${page}&limit=${limit}`,
       );
       if (response) {
         setProducts(response.data.products);
-        setTotalPage(response.data.meta.totalPage);
+        setMeta(response.data.meta);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
-  }, [limit, currentPage]);
+  }, [limit, searchPage]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchProduct();
   }, [fetchProduct]);
 
-  const maxPriceValue = useMemo(() => {
+  const maxPriceValue = React.useMemo(() => {
     if (!products) return 0;
 
     return Math.max(...products.map((product) => Number(product.price)));
@@ -42,11 +52,8 @@ const useProduct = (limit = 10) => {
     priceFilter,
     setProducts,
     setPriceFilter,
-    currentPage,
-    setCurrentPage,
-    totalPage,
     isLoading,
-    limit,
+    meta,
   };
 };
 

@@ -7,7 +7,7 @@ import {
   PaginationItem,
 } from '@/components/ui/pagination';
 import Link from 'next/link';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { IMeta } from '@/types/common';
 
@@ -15,8 +15,7 @@ interface paginationProps {
   metaComment: IMeta | undefined;
 }
 
-const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {
-  const param = useParams<{ id: string }>()?.id;
+const PaginationBlog: React.FC<paginationProps> = ({ metaComment }) => {
   const searchParam = useSearchParams();
   const searchPage = searchParam.get('page');
 
@@ -39,7 +38,7 @@ const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {
       <PaginationContent>
         <PaginationItem>
           <Link
-            href={`/blog/${param}?page=${previous}`}
+            href={`/blog?page=${previous}`}
             className="px-4 hover:opacity-70"
             scroll={false}
           >
@@ -50,7 +49,7 @@ const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {
           <>
             <PaginationItem>
               <Link
-                href={`/blog/${param}?page=1`}
+                href={`/blog?page=1`}
                 className="px-4 hover:opacity-70"
                 scroll={false}
               >
@@ -66,7 +65,7 @@ const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {
           Array.from({ length: endPage - startPage + 1 }, (_, index) => (
             <PaginationItem key={index}>
               <Link
-                href={`/blog/${param}?page=${startPage + index}`}
+                href={`/blog?page=${startPage + index}`}
                 className={cn('px-4 hover:opacity-70', {
                   'text-[#F53E32] shadow-md py-2 border rounded-lg':
                     startPage + index === Number(searchPage),
@@ -84,7 +83,7 @@ const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {
             </PaginationItem>
             <PaginationItem>
               <Link
-                href={`/blog/${param}?page=${totalPages}`}
+                href={`/blog?page=${totalPages}`}
                 className="px-4 hover:opacity-70"
                 scroll={false}
               >
@@ -96,7 +95,7 @@ const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {
 
         <PaginationItem>
           <Link
-            href={`/blog/${param}?page=${next}`}
+            href={`/blog?page=${next}`}
             className="px-4 hover:opacity-70"
             scroll={false}
           >
@@ -108,4 +107,4 @@ const PaginationDetailBlog: React.FC<paginationProps> = ({ metaComment }) => {
   );
 };
 
-export default PaginationDetailBlog;
+export default PaginationBlog;

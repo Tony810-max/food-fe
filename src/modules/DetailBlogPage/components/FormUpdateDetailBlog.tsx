@@ -56,7 +56,7 @@ const FormUpdateDetailBlog: React.FC<formUpdate> = ({
         fetchCommentDetailBlog();
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

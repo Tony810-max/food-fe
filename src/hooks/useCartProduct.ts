@@ -20,7 +20,7 @@ const useCartProduct = () => {
         setDataCartProduct(respone?.data?.cart);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }, [headerConfig]);
 

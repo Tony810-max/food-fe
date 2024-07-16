@@ -5,19 +5,21 @@ import { useCallback, useEffect, useState } from 'react';
 
 export const useReview = () => {
   const params = useParams();
-  const [reviewProductId, setReviewProductId] = useState<IReviewProductDetail[]>();
+  const [reviewProductId, setReviewProductId] =
+    useState<IReviewProductDetail[]>();
   const idProduct = params.id;
+  
   const fetchReview = useCallback(async () => {
     try {
       const response = await axios.get(
         `${API_URL}/api/v1/reviews/${idProduct}`,
       );
       if (response) {
-        console.log(response);
+        response;
         setReviewProductId(response?.data?.reviews);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }, [params?.id]);
 

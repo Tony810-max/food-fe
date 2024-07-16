@@ -25,6 +25,7 @@ const CommentTabAboutProduct = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -33,7 +34,8 @@ const CommentTabAboutProduct = () => {
   const [rating, setRating] = useState<number>(5);
   const params = useParams();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: { comment: string }) => {
+    console.log(data);
     const dataComment = {
       productId: Number(params?.id),
       ratings: rating,
@@ -51,9 +53,10 @@ const CommentTabAboutProduct = () => {
       );
       if (response) {
         toast.success('Thank you for providing us with your feedback');
+        reset();
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

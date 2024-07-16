@@ -4,7 +4,7 @@ import FormValueInfo from './FormValueInfo';
 import Link from 'next/link';
 
 const InfoProductDetail: React.FC<IOrderInfo> = ({ dataOrderInfo }) => {
-  console.log(dataOrderInfo);
+  dataOrderInfo;
   const arrPriceProduct = dataOrderInfo?.map((order) => {
     return Number(order?.product_quantity) * Number(order?.product_unit_price);
   });

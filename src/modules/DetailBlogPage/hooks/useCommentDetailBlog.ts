@@ -23,7 +23,7 @@ const useCommentDetailBlog = () => {
         setMetaComment(response?.data?.meta);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

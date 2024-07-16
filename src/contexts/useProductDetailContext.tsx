@@ -31,11 +31,11 @@ export const ProductDetailProvider = ({
         `${API_URL}/api/v1/products/${idProduct}`,
       );
       if (reponse) {
-        console.log(reponse);
+        reponse;
         setDataDetailProducts(reponse.data);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }

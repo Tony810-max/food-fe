@@ -1,32 +1,29 @@
-import Image from 'next/image';
 import React from 'react';
+import ReactStars from 'react-rating-stars-component';
 
 interface SliderProps {
-  image: string;
-  role: string;
   name: string;
   description: string;
+  rate: number;
 }
 
 const SliderReviewSection: React.FC<SliderProps> = ({
-  image,
-  role,
   name,
   description,
+  rate,
 }) => {
   return (
-    <div className="bg-[#E9E9E9] py-4 px-[3.3rem] col-span-1">
-      <div className="relative z-10 w-10 md:w-14 aspect-square -translate-x-1/2 left-1/2 top-0 ">
-        <Image
-          src={image}
-          alt="AvtReview"
-          fill
-          sizes="(min-width: 768px) 100vw"
-        />
-      </div>
+    <div className="bg-[#E9E9E9] py-4 px-[3.3rem] col-span-1 rounded-lg">
       <div className="flex flex-col gap-2 items-center">
-        <span className="text-[#7A7A7A] font-sans text-base">{role}</span>
         <span className="text-lg font-extrabold font-sans">{name}</span>
+        <div className="pointer-events-none">
+          <ReactStars
+            value={rate}
+            size={24}
+            activeColor="#ffd700"
+            edit={false}
+          />
+        </div>
         <span className="text-lg font-sans text-center italic">
           {description}
         </span>

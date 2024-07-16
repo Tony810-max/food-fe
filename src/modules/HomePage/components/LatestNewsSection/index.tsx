@@ -1,3 +1,4 @@
+'use client';
 import HeadingHomePage from '@/components/Heading';
 
 import React from 'react';
@@ -7,46 +8,45 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
+import { TextContext } from '@/contexts/useTextContext';
+import { format } from 'date-fns';
+import Autoplay from 'embla-carousel-autoplay';
 
 const LatestNewsSection = () => {
+  const context = React.useContext(TextContext);
+  const dataBlog = context.dataBlog;
+
   return (
     <div className="container py-[3.125rem] space-y-5">
       <HeadingHomePage
         title="Latest News"
         des="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore lacus vel facilisis."
       />
-      <Carousel className=" relative left-1/2 -translate-x-1/2">
+      <Carousel
+        className=" relative left-1/2 -translate-x-1/2"
+        plugins={[
+          Autoplay({
+            delay: 1000,
+          }),
+        ]}
+        opts={{
+          loop: true,
+        }}
+      >
         <CarouselContent>
-          <CarouselItem>
-            <NewsCard
-              role="by admin"
-              category="Snacks"
-              description="Urna pretium elit mauris cursus at elit Vestibulum."
-              image={'/images/lastestNews1.webp'}
-              date={10}
-              month={'oct'}
-            />
-          </CarouselItem>
-          <CarouselItem>
-            <NewsCard
-              role="by admin"
-              category="food"
-              description="Best guide to Shopping for organic ingredients."
-              image={'/images/lastestNews2.webp'}
-              date={10}
-              month={'oct'}
-            />
-          </CarouselItem>
-          <CarouselItem>
-            <NewsCard
-              role="by admin"
-              category="snacks"
-              description="Cursus at elit vestibulum urna pretium elit mauris."
-              image={'/images/lastestNews3.webp'}
-              date={10}
-              month={'oct'}
-            />
-          </CarouselItem>
+          {dataBlog?.map((blog) => (
+            <CarouselItem key={blog?.id}>
+              <NewsCard
+                role={
+                  blog?.author?.roles?.includes('admin') ? 'admin' : 'client'
+                }
+                category={blog?.title}
+                description={blog?.description}
+                image={blog?.images[0]}
+                date={format(new Date(blog?.createdAt), 'dd-MM-yyyy HH:mm')}
+              />
+            </CarouselItem>
+          ))}
         </CarouselContent>
       </Carousel>
     </div>

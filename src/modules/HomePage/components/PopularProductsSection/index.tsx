@@ -20,6 +20,7 @@ const PopularProductsSection: React.FC<popularProductProps> = ({
   const { products } = useProduct();
   const [categoryFilter, setCategoryFilter] = useState<number | string>('');
   const [productFilter, setProductFilter] = useState<IProduct[]>([]);
+
   useEffect(() => {
     if (categoryFilter === 'all') {
       setProductFilter(products);
@@ -36,7 +37,7 @@ const PopularProductsSection: React.FC<popularProductProps> = ({
     }
 
     setProductFilter(products);
-  }, [categoryFilter, products]); // dependencies
+  }, [categoryFilter, products]);
 
   return (
     <div className="py-[3.125rem] container ">
@@ -67,7 +68,7 @@ const PopularProductsSection: React.FC<popularProductProps> = ({
               );
             })}
             <Link
-              href={ROUTES.SHOP}
+              href={`${ROUTES.SHOP}?page=1`}
               className="font-bold text-lg capitalize flex w-full justify-between items-center bg-[#f7f7f8] rounded-lg px-4 py-3  hover:opacity-70 hover:text-[#F53E32]"
             >
               View More

@@ -33,6 +33,7 @@ const DATA_HEADING = [
 const AboutProduct = () => {
   const [valueLabel, setValueLabel] = useState<string>(DATA_HEADING[0].value);
   const context = React.useContext(DetailProductContext);
+  
   const renderContent = () => {
     switch (valueLabel) {
       case 'description':

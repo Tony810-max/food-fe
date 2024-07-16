@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import ROUTES from '@/types/routes';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,8 +9,7 @@ interface NewsProps {
   category: string;
   description: string;
   image: string;
-  date: number;
-  month: string;
+  date: string;
 }
 
 const NewsCard: React.FC<NewsProps> = ({
@@ -18,21 +18,26 @@ const NewsCard: React.FC<NewsProps> = ({
   description,
   image,
   date,
-  month,
 }) => {
   return (
     <div className="h-full  border border-[#E9E9E9] rounded-lg">
       <div className="flex flex-col px-6 py-7 gap-3">
-        <div className="">
-          <span className="text-lg text-[#CCCCCC] font-sans capitalize">
-            {role}
-          </span>
-          <span className="text-lg text-[#777777] font-sans capitalize">
-            {' '}
-            | {category}
+        <div>
+          <div className="">
+            <span className={cn("text-lg font-sans capitalize",{
+              "text-red-600 font-bold": role === "admin",
+              "text-green-600": role === "user"
+            })}>{role}</span>
+            <span className="text-lg text-[#777777] font-sans capitalize">
+              {' '}
+              | {category}
+            </span>
+          </div>
+          <span className="text-sm text-[#777777] font-sans italic">
+            {date}
           </span>
         </div>
-        <span className="max-w-[25rem] font-sans text-xl font-bold leading-normal">
+        <span className="max-w-[25rem] font-sans text-xl font-bold leading-normal capitalize">
           {description}
         </span>
         <Link
@@ -43,19 +48,13 @@ const NewsCard: React.FC<NewsProps> = ({
         </Link>
       </div>
 
-      <div className="relative">
-        <div className="relative w-full h-72">
-          <Image
-            src={image}
-            alt="lastestNews1"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </div>
-        <div className="absolute bg-[#3f3e40] bg-opacity-50 px-5 py-3 text-white bottom-3 right-3 flex flex-col rounded-xl">
-          <span className="text-lg font-bold">{date}</span>
-          <span className="font-sans text-lg">{month}</span>
-        </div>
+      <div className="relative w-full h-72">
+        <Image
+          src={image}
+          alt="lastestNews1"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       </div>
     </div>
   );

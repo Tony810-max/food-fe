@@ -25,7 +25,7 @@ export const useCartActions = (fetchCartProduct: () => void) => {
         fetchCartProduct();
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -47,7 +47,7 @@ export const useCartActions = (fetchCartProduct: () => void) => {
         fetchCartProduct();
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -65,10 +65,10 @@ export const useCartActions = (fetchCartProduct: () => void) => {
         fetchCartProduct();
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
-  
+
   return {
     handleIncreaseProduct,
     handleDeleteCartProduct,

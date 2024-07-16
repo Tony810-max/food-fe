@@ -17,6 +17,7 @@ import { cn } from '@/lib/utils';
 import OrderInformation from './OrderInformation';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useSearchParams } from 'next/navigation';
 interface ITableData {
   dataOrderUSer?: IOrder;
   fetchOrderUser: () => void;
@@ -28,6 +29,10 @@ const TableData: React.FC<ITableData> = ({
   fetchOrderUser,
   checkTab,
 }) => {
+  const searchParam = useSearchParams();
+  const page = searchParam.get('page');
+  const limit = 4;
+
   const renderStatus = (status: string) => {
     switch (status) {
       case 'processing':
@@ -78,7 +83,6 @@ const TableData: React.FC<ITableData> = ({
         { headers: { Authorization: `Bearer ${accessToken}` } },
       );
       if (response) {
-        console.log(response);
         toast.success('Order cancelled successfully');
         fetchOrderUser();
       }
@@ -110,13 +114,15 @@ const TableData: React.FC<ITableData> = ({
           )}
         </TableRow>
       </TableHeader>
-      <TableBody>
-        {dataOrderUSer?.data?.map((order) => (
+      <TableBody className="min-h-80">
+        {dataOrderUSer?.data?.map((order, index) => (
           <TableRow
             key={order?.id}
             className={cn({ 'bg-slate-300 ': order?.id % 2 === 0 })}
           >
-            <TableCell className="text-center">{order?.id}</TableCell>
+            <TableCell className="text-center">
+              {index + 1 + (Number(page) - 1) * limit}
+            </TableCell>
             <TableCell className="text-center">
               {renderStatus(order?.status)}
             </TableCell>
@@ -133,7 +139,7 @@ const TableData: React.FC<ITableData> = ({
               <TableCell className="flex justify-center ">
                 <Trash2
                   color="red"
-                  className="hover:cursor-pointer"
+                  className="hover:cursor-pointer "
                   onClick={() => handleCancelOrder(order?.id)}
                 />
               </TableCell>

@@ -39,7 +39,7 @@ const FormContentProduct = () => {
         toast.success('Add to cart successfully!');
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

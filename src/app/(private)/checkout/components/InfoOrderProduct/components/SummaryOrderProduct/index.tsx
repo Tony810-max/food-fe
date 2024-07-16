@@ -2,17 +2,22 @@
 import React from 'react';
 import PriceSummary from './PriceSummary';
 import ProductSummary from './ProductSummary';
-import { CartContext } from '@/contexts/useSummaryOrder';
+import { CartProduct } from '@/types/common';
 
-const SummaryOrderPrice = () => {
-  const context = React.useContext(CartContext);
-  
+interface ISummaryOrdeR {
+  summaryValue: number;
+  dataCartProduct?: CartProduct;
+}
+
+const SummaryOrderPrice: React.FC<ISummaryOrdeR> = ({
+  summaryValue,
+  dataCartProduct,
+}) => {
   return (
     <div className="p-4 border rounded-[0.313rem] space-y-[2.125rem]">
-      <PriceSummary total={context?.summaryValue} />
+      <PriceSummary total={summaryValue} />
       <div className="space-y-6">
-        {context?.dataCartProduct?.items?.map((product) => 
-        (
+        {dataCartProduct?.items?.map((product) => (
           <ProductSummary
             key={product?.id}
             image={product?.product?.images[0]}
@@ -22,8 +27,7 @@ const SummaryOrderPrice = () => {
             rating={5}
             quantity={product?.quantity}
           />
-        )
-        )}
+        ))}
       </div>
     </div>
   );

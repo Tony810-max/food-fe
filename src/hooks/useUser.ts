@@ -75,7 +75,7 @@ export const useUser = () => {
         }, 2000);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -116,13 +116,13 @@ export const useUser = () => {
         { headers: { Authorization: `Bearer ${accessToken}` } },
       );
       if (response) {
-        console.log(response);
+        response;
         toast.success('Update profile successfully');
         fetchDataProfile();
         setEditProfile(false);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

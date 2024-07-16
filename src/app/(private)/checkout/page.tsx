@@ -17,7 +17,7 @@ import ROUTES from '@/types/routes';
 
 const CheckoutPage = () => {
   const [paymentMethod, setPaymentMethod] = React.useState<string>('delivery');
-  const { dataCartProduct } = useCartProduct();
+  const { dataCartProduct, summaryValue } = useCartProduct();
   const router = useRouter();
   const {
     handleSubmit,
@@ -59,7 +59,6 @@ const CheckoutPage = () => {
         type: 'cash',
         isPaid: 'false',
       };
-      console.log(dataOrder);
       const response = await axios.post(`${API_URL}/api/v1/orders`, dataOrder, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
@@ -75,19 +74,49 @@ const CheckoutPage = () => {
   };
 
   const fetchBankTransfer = async (data: dataShippingAdress) => {
-    console.log(data);
     try {
       const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
-
-      const response = await axios.post(
-        `${API_URL}/api/v1/orders/create-checkout-vnpay?returnUrlLocal=${DOMAIN_URL}/checkout/result?orderID=1`,
+      const ordersProduct = dataCartProduct?.items?.map((product) => {
+        return {
+          id: product?.product?.id,
+          product_unit_price: Number(product?.product?.price),
+          product_quanity: product?.quantity,
+          title: product?.product?.title,
+          description: product?.product?.description,
+          discount: Number(product?.product?.discount),
+          images: product?.product?.images,
+        };
+      });
+      const dataOrder = {
+        shippingAddress: {
+          phoneNumber: data?.phoneNumber,
+          name: data?.name,
+          address: data?.address,
+          city: data?.city,
+          postCode: data?.postCode,
+          state: data?.state,
+          country: data?.country,
+        },
+        orderedProducts: ordersProduct,
+        type: 'vnpay',
+        isPaid: 'true',
+      };
+      const responsePostOrder = await axios.post(
+        `${API_URL}/api/v1/orders`,
+        dataOrder,
         {
-          totalAmount: 10000,
+          headers: { Authorization: `Bearer ${accessToken}` },
+        },
+      );
+      const responseUrlBank = await axios.post(
+        `${API_URL}/api/v1/orders/create-checkout-vnpay?returnUrlLocal=${DOMAIN_URL}/checkout/result?orderID=${responsePostOrder?.data?.id}`,
+        {
+          totalAmount: summaryValue,
         },
         { headers: { Authorization: `Bearer ${accessToken}` } },
       );
-      if (response) {
-        router.push(response?.data?.url);
+      if (responseUrlBank) {
+        router.push(responseUrlBank?.data?.url);
       }
     } catch (error) {
       console.error(error);
@@ -97,15 +126,12 @@ const CheckoutPage = () => {
   const handleOrderProduct = (data: dataShippingAdress) => {
     switch (paymentMethod) {
       case 'delivery':
-        console.log('working delivery order');
         fetchCashOnDelivery(data);
         break;
       case 'transfer':
-        console.log('working transfer');
         fetchBankTransfer(data);
         break;
       default:
-        console.log('not working...!!!');
         break;
     }
   };
@@ -117,6 +143,8 @@ const CheckoutPage = () => {
     >
       <CartProvider>
         <InfoOrderProduct
+          dataCartProduct={dataCartProduct}
+          summaryValue={summaryValue}
           paymentMethod={paymentMethod}
           onSetPaymentMethod={setPaymentMethod}
         />

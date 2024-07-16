@@ -7,7 +7,7 @@ import ContentMyBlog from './components/ContentMyBlog';
 
 const MyBlog = () => {
   const [dataMyBlog, setDataMyBlog] = React.useState<IBlogMe>();
-  console.log(dataMyBlog);
+  dataMyBlog;
   const fetchMyBlog = async () => {
     try {
       const accessToken = JSON.parse(localStorage.getItem('accessToken')!);

@@ -20,7 +20,7 @@ const SuccessfullTrade = () => {
             Go to home
           </Button>
         </Link>
-        <Link href={ROUTES?.SHOP}>
+        <Link href={`${ROUTES?.SHOP}?page=1`}>
           <Button
             variant={'destructive'}
             className="font-sans text-base capitalize"

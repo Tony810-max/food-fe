@@ -35,7 +35,7 @@ const DeleteDetailBlog: React.FC<deleteDetailBlog> = ({
         fetchCommentDetailBlog();
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

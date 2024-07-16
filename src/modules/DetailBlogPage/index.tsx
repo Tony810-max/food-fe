@@ -96,7 +96,6 @@ const DetaIBlogMainPage = () => {
           </div>
           <PaginationDetailBlog metaComment={metaComment} />
         </div>
-        {/* {isLogined && ( */}
         <form
           className="space-y-4 border rounded-lg border-black shadow-md px-4 py-4"
           onSubmit={handleSubmit(handleComment)}
@@ -112,7 +111,6 @@ const DetaIBlogMainPage = () => {
             </Button>
           </div>
         </form>
-        {/* )} */}
       </div>
     </div>
   );
