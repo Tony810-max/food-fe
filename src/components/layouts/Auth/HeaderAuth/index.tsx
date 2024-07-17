@@ -14,10 +14,12 @@ const HeaderAuth: React.FC = () => {
   return (
     <div className="bg-[#F53E32] py-6">
       <div className="container flex justify-between">
-        <span className="font-semibold text-white text-xl capitalize">
+        <span className="font-semibold text-white text-sm sm:text-lg capitalize">
           {label?.label}
         </span>
-        <span className="text-white capitalize">Home - {label?.label}</span>
+        <span className="text-white capitalize text-sm sm:text-lg">
+          Home - {label?.label}
+        </span>
       </div>
     </div>
   );

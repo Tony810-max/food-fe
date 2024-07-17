@@ -1,6 +1,5 @@
 'use client';
 import React, { useState } from 'react';
-import { changePasswordProps, schemaChangePassword } from '../types/common';
 import { Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -80,7 +79,9 @@ const FormChangePassword = () => {
         </div>
       </div>
       <div className="space-y-2">
-        <Label className="font-sans text-lg ">Confirm new password</Label>
+        <Label className="font-sans text-lg text-nowrap">
+          Confirm new password
+        </Label>
         <div className="flex items-center gap-2">
           <div className="w-full space-y-2">
             <Input

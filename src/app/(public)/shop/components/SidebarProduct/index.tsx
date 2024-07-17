@@ -33,7 +33,7 @@ const SidebarProduct: React.FC<formProps> = ({
   };
 
   return (
-    <div className="h-fit w-fit bg-[#f7f7f8] p-6 rounded-[0.32rem] ">
+    <div className="h-fit md:w-fit w-full bg-[#f7f7f8] p-6 rounded-[0.32rem] ">
       <span className="font-sans text-base leading-relaxed font-medium capitalize text-[#2b2b2d] border-b ">
         product Category
       </span>

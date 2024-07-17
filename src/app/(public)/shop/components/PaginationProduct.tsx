@@ -33,9 +33,6 @@ const PaginationProduct: React.FC<paginationProps> = ({ metaComment }) => {
   const endPage =
     startPage && totalPages && Math.min(startPage + 4, totalPages);
 
-  console.log(previous);
-  console.log(metaComment);
-
   return (
     <Pagination>
       <PaginationContent>

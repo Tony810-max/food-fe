@@ -21,10 +21,16 @@ interface AboveProps {
 }
 
 const AboveHeader: React.FC<AboveProps> = ({ categories }) => {
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    setOpen(false);
+  }, []);
+
   return (
-    <div className=" flex shadow-md">
+    <div className="flex shadow-md">
       <div className="container flex py-3 items-center justify-between">
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <AlignJustify className="block lg:hidden hover:opacity-70 cursor-pointer" />
           </SheetTrigger>

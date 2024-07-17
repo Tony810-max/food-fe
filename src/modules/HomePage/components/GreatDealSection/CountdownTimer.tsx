@@ -46,33 +46,41 @@ const CountdownTimer = () => {
   }, [calculateTimeLeft]);
 
   return (
-    <div className="flex gap-3 items-center border-2 border-[#E9CBBE] rounded-lg px-6 py-3 w-fit">
+    <div className="flex  gap-3 items-center border-2 border-[#E9CBBE] rounded-lg px-6 py-3 w-fit">
       <div className="flex flex-col">
-        <span className="text-center text-xl font-bold font-sans">
-          {timeLeft?.days}{' '}
+        <span className="text-center font-bold font-sans text-sm sm:text-xl">
+          {timeLeft?.days}
         </span>
-        <span className="font-sans text-[#7A7A7A]">Days</span>
+        <span className="font-sans text-[#7A7A7A] text-sm sm:text-xl">
+          Days
+        </span>
       </div>
-      <span className="text-[#7A7A7A] text-2xl">:</span>
+      <span className="text-[#7A7A7A] sm:text-2xl text-sm ">:</span>
       <div className="flex flex-col">
-        <span className="text-center text-xl font-bold font-sans">
+        <span className="text-center text-sm sm:text-xl font-bold font-sans">
           {timeLeft?.hours}
         </span>
-        <span className="font-sans text-[#7A7A7A]"> Hours</span>
+        <span className="font-sans text-[#7A7A7A] text-sm sm:text-xl">
+          Hours
+        </span>
       </div>
-      <span className="text-[#7A7A7A] text-2xl">:</span>
-      <div className="flex flex-col">
-        <span className="text-center text-xl font-bold font-sans">
+      <span className="text-[#7A7A7A] sm:text-2xl text-sm">:</span>
+      <div className="flex flex-col text-sm sm:text-xl">
+        <span className="text-center font-bold font-sans  text-sm sm:text-xl">
           {timeLeft?.minutes}
         </span>
-        <span className="font-sans text-[#7A7A7A]"> Minutes</span>
+        <span className="font-sans text-[#7A7A7A]  text-sm sm:text-xl">
+          Minutes
+        </span>
       </div>
-      <span className="text-[#7A7A7A] text-2xl">:</span>
+      <span className="text-[#7A7A7A] sm:text-2xl text-sm">:</span>
       <div className="flex flex-col">
-        <span className="text-center text-xl font-bold font-sans">
+        <span className="text-center text-xl font-bold font-sans text-sm sm:text-xl">
           {timeLeft?.seconds}
         </span>
-        <span className="font-sans text-[#7A7A7A]"> Seconds</span>
+        <span className="font-sans text-[#7A7A7A]  text-sm sm:text-xl">
+          Seconds
+        </span>
       </div>
     </div>
   );

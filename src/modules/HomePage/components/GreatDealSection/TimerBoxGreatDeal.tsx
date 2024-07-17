@@ -3,7 +3,7 @@ import CountdownTimer from './CountdownTimer';
 
 const TimerBoxGreatDeal = () => {
   return (
-    <div className="p-6 relative z-10 shadow-md w-fit translate-y-1/2">
+    <div className="p-2 sm:p-6 relative z-10 shadow-md w-fit translate-y-1/2">
       <div>
         <span className="text-xl font-sans text-[#F53E32] font-bold leading-normal">
           35%

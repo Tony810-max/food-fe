@@ -35,7 +35,6 @@ const CommentTabAboutProduct = () => {
   const params = useParams();
 
   const onSubmit = async (data: { comment: string }) => {
-    console.log(data);
     const dataComment = {
       productId: Number(params?.id),
       ratings: rating,

@@ -22,9 +22,9 @@ const ItemProductCart: React.FC<ProductCartProps> = ({
 
   return (
     <tr className="bg-[#f7f7f8] h-full" key={data.id}>
-      <td className="py-6">
+      <td className="py-4">
         <div className="flex items-center gap-5">
-          <div className="relative w-[3.75rem] h-[3.75rem]">
+          <div className="relative w-14 h-14">
             <Image
               src={data?.product?.images[0]}
               alt="imageProductCart"
@@ -32,25 +32,37 @@ const ItemProductCart: React.FC<ProductCartProps> = ({
               sizes="(min-width: 768px) 100vw, (min-width: 1200px) 50vw, 33vw"
             />
           </div>
-          <span className="font-sans text-[#444444] leading-normal font-bold">
+          <span className="font-sans text-[#444444] text-sm sm:text-base leading-normal font-bold">
             {data?.product?.title}
           </span>
         </div>
       </td>
-      <td className="py-6 text-center">${data?.product?.price}</td>
-      <td className="h-full flex items-center justify-center py-6 rounded-lg border">
-        <Plus
-          onClick={() => handleIncreaseProduct(data?.id, data?.quantity)}
-          className="cursor-pointer hover:opacity-65 "
+      <td className="py-4 text-center text-sm">{data?.product?.price}</td>
+      <td className="h-full flex items-center justify-center py-4 rounded-lg border">
+        <Input
+          disabled
+          type="text"
+          value={data?.quantity}
+          className="w-20 text-center"
         />
-        <Input disabled type="text" value={data?.quantity} className="w-20" />
-        <Minus
-          onClick={() => handleDecreaseProduct(data?.id, data?.quantity)}
-          className="cursor-pointer hover:opacity-65 "
-        />
+        <div className="space-y-2">
+          <Plus
+            size={18}
+            onClick={() => handleIncreaseProduct(data?.id, data?.quantity)}
+            className="cursor-pointer hover:opacity-65 "
+          />
+          <Minus
+            size={18}
+            onClick={() => handleDecreaseProduct(data?.id, data?.quantity)}
+            className="cursor-pointer hover:opacity-65 "
+          />
+        </div>
       </td>
-      <td>$ {Number(data?.product?.price) * Number(data?.quantity)}</td>
-      <td className="py-6 text-center">
+      <td className='font-sans text-center text-sm sm:text-base'>
+        {(Number(data?.product?.price) - Number(data?.product?.discount)) *
+          Number(data?.quantity)}
+      </td>
+      <td className="py-4 text-center">
         <button
           className="text-center hover:opacity-70"
           onClick={() => handleDeleteCartProduct(data?.id)}

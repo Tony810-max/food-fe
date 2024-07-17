@@ -24,13 +24,13 @@ const BelowSidebarHeader = () => {
           ''
         )}
         <Link
-          href={ROUTES.SHOP}
+          href={`${ROUTES.SHOP}?page=1`}
           className="border rounded-md w-full text-center py-1 items-center gap-2 cursor-pointer hover:text-orange-400"
         >
           Products
         </Link>
         <Link
-          href={ROUTES.BLOG}
+          href={`${ROUTES.BLOG}?page=1`}
           className="border rounded-md w-full py-1 text-center capitalize  text-base  hover:text-orange-400"
         >
           Blog

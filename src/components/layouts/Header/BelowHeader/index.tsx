@@ -1,17 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
-import { User, ShoppingCart, ShoppingBag, Bell } from 'lucide-react';
+import { User, ShoppingCart, ShoppingBag } from 'lucide-react';
 
 import ROUTES from '@/types/routes';
 import FormBelowHeader from './FormBelowHeader';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
 
 import { useAuth } from '@/hooks/useAuth';
 import { ICategory } from '@/types/common';
@@ -22,8 +16,6 @@ interface Props {
 }
 const BelowHeader: React.FC<Props> = ({ categories }) => {
   const { handleLogOut, user } = useAuth();
-  const [checkNotifications, setCheckNotifications] =
-    React.useState<boolean>(false);
 
   return (
     <div className="container py-5 lg:flex items-center gap-2 justify-between hidden ">
@@ -79,29 +71,6 @@ const BelowHeader: React.FC<Props> = ({ categories }) => {
             handleLogOut={handleLogOut}
             name={`${user?.firstName} ${user?.lastName}`}
           />
-        ) : (
-          ''
-        )}
-
-        {user ? (
-          <div className="hidden md:flex items-center ">
-            <Popover>
-              <PopoverTrigger asChild>
-                <div
-                  className="relative cursor-pointer"
-                  onClick={() => setCheckNotifications(true)}
-                >
-                  <Bell />
-                  {!checkNotifications && (
-                    <span className="absolute top-0 right-0 w-2 h-2 bg-red-600 rounded-full"></span>
-                  )}
-                </div>
-              </PopoverTrigger>
-              <PopoverContent className="w-fit">
-                day la thong bao
-              </PopoverContent>
-            </Popover>
-          </div>
         ) : (
           ''
         )}

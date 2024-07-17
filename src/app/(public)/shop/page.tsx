@@ -10,13 +10,14 @@ import { useSearchParams } from 'next/navigation';
 import PaginationProduct from './components/PaginationProduct';
 
 const ShopPage = () => {
-  const { products, priceFilter, setPriceFilter, meta } = useProduct(6);
+  const { products, meta } = useProduct(6);
   const [currentProducts, setCurrentProducts] = useState<IProduct[]>([]);
   const [curCategory, setCurCategory] = useState('');
+  const [priceFilter, setPriceFilter] = React.useState<number[]>([]);
+
   const param = useSearchParams();
   const search = param?.get('search');
   const category = param?.get('category');
-  
 
   const handleFilter = () => {
     if (!curCategory) {
@@ -26,6 +27,18 @@ const ShopPage = () => {
       setCurrentProducts(filterdData);
       return;
     }
+
+    if (curCategory && priceFilter?.some((item) => item > 0)) {
+      const filterdData = products.filter(
+        (product) =>
+          Number(product.price) <= Number(priceFilter[0]) &&
+          Number(priceFilter[0]) !== 0 &&
+          product?.category?.title === curCategory,
+      );
+      setCurrentProducts(filterdData);
+      return;
+    }
+
     if (curCategory || priceFilter) {
       const filterdData = products.filter(
         (product) =>
@@ -57,7 +70,7 @@ const ShopPage = () => {
   }, [category, products, search]);
 
   return (
-    <div className="container py-[6.25rem] flex gap-3">
+    <div className="container py-[6.25rem] flex flex-col md:flex-row gap-3">
       <SidebarProduct
         onSetCurCategory={setCurCategory}
         setPriceFilter={setPriceFilter}
@@ -68,7 +81,7 @@ const ShopPage = () => {
       <div className="w-full space-y-[1.875rem]">
         <HeadingFilterShop count={currentProducts?.length} />
 
-        <div className="grid grid-cols-3 gap-6 min-h-[63.75rem]">
+        <div className="grid grid-cols-1 sm:grid-cols-3  gap-6 min-h-[63.75rem]">
           {currentProducts?.length > 0 ? (
             currentProducts.map((product, index) => (
               <ProductCard

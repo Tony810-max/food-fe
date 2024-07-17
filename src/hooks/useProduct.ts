@@ -12,7 +12,7 @@ export interface IMetaData {
 
 const useProduct = (limit = 10) => {
   const [products, setProducts] = React.useState<IProduct[]>([]);
-  const [priceFilter, setPriceFilter] = React.useState<number[]>([]);
+  
   const [meta, setMeta] = React.useState<IMetaData | undefined>();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const searchParam = useSearchParams();
@@ -49,9 +49,7 @@ const useProduct = (limit = 10) => {
   return {
     products: products,
     maxPrice: maxPriceValue,
-    priceFilter,
     setProducts,
-    setPriceFilter,
     isLoading,
     meta,
   };

@@ -1,25 +1,19 @@
 const ROUTES = {
   HOME: '/', //done responsive
   ABOUTUS: '/aboutus',
-  CATEGORY: '/category',
-  CART: '/cart',
+  CART: '/cart', //done responsive
   CHECKOUT: '/checkout',
   ACTIVEACCOUNT: 'active-account',
-  SHOP: '/shop',
+  SHOP: '/shop', // done responsive
   SIGNIN: '/login', // done responsive
   SIGNUP: '/register', // done responsive
-  FORGOTPASSWORD: '/forgot-password', // not do
-  CHANGEPASSWORD: '/change-password',
+  FORGOTPASSWORD: '/forgot-password', 
+  CHANGEPASSWORD: '/change-password',// done responsive
   PROFILE: '/profile', // done responsive
   CONTACTUS: '/contactus', // not do
   BLOG: '/blog', // done responsive
   FAQ: '/faq', // done responsive
   MYBLOG: '/my-blog', 
-  PURCHASEORDER: '/purchase-order',
-  PURCHASEORDER_SHIPPED: '/purchase-order/pages/shipped',
-  PURCHASEORDER_CANCELLED: '/purchase-order/pages/cancelled',
-  PURCHASEORDER_PROCESSING: '/purchase-order/pages/processing',
-  PURCHASEORDER_DELIVERED: '/purchase-order/pages/delivered',
+  PURCHASEORDER: '/purchase-order', // done responsive
 };
-
 export default ROUTES;

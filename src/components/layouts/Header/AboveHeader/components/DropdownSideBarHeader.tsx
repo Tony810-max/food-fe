@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogOut, ShoppingCart, User } from 'lucide-react';
+import { LogOut, ShoppingBag, ShoppingCart, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 import { Button } from '@/components/ui/button';
@@ -53,6 +53,25 @@ const DropdownSideBarHeader = () => {
               />
               <span className="text-base text-black font-semibold capitalize">
                 cart
+              </span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem className="flex items-center p-2 gap-2 border rounded-[0.313rem]">
+            <Link
+              href={`${ROUTES.PURCHASEORDER}?page=1`}
+              className={cn(
+                'flex items-center gap-2 cursor-pointer hover:text-orange-400',
+                {
+                  'pointer-events-none': !user,
+                },
+              )}
+            >
+              <ShoppingBag
+                color="black"
+                className="h-4 w-4 cursor-pointer hover:opacity-70"
+              />
+              <span className="text-base text-black font-semibold capitalize">
+                purchase order
               </span>
             </Link>
           </DropdownMenuItem>

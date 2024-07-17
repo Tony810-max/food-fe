@@ -15,7 +15,7 @@ const TableProduct: React.FC<ItemProductProps> = ({
   fetchCartProduct,
 }) => {
   return (
-    <div className="space-y-8">
+    <div className=" space-y-8 overflow-auto min-w-80">
       <table className="w-full">
         <tbody className="w-full">
           <tr className="bg-[#e9e9e9]">
