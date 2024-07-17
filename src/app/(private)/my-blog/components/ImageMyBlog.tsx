@@ -7,7 +7,7 @@ interface IImageMyBlog {
 
 const ImageMyBlog: React.FC<IImageMyBlog> = ({ img }) => {
   return (
-    <div className="relative w-3/5 h-72 ">
+    <div className="relative sm:w-3/5 w-full h-72 ">
       <Image
         src={img}
         alt="imgBlogMy"

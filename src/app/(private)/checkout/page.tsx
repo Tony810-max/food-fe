@@ -138,7 +138,7 @@ const CheckoutPage = () => {
 
   return (
     <form
-      className="container py-[6.25rem] grid grid-cols-3 gap-4"
+      className="container py-[6.25rem] md:grid grid-cols-3 gap-4 space-y-4 md:space-y-0"
       onSubmit={handleSubmit(handleOrderProduct)}
     >
       <CartProvider>

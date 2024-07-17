@@ -26,8 +26,8 @@ const ProductSummary: React.FC<ProductProps> = ({
     });
   };
   return (
-    <div className="flex gap-[0.938rem]">
-      <div className="relative w-20 h-20">
+    <div className="flex flex-col lg:flex-row gap-[0.938rem]">
+      <div className="relative w-full h-20 lg:w-20 lg:h-20">
         <Image
           src={image}
           alt="summaryImage"
@@ -35,7 +35,7 @@ const ProductSummary: React.FC<ProductProps> = ({
           sizes="(min-width: 768px) 100vw, (min-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <div className="w-full flex justify-between">
+      <div className="w-full flex flex-col lg:flex-row justify-between">
         <div className="space-y-2">
           <span className="font-sans text-lg leading-tight text-[#000000] font-medium">
             {name}
@@ -50,7 +50,7 @@ const ProductSummary: React.FC<ProductProps> = ({
             </span>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex lg:flex-col lg:items-center gap-2">
           <span className="font-sans text-lg leading-tight text-[#000000] font-medium">
             Quantity
           </span>

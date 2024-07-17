@@ -19,7 +19,7 @@ const InfoOrderProduct: React.FC<IInfoOrder> = ({
   summaryValue,
 }) => {
   return (
-    <div className="col-span-1 px-3 space-y-[1.875rem]">
+    <div className="col-span-1  px-3 space-y-[1.875rem]">
       <SummaryOrderProduct
         summaryValue={summaryValue}
         dataCartProduct={dataCartProduct}

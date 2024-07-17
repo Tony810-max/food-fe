@@ -40,7 +40,7 @@ const FormBelowSidebarHeader = () => {
         type="text"
         placeholder="Search for items..."
         {...register('searchValue')}
-        className="border border-[#64B496] min-w-80 rounded-r-none focus:outline-transparent active:outline-transparent focus-visible:ring-transparent"
+        className="border border-[#64B496]  sm:min-w-80 rounded-r-none focus:outline-transparent active:outline-transparent focus-visible:ring-transparent"
       />
       <div className="flex justify-center ">
         <Controller

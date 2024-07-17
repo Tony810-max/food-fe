@@ -28,7 +28,7 @@ const MyBlog = () => {
   return (
     <div className="container py-20 space-y-4">
       {dataMyBlog?.posts?.map((data) => (
-        <div className="flex gap-2 " key={data?.id}>
+        <div className="flex gap-2 flex-col sm:flex-row" key={data?.id}>
           <ImageMyBlog img={data?.images[0]} />
           <ContentMyBlog
             status={data?.isApproved}

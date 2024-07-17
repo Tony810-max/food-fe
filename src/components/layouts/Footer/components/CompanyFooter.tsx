@@ -33,12 +33,7 @@ const CompanyFooter = () => {
         >
           Terms & Conditions
         </Link>
-        <Link
-          href={ROUTES.CONTACTUS}
-          className="font-sans leading-relaxed text-[#777777] capitalize hover:opacity-70"
-        >
-          contact Us
-        </Link>
+
         <Link
           href={ROUTES.HOME}
           className="font-sans leading-relaxed text-[#777777] capitalize hover:opacity-70"

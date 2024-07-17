@@ -6,9 +6,9 @@ import CoutAboutUs from './components/CountAboutUs';
 const AboutUsPage = () => {
   return (
     <div className="container space-y-[6.25rem] py-[6.25rem]">
-      <div className="grid grid-cols-2 gap-6">
+      <div className="lg:grid grid-cols-2 gap-6">
         <div className="space-y-[1.625rem]">
-          <div className="font-sans text-4xl leading-tight text-[#212529] font-bold">
+          <div className="font-sans text-2xl lg:text-4xl text-nowrap text-center leading-tight text-[#212529] font-bold">
             About The Carrot
           </div>
           <div className="space-y-[1.594rem]">
@@ -37,7 +37,7 @@ const AboutUsPage = () => {
             <CoutAboutUs value={2} title={'Products'} />
           </div>
         </div>
-        <div className="relative w-full h-full">
+        <div className="relative w-full lg:h-full h-52">
           <Image src={'/images/imageAboutUs.webp'} alt="imageAboutUs" fill />
         </div>
       </div>

@@ -1,19 +1,18 @@
 const ROUTES = {
   HOME: '/', //done responsive
-  ABOUTUS: '/aboutus',
+  ABOUTUS: '/aboutus',// done responsive
   CART: '/cart', //done responsive
-  CHECKOUT: '/checkout',
-  ACTIVEACCOUNT: 'active-account',
+  CHECKOUT: '/checkout', // done responsive
+  ACTIVEACCOUNT: 'active-account' ,
   SHOP: '/shop', // done responsive
   SIGNIN: '/login', // done responsive
   SIGNUP: '/register', // done responsive
-  FORGOTPASSWORD: '/forgot-password', 
+  FORGOTPASSWORD: '/forgot-password',  // done responsive
   CHANGEPASSWORD: '/change-password',// done responsive
   PROFILE: '/profile', // done responsive
-  CONTACTUS: '/contactus', // not do
   BLOG: '/blog', // done responsive
   FAQ: '/faq', // done responsive
-  MYBLOG: '/my-blog', 
+  MYBLOG: '/my-blog', // done responsive
   PURCHASEORDER: '/purchase-order', // done responsive
 };
 export default ROUTES;
