@@ -7,7 +7,7 @@ const ProductDetailPage = () => {
   return (
     <ProductDetailProvider>
       <div className="container ">
-        <div className="grid grid-cols-5 gap-[5.3rem] py-[5.5rem]">
+        <div className=" gap-[5.3rem] py-[5.5rem]">
           <DetaiProduct />
         </div>
 

@@ -7,7 +7,7 @@ import AboutProduct from './AboutProductSection';
 
 const DetaiProduct = () => {
   return (
-    <div className="col-span-5 grid grid-cols-2 gap-x-3 gap-y-10 min-h-screen">
+    <div className=" sm:grid grid-cols-2 space-y-4  min-h-screen">
       <ImageProduct />
       <ContentProduct />
       <AboutProduct />

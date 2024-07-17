@@ -6,34 +6,13 @@ import ReviewTabAboutProduct from './ReviewTabAboutProduct';
 import DescriptionTabAboutProduct from './DescriptionTabAboutProduct';
 import CommentTabAboutProduct from './CommentTabAboutProduct';
 import { DetailProductContext } from '@/contexts/useProductDetailContext';
-
-const DATA_HEADING = [
-  {
-    id: 1,
-    name: 'Description',
-    value: 'description',
-  },
-  {
-    id: 2,
-    name: 'Information',
-    value: 'information',
-  },
-  {
-    id: 3,
-    name: 'Review',
-    value: 'review',
-  },
-  {
-    id: 4,
-    name: 'Comment',
-    value: 'comment',
-  },
-];
+import SelectItemProduct from './SelectItemProduct';
+import { DATA_HEADING } from '../../types/constant';
 
 const AboutProduct = () => {
   const [valueLabel, setValueLabel] = useState<string>(DATA_HEADING[0].value);
   const context = React.useContext(DetailProductContext);
-  
+
   const renderContent = () => {
     switch (valueLabel) {
       case 'description':
@@ -57,11 +36,9 @@ const AboutProduct = () => {
 
   return (
     <div className="col-span-2 p-6 border rounded min-h-80">
-      <HeadingAboutProduct
-        data={DATA_HEADING}
-        onSetValueLabel={setValueLabel}
-      />
-      <Separator />
+      <HeadingAboutProduct onSetValueLabel={setValueLabel} />
+      <SelectItemProduct onSetValueLabel={setValueLabel} />
+      <Separator className="hidden sm:block" />
       {renderContent()}
     </div>
   );

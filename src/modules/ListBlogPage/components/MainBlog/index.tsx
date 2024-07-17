@@ -31,7 +31,7 @@ const MainBlog = () => {
             <ViewBlog key={item?.id} blog={item} />
           ))}
         </div>
-        <PaginationBlog metaComment={meta} />
+        {meta && meta?.totalPages > 1 && <PaginationBlog metaComment={meta} />}
       </div>
       <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-between border rounded-[0.313rem] p-[1rem]">
         <div className="flex gap-6">

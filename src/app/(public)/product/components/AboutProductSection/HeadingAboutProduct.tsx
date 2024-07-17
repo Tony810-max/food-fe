@@ -1,22 +1,15 @@
 import { Button } from '@/components/ui/button';
 import React from 'react';
+import { DATA_HEADING } from '../../types/constant';
 
-interface HeadingProps {
+export interface HeadingProps {
   onSetValueLabel: (value: string) => void;
-  data: {
-    id: number;
-    name: string;
-    value: string;
-  }[];
 }
 
-const HeadingAboutProduct: React.FC<HeadingProps> = ({
-  onSetValueLabel,
-  data,
-}) => {
+const HeadingAboutProduct: React.FC<HeadingProps> = ({ onSetValueLabel }) => {
   return (
-    <div className="flex gap-8">
-      {data?.map((data) => (
+    <div className="hidden sm:flex gap-1 sm:gap-8">
+      {DATA_HEADING?.map((data) => (
         <Button
           key={data.id}
           variant={'ghost'}
