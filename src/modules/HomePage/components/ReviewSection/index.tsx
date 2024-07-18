@@ -20,7 +20,7 @@ interface IReview {
 
 const ReviewSection = () => {
   const [dataReview, setDataReview] = React.useState<IReview[]>();
-  
+
   const fetchReview = async () => {
     try {
       const accessToken = JSON.parse(localStorage.getItem('accessToken')!);
@@ -63,7 +63,7 @@ const ReviewSection = () => {
             <CarouselItem key={data?.id}>
               <SliderReviewSection
                 rate={data?.ratings}
-                name="Stephen Smith"
+                name={'No Name'}
                 description={`“${data?.comment}”`}
               />
             </CarouselItem>

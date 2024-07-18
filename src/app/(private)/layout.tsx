@@ -28,6 +28,7 @@ const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <Suspense>
         <HeaderAuth />
         {children}
+        
       </Suspense>
     </>
   );

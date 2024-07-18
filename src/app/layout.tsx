@@ -7,6 +7,7 @@ import './globals.css';
 
 import HeaderMain from '@/components/layouts/Header';
 import Footer from '@/components/layouts/Footer/Footer';
+import ChatMessage from './(private)/chat';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         {children}
 
         <Footer />
+        <ChatMessage />
       </body>
     </html>
   );

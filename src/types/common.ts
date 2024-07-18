@@ -13,25 +13,16 @@ export interface ICategory {
   deletedAt: null;
 }
 
-export interface ICategory {
+export interface IProduct {
   id: number;
   title: string;
   description: string;
+  price: string;
+  discount: string;
+  stock: number;
+  images: string;
   createdAt: string;
   updatedAt: string;
-  deletedAt: null;
-}
-
-export interface IProduct {
-  id: 1;
-  title: 'Hamburger';
-  description: 'Description';
-  price: '10.00';
-  discount: '10.00';
-  stock: 10;
-  images: string;
-  createdAt: '2024-05-31T13:40:22.445Z';
-  updatedAt: '2024-05-31T13:40:22.445Z';
   deletedAt: null;
   category: ICategory;
   author: IAuthor;
